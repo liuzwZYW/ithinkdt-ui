@@ -1666,6 +1666,42 @@ export default defineComponent({
           keys: indeterminateKeys,
           options: getOptionsByKeys(indeterminateKeys)
         }
+      },
+      setDragStart: (node) => {
+        if (!node) {
+          resetDndState()
+          droppingNodeRef.value = null
+          return true
+        }
+        if (
+          !props.draggable
+          || props.disabled
+          || node[props.disabledField]
+        ) {
+          return false
+        }
+        dragStartX = 0
+        draggingNodeRef.value = {
+          rawNode: node,
+          key: node[props.keyField] as Key,
+          level: 0,
+          index: 0,
+          isFirstChild: true,
+          isLastChild: true,
+          isLeaf: !node.children?.length,
+          isGroup: false,
+          parent: null,
+          ignored: false,
+          shallowLoaded: true,
+          disabled: false,
+          siblings: [],
+          getPrev: () => null,
+          getNext: () => null,
+          getParent: () => null,
+          getChild: () => null,
+          contains: () => false
+        }
+        return true
       }
     }
     const cssVarsRef = computed(() => {

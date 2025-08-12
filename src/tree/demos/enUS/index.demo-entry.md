@@ -118,6 +118,7 @@ override-click-behavior.vue
 | scrollTo | `ScrollTo` | Scroll to some node in virtual scroll mode. | 2.32.2, `ScrollTo` 2.37.0 |
 | getCheckedData | `() => { keys: Array<string \| number>, options: Array<TreeOption \| null> }` | Get checked data. | 2.34.1 |
 | getIndeterminateData | `() => { keys: Array<string \| number>, options: Array<TreeOption \| null> }` | Get indeterminate data. | 2.34.1 |
+| setDragStart | `(node: TreeOption \| null) => void` | Set drag information to support cross-window dragging | ithinkdt 1.7.3 |
 
 #### ScrollTo Type
 

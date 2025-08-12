@@ -170,6 +170,7 @@ export interface TreeInst {
   scrollTo: VirtualListScrollTo
   getCheckedData: () => { keys: Key[], options: Array<TreeOption | null> }
   getIndeterminateData: () => { keys: Key[], options: Array<TreeOption | null> }
+  setDragStart: (node: TreeOption | null) => boolean
 }
 
 export type GetChildren = (option: any) => unknown
