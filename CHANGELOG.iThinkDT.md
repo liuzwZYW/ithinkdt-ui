@@ -2,6 +2,10 @@
 
 ## Next Version
 
+## 1.7.3 [naive: 2.42.0] (2025-08-12)
+
+- `n-tree` 暴露 `setDragStart`，以支持跨窗口拖拽
+
 ## 1.7.2 [naive: 2.42.0] (2025-07-17)
 
 - 重构 fork
