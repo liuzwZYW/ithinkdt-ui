@@ -1,24 +1,19 @@
+import type { PropType, VNode } from 'vue'
 import type { OnPanelUpdateValueImpl } from '../interface'
 import type {
   DatePickerClearSlotProps,
   DatePickerConfirmSlotProps,
   DatePickerNowSlotProps
 } from '../public-types'
-import { defineComponent, h, onMounted, type PropType, type VNode } from 'vue'
+import type { MonthItem, QuarterItem, YearItem } from '../utils'
+import { defineComponent, h, onMounted } from 'vue'
 import { VirtualList } from 'vueuc'
 import { NBaseFocusDetector, NScrollbar } from '../../../_internal'
 import { useLocale } from '../../../_mixins'
 import { resolveSlotWithTypedProps, resolveWrappedSlot } from '../../../_utils'
 import { NButton, NxButton } from '../../../button'
 import { MONTH_ITEM_HEIGHT } from '../config'
-import {
-  getMonthString,
-  getQuarterString,
-  getYearString,
-  type MonthItem,
-  type QuarterItem,
-  type YearItem
-} from '../utils'
+import { getMonthString, getQuarterString, getYearString } from '../utils'
 import { useCalendar, useCalendarProps } from './use-calendar'
 
 /**

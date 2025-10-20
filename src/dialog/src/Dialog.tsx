@@ -1,14 +1,8 @@
+import type { CSSProperties, SlotsType, VNode } from 'vue'
 import type { ThemeProps } from '../../_mixins'
 import type { DialogTheme } from '../styles'
 import { getMargin } from 'seemly'
-import {
-  computed,
-  type CSSProperties,
-  defineComponent,
-  h,
-  type SlotsType,
-  type VNode
-} from 'vue'
+import { computed, defineComponent, h } from 'vue'
 import { NBaseClose, NBaseIcon } from '../../_internal'
 import {
   ErrorIcon,
@@ -289,6 +283,7 @@ export const NDialog = defineComponent({
                 <div class={classNames}>{node}</div>
               ) : (
                 <NBaseClose
+                  focusable={this.closeFocusable}
                   clsPrefix={mergedClsPrefix}
                   class={classNames}
                   onClick={this.handleCloseClick}

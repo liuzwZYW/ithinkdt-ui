@@ -20,7 +20,13 @@ export function renderMenuLabel(option) {
 function renderNewTag(isZh) {
   return h(
     NTag,
-    { type: 'success', size: 'small', round: true, bordered: false },
+    {
+      type: 'success',
+      size: 'small',
+      round: true,
+      bordered: false,
+      style: { pointerEvents: 'none' }
+    },
     { default: isZh ? () => '新' : () => 'New' }
   )
 }
@@ -193,7 +199,7 @@ export function createDocumentationMenuOptions({ lang, theme }) {
           en: 'Potential Style Conflict',
           zh: '潜在的样式冲突',
           path: '/style-conflict'
-        },
+        }
       ]
     },
     {

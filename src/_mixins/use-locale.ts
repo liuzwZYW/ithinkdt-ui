@@ -1,6 +1,7 @@
+import type { Ref } from 'vue'
 import type { NLocale } from '../locales/common/enUS'
 import type { NDateLocale } from '../locales/date/enUS'
-import { computed, inject, type Ref } from 'vue'
+import { computed, inject } from 'vue'
 import { configProviderInjectionKey } from '../config-provider/src/context'
 import { dateEnUS, enUS } from '../locales'
 

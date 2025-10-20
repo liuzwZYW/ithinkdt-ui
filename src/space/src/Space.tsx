@@ -1,15 +1,9 @@
+import type { CSSProperties, PropType } from 'vue'
 import type { ThemeProps } from '../../_mixins'
 import type { ExtractPublicPropTypes } from '../../_utils'
 import type { SpaceTheme } from '../styles'
 import { depx, getGap } from 'seemly'
-import {
-  Comment,
-  computed,
-  type CSSProperties,
-  defineComponent,
-  h,
-  type PropType
-} from 'vue'
+import { Comment, computed, defineComponent, h } from 'vue'
 import { useConfig, useTheme } from '../../_mixins'
 import { useRtl } from '../../_mixins/use-rtl'
 import { createKey, flatten, getSlot } from '../../_utils'

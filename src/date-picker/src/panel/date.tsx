@@ -1,8 +1,9 @@
+import type { PropType } from 'vue'
 import type {
   DatePickerClearSlotProps,
   DatePickerNowSlotProps
 } from '../public-types'
-import { defineComponent, h, type PropType, watchEffect } from 'vue'
+import { defineComponent, h, watchEffect } from 'vue'
 import { NBaseFocusDetector } from '../../../_internal'
 import {
   BackwardIcon,

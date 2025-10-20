@@ -1,9 +1,9 @@
+import type { FormInst } from '../index'
 import type { FormBorderInst, FormValidateCallback } from '../src/interface'
-/* eslint-disable unused-imports/no-unused-vars */
 import { mount } from '@vue/test-utils'
 import { defineComponent, h, onMounted, ref } from 'vue'
 import { NInput } from '../../input'
-import { type FormInst, NForm, NFormBorder, NFormItem } from '../index'
+import { NForm, NFormBorder, NFormItem } from '../index'
 
 describe('n-form', () => {
   it('should work with import on demand', () => {
@@ -184,7 +184,10 @@ describe('n-form', () => {
 
     await wrapper.setProps({ showLabel: false })
     expect(wrapper.findAll('.n-form-item-label').length).toBe(0)
-    expect(wrapper.findAll('.n-form-item--no-label').length).toBe(3)
+    const noLabelItem = wrapper
+      .findAll('.n-form-item')
+      .filter(w => w.classes().includes('n-form-item--no-label'))
+    expect(noLabelItem).toHaveLength(3)
 
     // The NFormItem show-label has a higher weight than the NForm
     wrapper = mount(NForm, {
@@ -558,7 +561,7 @@ describe('n-form', () => {
                     },
                     {
                       level: 'warning',
-                      validator(rule, value) {
+                      validator() {
                         return new Error('warning')
                       }
                     }
@@ -656,7 +659,7 @@ describe('n-form', () => {
     it('should work with `on-blur` prop', async () => {
       const onBlur = jest.fn()
       const wrapper = mount(NFormBorder, {
-        props: { onBlur },
+        props: { onBlur }
       })
       await wrapper.trigger('focus')
       await wrapper.trigger('blur')
@@ -667,7 +670,7 @@ describe('n-form', () => {
     it('should work with `on-focus` prop', async () => {
       const onFocus = jest.fn()
       const wrapper = mount(NFormBorder, {
-        props: { onFocus },
+        props: { onFocus }
       })
       await wrapper.trigger('focus')
       expect(onFocus).toHaveBeenCalled()

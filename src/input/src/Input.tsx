@@ -1,4 +1,16 @@
+import type {
+  CSSProperties,
+  InputHTMLAttributes,
+  PropType,
+  SlotsType,
+  TextareaHTMLAttributes,
+  VNode,
+  VNodeChild,
+  WatchStopHandle
+} from 'vue'
+import type { ScrollbarInst } from '../../_internal'
 import type { ThemeProps } from '../../_mixins'
+import type { ExtractPublicPropTypes, MaybeArray } from '../../_utils'
 import type { FormValidationStatus } from '../../form/src/public-types'
 import type { InputTheme } from '../styles'
 import type {
@@ -12,34 +24,20 @@ import { getPadding } from 'seemly'
 import { useMemo, useMergedState } from 'vooks'
 import {
   computed,
-  type CSSProperties,
   defineComponent,
   Fragment,
   getCurrentInstance,
   h,
-  type InputHTMLAttributes,
   nextTick,
   onMounted,
-  type PropType,
   provide,
   ref,
-  type SlotsType,
-  type TextareaHTMLAttributes,
   toRef,
-  type VNode,
-  type VNodeChild,
   watch,
-  watchEffect,
-  type WatchStopHandle
+  watchEffect
 } from 'vue'
 import { VResizeObserver } from 'vueuc'
-import {
-  NBaseClear,
-  NBaseIcon,
-  NBaseSuffix,
-  NScrollbar,
-  type ScrollbarInst
-} from '../../_internal'
+import { NBaseClear, NBaseIcon, NBaseSuffix, NScrollbar } from '../../_internal'
 import { EyeIcon, EyeOffIcon } from '../../_internal/icons'
 import {
   useConfig,
@@ -50,14 +48,7 @@ import {
   useThemeClass
 } from '../../_mixins'
 import { useRtl } from '../../_mixins/use-rtl'
-import {
-  call,
-  createKey,
-  type ExtractPublicPropTypes,
-  type MaybeArray,
-  resolveSlot,
-  resolveWrappedSlot
-} from '../../_utils'
+import { call, createKey, resolveSlot, resolveWrappedSlot } from '../../_utils'
 import { isSafari } from '../../_utils/env/browser'
 import { inputLight } from '../styles'
 import { inputInjectionKey } from './interface'

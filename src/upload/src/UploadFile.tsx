@@ -1,19 +1,11 @@
+import type { PropType, VNode } from 'vue'
 import type { ExtractThemeOverrides } from '../../_mixins/use-theme'
 import type { ButtonTheme } from '../../button/styles'
 import type { ImageInst } from '../../image'
 import type { ListType } from './interface'
 import type { UploadSettledFileInfo } from './public-types'
 import { useMemo } from 'vooks'
-import {
-  computed,
-  defineComponent,
-  h,
-  inject,
-  type PropType,
-  ref,
-  type VNode,
-  watchEffect
-} from 'vue'
+import { computed, defineComponent, h, inject, ref, watchEffect } from 'vue'
 import { NBaseIcon, NIconSwitchTransition } from '../../_internal'
 import {
   AttachIcon,

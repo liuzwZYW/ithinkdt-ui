@@ -1,27 +1,21 @@
+import type { CSSProperties, ExtractPropTypes, PropType, Ref } from 'vue'
 import type { MergedTheme, ThemeProps } from '../../_mixins'
+import type { ExtractPublicPropTypes, Mutable } from '../../_utils'
+import type { NotificationTheme } from '../styles'
 import type { NotificationOptions } from './NotificationEnvironment'
 import { createId } from 'seemly'
 import {
-  type CSSProperties,
   defineComponent,
-  type ExtractPropTypes,
   Fragment,
   h,
-  type PropType,
   provide,
   reactive,
-  type Ref,
   ref,
   Teleport
 } from 'vue'
 import { useConfig, useTheme } from '../../_mixins'
-import {
-  createInjectionKey,
-  type ExtractPublicPropTypes,
-  type Mutable,
-  omit
-} from '../../_utils'
-import { notificationLight, type NotificationTheme } from '../styles'
+import { createInjectionKey, omit } from '../../_utils'
+import { notificationLight } from '../styles'
 import { notificationProviderInjectionKey } from './context'
 import { NotificationContainer } from './NotificationContainer'
 import { NotificationEnvironment } from './NotificationEnvironment'

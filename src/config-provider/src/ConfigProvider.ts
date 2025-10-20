@@ -1,3 +1,5 @@
+import type { ComputedRef, ExtractPropTypes, PropType } from 'vue'
+import type { Hljs } from '../../_mixins'
 import type { NDateLocale, NLocale } from '../../locales'
 import type {
   GlobalComponentConfig,
@@ -16,18 +18,15 @@ import { merge } from 'lodash-es'
 import { useMemo } from 'vooks'
 import {
   computed,
-  type ComputedRef,
   defineComponent,
-  type ExtractPropTypes,
   h,
   inject,
   markRaw,
   onMounted,
-  type PropType,
   provide,
   watchEffect
 } from 'vue'
-import { defaultClsPrefix, type Hljs } from '../../_mixins'
+import { defaultClsPrefix } from '../../_mixins'
 import { warn, warnOnce } from '../../_utils'
 import { configProviderInjectionKey } from './context'
 
@@ -254,7 +253,7 @@ export default defineComponent({
       inlineThemeDisabled: inlineThemeDisabled || false,
       preflightStyleDisabled: preflightStyleDisabled || false,
       styleMountTarget,
-      styleIsolate: styleIsolate || false,
+      styleIsolate: styleIsolate || false
     })
     return {
       mergedClsPrefix: mergedClsPrefixRef,

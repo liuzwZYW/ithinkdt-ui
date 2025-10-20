@@ -9,6 +9,7 @@ import type {
 import type { ThemeProps } from '../../_mixins'
 import type { ExtractPublicPropTypes } from '../../_utils'
 import type { CarouselTheme } from '../styles'
+import type { CarouselContextValue } from './CarouselContext'
 import type {
   ArrowScopedSlotProps,
   CarouselArrowSlotProps,
@@ -43,10 +44,7 @@ import { useConfig, useTheme, useThemeClass } from '../../_mixins'
 import { flatten, keep, resolveSlotWithTypedProps } from '../../_utils'
 import { carouselLight } from '../styles'
 import NCarouselArrow from './CarouselArrow'
-import {
-  type CarouselContextValue,
-  provideCarouselContext
-} from './CarouselContext'
+import { provideCarouselContext } from './CarouselContext'
 import NCarouselDots from './CarouselDots'
 import NCarouselItem, { isCarouselItem } from './CarouselItem'
 import style from './styles/index.cssr'

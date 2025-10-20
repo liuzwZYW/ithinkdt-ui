@@ -1,16 +1,10 @@
 import type { CNode } from 'css-render'
+import type { ComputedRef, PropType, Ref } from 'vue'
 import type { ThemeCommonVars } from '../_styles/common'
 import type { GlobalTheme } from '../config-provider'
 import { useSsrAdapter } from '@css-render/vue3-ssr'
 import { merge } from 'lodash-es'
-import {
-  computed,
-  type ComputedRef,
-  inject,
-  onBeforeMount,
-  type PropType,
-  type Ref
-} from 'vue'
+import { computed, inject, onBeforeMount } from 'vue'
 import globalStyle from '../_styles/global/index.cssr'
 import { cNS } from '../_utils/cssr'
 import { configProviderInjectionKey } from '../config-provider/src/context'

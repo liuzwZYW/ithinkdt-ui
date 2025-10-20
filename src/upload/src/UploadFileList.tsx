@@ -1,12 +1,5 @@
-import {
-  computed,
-  type CSSProperties,
-  defineComponent,
-  h,
-  inject,
-  provide,
-  type VNode
-} from 'vue'
+import type { CSSProperties, VNode } from 'vue'
+import { computed, defineComponent, h, inject, provide } from 'vue'
 import { NFadeInExpandTransition } from '../../_internal'
 import { throwError } from '../../_utils'
 import { NImageGroup } from '../../image'
