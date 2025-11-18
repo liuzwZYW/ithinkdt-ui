@@ -64,6 +64,7 @@ rtl-debug.vue
 | show-file-list | `boolean` | `true` | 是否显示文件列表 |  |
 | show-preview-button | `boolean` | `true` | 是否允许显示预览按钮（在 `list-type` 为 `image-card` 时生效） |  |
 | show-trigger | `boolean` | `true` | 是否显示触发元素 | 2.21.5 |
+| to | `string \| HTMLElement` | `'body'` | 当 `abstract` 为 `true` 时，input 挂载的目标元素 | iThinkDT 1.8.2 |
 | trigger-class | `string` | `undefined` | 触发器区域的类名 | 2.36.0 |
 | trigger-style | `Object \| string` | `undefined` | 触发器区域的样式 | 2.29.1 |
 | with-credentials | `boolean` | `false` | 是否携带 Cookie |  |

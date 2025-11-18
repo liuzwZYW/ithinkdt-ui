@@ -62,6 +62,7 @@ download.vue
 | show-remove-button | `boolean` | `true` | Show a remove button (after upload completed). Use the `on-remove` callback for this event. |  |
 | show-retry-button | `boolean` | `true` | Show a retry button (for a failed upload). |  |
 | show-trigger | `boolean` | `true` | Show upload trigger. | 2.21.5 |
+| to | `string \| HTMLElement` | `'body'` | When `abstract` is `true`, the target element to mount the input element. | iThinkDT 1.8.2 |
 | trigger-class | `string` | `undefined` | Class of trigger area. | 2.36.0 |
 | trigger-style | `Object \| string` | `undefined` | Style of trigger area. | 2.29.1 |
 | with-credentials | `boolean` | `false` | Any credentials to be sent with the request (e.g. cookie). |  |

@@ -390,6 +390,10 @@ export const uploadProps = {
   },
   createThumbnailUrl: Function as PropType<CreateThumbnailUrl>,
   abstract: Boolean,
+  to: {
+    type: [String, Object, Boolean] as PropType<HTMLElement | string>,
+    default: 'body'
+  },
   max: Number,
   showTrigger: {
     type: Boolean,
@@ -416,8 +420,12 @@ export default defineComponent({
         'when the list-type is image-card, abstract is not supported.'
       )
     }
-    const { mergedClsPrefixRef, inlineThemeDisabled, mergedRtlRef }
-      = useConfig(props)
+    const {
+      mergedClsPrefixRef,
+      namespaceRef,
+      inlineThemeDisabled,
+      mergedRtlRef
+    } = useConfig(props)
     const themeRef = useTheme(
       'Upload',
       '-upload',
@@ -763,6 +771,7 @@ export default defineComponent({
 
     return {
       mergedClsPrefix: mergedClsPrefixRef,
+      namespace: namespaceRef,
       draggerInsideRef,
       rtlEnabled: rtlEnabledRef,
       inputElRef,
@@ -805,7 +814,11 @@ export default defineComponent({
       return (
         <>
           {$slots.default?.()}
-          <Teleport to="body">{inputNode}</Teleport>
+          <Teleport to={this.to}>
+            <div class={this.namespace} hidden>
+              {inputNode}
+            </div>
+          </Teleport>
         </>
       )
     }
