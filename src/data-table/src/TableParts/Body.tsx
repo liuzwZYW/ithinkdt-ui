@@ -53,8 +53,8 @@ interface NormalRowRenderInfo {
   index: number
 }
 
-type RowRenderInfo
-  = | {
+type RowRenderInfo =
+  | {
     isSummaryRow: true
     key: RowKey
     tmNode: {

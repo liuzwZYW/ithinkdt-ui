@@ -6,16 +6,16 @@
 
 ## 配置指南
 
-如果你正在使用 `vite-sse` 或者 `vite-ssg`，通过下面的步骤设定 `naive-ui`。
+如果你正在使用 `vite-sse` 或者 `vite-ssg`，通过下面的步骤设定 `ithinkdt-ui`。
 
-### 1. 安装 `naive-ui`、`@css-render/vue3-ssr`
+### 1. 安装 `ithinkdt-ui`、`@css-render/vue3-ssr`
 
 ```bash
 # pnpm
-pnpm i naive-ui @css-render/vue3-ssr
+pnpm i ithinkdt-ui @css-render/vue3-ssr
 
 # npm
-npm i naive-ui @css-render/vue3-ssr
+npm i ithinkdt-ui @css-render/vue3-ssr
 ```
 
 ### 2. 修改 `vite.config.ts`
@@ -27,7 +27,7 @@ import { setup } from '@css-render/vue3-ssr'
 
 defineConfig({
   ssr: {
-    noExternal: ['naive-ui', 'vueuc', 'date-fns']
+    noExternal: ['ithinkdt-ui', 'vueuc', 'date-fns']
   },
   ssgOptions: {
     async onBeforePageRender(_, __, appCtx) {
@@ -45,4 +45,4 @@ defineConfig({
 })
 ```
 
-现在你可以在 `vite-ssg` 或 `vite-sse` 项目中使用 `naive-ui` 了。
+现在你可以在 `vite-ssg` 或 `vite-sse` 项目中使用 `ithinkdt-ui` 了。

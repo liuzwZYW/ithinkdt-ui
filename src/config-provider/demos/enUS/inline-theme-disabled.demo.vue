@@ -1,7 +1,7 @@
 <markdown>
 # Disable inline theme
 
-By default, naive-ui uses inline style to hold theme variables, so every component is bound with large amount of inline CSS. If you need SSR, or just make your devtools clear, you can enable `inline-theme-disabled` prop.
+By default, ithinkdt-ui uses inline style to hold theme variables, so every component is bound with large amount of inline CSS. If you need SSR, or just make your devtools clear, you can enable `inline-theme-disabled` prop.
 
 Note that if you will change `theme-overrides` frequently, it's not recommended to enable the prop. Many outdated style elements will be keeped after `theme-overrides` changes.
 

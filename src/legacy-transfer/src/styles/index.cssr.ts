@@ -2,7 +2,7 @@ import { fadeInTransition } from '../../../_styles/transitions/fade-in.cssr'
 import { c, cB, cE, cM, cNotM } from '../../../_utils/cssr'
 
 const animation = c([
-  c('@keyframes legacy-transfer-slide-in-from-left', `
+  c(({ props }) => `@keyframes ${props.nsPrefix}legacy-transfer-slide-in-from-left`, `
     0% {
       transform: translateX(-150%);
     }
@@ -10,7 +10,7 @@ const animation = c([
       transform: translateX(0);
     }
   `),
-  c('@keyframes legacy-transfer-slide-out-to-right', `
+  c(({ props }) => `@keyframes ${props.nsPrefix}legacy-transfer-slide-out-to-right`, `
     0% {
       transform: translateX(0);
     }
@@ -18,7 +18,7 @@ const animation = c([
       transform: translateX(150%);
     }
   `),
-  c('@keyframes legacy-transfer-slide-in-from-right', `
+  c(({ props }) => `@keyframes ${props.nsPrefix}legacy-transfer-slide-in-from-right`, `
     0% {
       transform: translateX(150%);
     }
@@ -26,7 +26,7 @@ const animation = c([
       transform: translateX(0);
     }
   `),
-  c('@keyframes legacy-transfer-slide-out-to-left', `
+  c(({ props }) => `@keyframes ${props.nsPrefix}legacy-transfer-slide-out-to-left`, `
     0% {
       transform: translateX(0);
     }
@@ -34,7 +34,7 @@ const animation = c([
       transform: translateX(-150%);
     }
   `),
-  c('@keyframes legacy-transfer-height-collapse', `
+  c(({ props }) => `@keyframes ${props.nsPrefix}legacy-transfer-height-collapse`, `
     0% {
       max-height: var(--n-item-height);
     }
@@ -42,7 +42,7 @@ const animation = c([
       max-height: 0;
     }
   `),
-  c('@keyframes legacy-transfer-height-expand', `
+  c(({ props }) => `@keyframes ${props.nsPrefix}legacy-transfer-height-expand`, `
     0% {
       max-height: 0;
     }
@@ -223,37 +223,37 @@ export default c([
               cM('source', {
                 animationFillMode: 'forwards'
               }, [
-                c('&.item-enter-active', `
+                c('&.item-enter-active', ({ props }) => `
                   transform: translateX(150%);
                   animation-duration: .25s, .25s;
                   animation-timing-function: var(--n-bezier), var(--n-bezier-ease-out);
                   animation-delay: 0s, .25s;
-                  animation-name: legacy-transfer-height-expand, legacy-transfer-slide-in-from-right;
+                  animation-name: ${props.nsPrefix}legacy-transfer-height-expand, ${props.nsPrefix}legacy-transfer-slide-in-from-right;
                 `),
-                c('&.item-leave-active', `
+                c('&.item-leave-active', ({ props }) => `
                   transform: translateX(-150%);
                   animation-duration: .25s, .25s;
                   animation-timing-function: var(--n-bezier), var(--n-bezier-ease-in);
                   animation-delay: .25s, 0s;
-                  animation-name: legacy-transfer-height-collapse, legacy-transfer-slide-out-to-right;
+                  animation-name: ${props.nsPrefix}legacy-transfer-height-collapse, ${props.nsPrefix}legacy-transfer-slide-out-to-right;
                 `)
               ]),
               cM('target', {
                 animationFillMode: 'forwards'
               }, [
-                c('&.item-enter-active', `
+                c('&.item-enter-active', ({ props }) => `
                   transform: translateX(-150%);
                   animation-duration: .25s, .25s;
                   animation-timing-function: var(--n-bezier), var(--n-bezier-ease-out);
                   animation-delay: 0s, .25s;
-                  animation-name: legacy-transfer-height-expand, legacy-transfer-slide-in-from-left;
+                  animation-name: ${props.nsPrefix}legacy-transfer-height-expand, ${props.nsPrefix}legacy-transfer-slide-in-from-left;
                 `),
-                c('&.item-leave-active', `
+                c('&.item-leave-active', ({ props }) => `
                   transform: translateX(150%);
                   animation-duration: .25s, .25s;
                   animation-timing-function: var(--n-bezier), var(--n-bezier-ease-in);
                   animation-delay: .25s, 0s;
-                  animation-name: legacy-transfer-height-collapse, legacy-transfer-slide-out-to-left;
+                  animation-name: ${props.nsPrefix}legacy-transfer-height-collapse, ${props.nsPrefix}legacy-transfer-slide-out-to-left;
                 `)
               ])
             ])

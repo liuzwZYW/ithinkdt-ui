@@ -125,20 +125,20 @@ export default defineComponent({
           )
         })}
         {restOptions !== undefined
-          && restOptions.length > 0
-          && ($slots.rest ? (
-            $slots.rest({ options: restOptions, rest: restOptions.length })
-          ) : (
-            <NAvatar
-              style={this.maxStyle}
-              theme={mergedTheme.peers.Avatar}
-              themeOverrides={mergedTheme.peerOverrides.Avatar}
-            >
-              {{
-                default: () => `+${restOptions.length}`
-              }}
-            </NAvatar>
-          ))}
+        && restOptions.length > 0
+        && ($slots.rest ? (
+          $slots.rest({ options: restOptions, rest: restOptions.length })
+        ) : (
+          <NAvatar
+            style={this.maxStyle}
+            theme={mergedTheme.peers.Avatar}
+            themeOverrides={mergedTheme.peerOverrides.Avatar}
+          >
+            {{
+              default: () => `+${restOptions.length}`
+            }}
+          </NAvatar>
+        ))}
       </div>
     )
   }

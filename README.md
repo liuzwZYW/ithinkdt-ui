@@ -2,94 +2,73 @@
   <img width="144px" src="https://naiveui.oss-cn-hongkong.aliyuncs.com/naivelogo.svg" />
 </p>
 
-<h1 align="center">Naive UI</h1>
-<p align="center">A Vue 3 Component Library</p>
-<p align="center"><b>Fairly Complete, Theme Customizable, Uses TypeScript, Fast</b></p>
-<p align="center">Kinda Interesting</p>
+<h1 align="center">iThinkDT UI (forked Naive UI)</h1>
+<p align="center">一个 Vue 3 组件库</p>
+<p align="center"><b>比较完整，主题可调，使用 TypeScript，快</b></p>
+<p align="center">有点意思</p>
 
-<p align="center">
-  <a href="https://npmjs.com/package/naive-ui">
-    <img src="https://img.shields.io/npm/v/naive-ui.svg" alt="npm">
-  </a>
-  <a href="https://pkg.pr.new/~/tusen-ai/naive-ui">
-    <img src="https://pkg.pr.new/badge/tusen-ai/naive-ui" alt="pkg.pr.new">
-  </a>
-</p>
-
-<p align="center">English | <a href="README.zh-CN.md">中文</a></p>
-
-## Documentation
+## 文档
 
 [www.naiveui.com](http://www.naiveui.com)
 
-## Community
+## 社区
 
 - [Discord](https://discord.gg/Pqv7Mev5Dd)
-- DingTalk Group 1 (Member limit reached) 33482509
-- DingTalk Group 2 (Member limit reached) 35886835
-- DingTalk Group 3 (Member limit reached) 32377370
-- DingTalk Group 4 (Member limit reached) 8165002788
-- DingTalk Group 5 (Member limit reached) 31205022250
-- DingTalk Group 6 62720001971
 
 - [Awesome Naive UI](https://github.com/naive-ui/awesome-naive)
 
-## Features
+## 特性
 
-### Fairly Complete
+### 比较完整
 
-There are more than 90 components. Hope they can help you write less code.
+有超过 90 个组件，希望能帮你少写点代码。
 
-What's more, they are all treeshakable.
+顺便一提，它们全都可以 treeshaking。
 
-### Theme Customizable
+### 主题可调
 
-We provide an advanced type safe theme system built using TypeScript. All you need is to provide a theme overrides object in JS. Then all the stuff will be done by us.
+我们提供了一个使用 TypeScript 构建的先进的类型安全主题系统。你只需要提供一个样式覆盖的对象，剩下的都交给我们。
 
-What's more, no less/sass/css variables, no webpack loaders are required.
+顺便一提，不用 less、sass、css 变量，也不用 webpack 的 loaders。以及你可以试试右下角的主题编辑器。
 
-### Uses TypeScript
+### 使用 TypeScript
 
-All the stuff in Naive UI is written in TypeScript. It can work with your typescript project seamlessly.
+iThinkDT UI 全量使用 TypeScript 编写，和你的 TypeScript 项目无缝衔接。
 
-What's more, you don't need to import any CSS to use the components.
+顺便一提，你不需要导入任何 CSS 就能让组件正常工作。
 
-### Fast
+### 快
 
-I try to make it not rather slow. All data components works with virtual list by default.
+我尽力让它不要太慢。至少 select、tree、transfer、table、cascader 都可以用虚拟列表。
 
-What's more, ..., no more. Just enjoy it.
+顺便一提，...，没有顺便了。祝你使用愉快。
 
-## Installation
+## 安装
 
 ### npm
 
-Use npm to install.
+使用 npm 安装。
 
 ```bash
-npm i -D naive-ui
+npm i -D ithinkdt-ui
 ```
 
-### Fonts
+### 字体
 
 ```bash
 npm i -D vfonts
 ```
 
-### Icons
+### 图标
 
-Naive UI recommends using [xicons](https://www.xicons.org) as icon library.
+ithinkdt-ui 建议使用 [xicons](https://www.xicons.org) 作为图标库。
 
-### Design Resources
+### 设计资源
 
-[Naive UI (Sketch)](https://naive-ui.oss-accelerate.aliyuncs.com/NaiveUI-Design-Library-en-US.sketch).
+[iThinkDT UI (Sketch)](https://naive-ui.oss-accelerate.aliyuncs.com/NaiveUI-Design-Library-zh-CN.sketch)
 
-## Contributing
+## 许可
 
-Please see [CONTRIBUTING.md](https://github.com/tusen-ai/naive-ui/blob/main/CONTRIBUTING.md).
+Naive UI 使用 [MIT license](https://opensource.org/licenses/MIT) 许可证书。
 
-## License
-
-Naive UI is licensed under the [MIT license](https://opensource.org/licenses/MIT).
-
-Graphics resources of `result` component is licensed under the [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/). The graphics resources come from [Twemoji](https://github.com/twitter/twemoji).
+`result` 组件的图像资源来自于 [Twemoji](https://github.com/twitter/twemoji)，遵守 [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/) 许可。

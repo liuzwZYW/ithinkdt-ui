@@ -15,7 +15,7 @@ export { NThemeEditor } from './theme-editor'
 // composed global theme, createTheme from component themes util
 export { createTheme, darkTheme, lightTheme } from './themes'
 
-export { default as version } from './version'
+export { NAIVE_VERSION, default as version } from './version'
 
 export { zindexable } from 'vdirs'
 

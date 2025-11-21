@@ -2,15 +2,15 @@
 
 # 国际化
 
-Naive-ui 通过使用 `n-config-provider` 调整语言，默认情况下所有组件均为英语。
+ithinkdt-ui 通过使用 `n-config-provider` 调整语言，默认情况下所有组件均为英语。
 
 了解更多关于 `n-config-provider` 的信息，参见 [全局化配置](../components/config-provider)。
 
 ## 配置
 
-将 `n-config-provider` 的 `locale` 设为从 naive-ui 导入的 `zhCN` 来设定全局中文。
+将 `n-config-provider` 的 `locale` 设为从 ithinkdt-ui 导入的 `zhCN` 来设定全局中文。
 
-将 `n-config-provider` 的 `date-locale` 设为从 naive-ui 导入的 `dateZhCN` 来设定全局日期中文。
+将 `n-config-provider` 的 `date-locale` 设为从 ithinkdt-ui 导入的 `dateZhCN` 来设定全局日期中文。
 
 ```html
 <template>

@@ -13,7 +13,7 @@
 
 如果你的开发环境不支持 [Vue 泛型组件](https://blog.vuejs.org/posts/vue-3-3#generic-components)，请改用 `NAvatarGroup`。
 
-`NGAvatarGroup` 应从 `'naive-ui/generic'` 中导入。
+`NGAvatarGroup` 应从 `'ithinkdt-ui/generic'` 中导入。
 </markdown>
 
 <script lang="ts" setup>

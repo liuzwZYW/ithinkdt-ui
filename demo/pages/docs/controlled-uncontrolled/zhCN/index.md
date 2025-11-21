@@ -24,9 +24,9 @@
 
 `v-model` 控制的组件在受控模式下，因为 `v-model` 等同于 `:model-value` 和 `@update:model-value` 的组合。
 
-## naive-ui 中的受控模式
+## ithinkdt-ui 中的受控模式
 
-不同的组件库区分受控与非受控模式的区别是不同的。在 naive-ui 中，只要 `value` 是 `undefined` 或者根本没有传，那么组件的值会是非受控的。也就是说你将一个组件的值设为 `undefined` 并不能清空它，只会改变它的控制模式。一般情况下清空可以使用 `null`。
+不同的组件库区分受控与非受控模式的区别是不同的。在 ithinkdt-ui 中，只要 `value` 是 `undefined` 或者根本没有传，那么组件的值会是非受控的。也就是说你将一个组件的值设为 `undefined` 并不能清空它，只会改变它的控制模式。一般情况下清空可以使用 `null`。
 
 ### 不止 `value`
 

@@ -4,7 +4,7 @@ import { resizeObserverManager } from 'vueuc'
 
 export function useOnResize(
   elRef: Ref<HTMLElement | null>,
-  onResize: (() => void) | undefined
+  onResize: ((entry: ResizeObserverEntry) => void) | undefined
 ): void {
   // it needn't be reactive since it's for internal usage
   if (onResize) {

@@ -3,16 +3,16 @@
 ## General Breaking Changes
 
 - css
-  - css index `naive-ui/lib|es/styles/index.css` has been removed, do not import it any more!
+  - css index `ithinkdt-ui/lib|es/styles/index.css` has been removed, do not import it any more!
 - fonts
-  - `naive-ui/lib|es/styles/fonts/*` has been removed, use [vfonts](https://www.npmjs.com/package/vfonts)
+  - `ithinkdt-ui/lib|es/styles/fonts/*` has been removed, use [vfonts](https://www.npmjs.com/package/vfonts)
 - icons
 
-  - `naive-ui/lib|es/icons/*` is deprecated (vue-loader is required).
-  - `naive-ui/lib|es/icons/*` is removed since v2.10.0
+  - `ithinkdt-ui/lib|es/icons/*` is deprecated (vue-loader is required).
+  - `ithinkdt-ui/lib|es/icons/*` is removed since v2.10.0
   - use [xicons](https://github.com/07akioni/xicons) instead.
 
-- `n-nimbus-icon` is moved to `naive-ui/compat/nimbus-icon` (vue-loader is required) `n-nimbus-icon` is removed since v2.10.0
+- `n-nimbus-icon` is moved to `ithinkdt-ui/compat/nimbus-icon` (vue-loader is required) `n-nimbus-icon` is removed since v2.10.0
 - `n-nimbus-form-card` is removed
 - locale & theme on `n-config-provider` doesn't accept string any more (not it accepts object).
 

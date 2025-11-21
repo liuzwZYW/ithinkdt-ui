@@ -26,6 +26,7 @@ partially-apply-rules.vue
 custom-messages.vue
 dynamic.vue
 feedback-style.vue
+form-border.vue
 ```
 
 ## API
@@ -81,7 +82,7 @@ feedback-style.vue
 | feedback-class | `string` | `undefined` | Feedback check vertical display positioning | 2.38.2 |
 | feedback-style | `string \| object` | `undefined` | Feedback check horizontal display positioning | 2.38.2 |
 | first | `boolean` | `false` | Whether to only show the first validation error message. |  |
-| ignore-path-change | `boolean` | `false` | Usually, changing `path` will cause a re-render and naive-ui will clear the validation result. Setting `ignore-path-change` to `true` will disable that behavior. |  |
+| ignore-path-change | `boolean` | `false` | Usually, changing `path` will cause a re-render and ithinkdt-ui will clear the validation result. Setting `ignore-path-change` to `true` will disable that behavior. |  |
 | label | `string` | `undefined` | Label. |  |
 | label-align | `'left' \| 'right'` | `undefined` | Text alignment inside the label. If not set, it will inherit the parent form's `label-align`. |  |
 | label-placement | `'left' \| 'top'` | `undefined` | If not set, it will inherit the parent form's `label-placement`. |  |
@@ -135,3 +136,25 @@ To find out more about AsyncValidatorOptions, see <n-a href="https://github.com/
 | -------- | ---------- | -------------- | ------- |
 | feedback | `()`       | Feedback.      | 2.24.0  |
 | label    | `()`       | Label content. |         |
+
+### FormBorder Props
+
+| Name | Type | Default | Description | Version |
+| --- | --- | --- | --- | --- |
+| disabled | `boolean` | `false` | Whether to disable the input. |  |
+| status | `'success' \| 'warning' \| 'error'` | `undefined` | Validation status. | 2.25.0 |
+| on-blur | `() => void` | `undefined` | Callback triggered when the element is blurred. |  |
+| on-focus | `() => void` | `undefined` | Callback triggered when the element is focussed on. |  |
+
+### FormBorder Slots
+
+| Name    | Parameters | Description  |
+| ------- | ---------- | ------------ |
+| default | `()`       | The content. |
+
+### FormBorder Methods
+
+| Name  | Type         | Description        | Version |
+| ----- | ------------ | ------------------ | ------- |
+| blur  | `() => void` | Blur the element.  |         |
+| focus | `() => void` | Focus the element. |         |

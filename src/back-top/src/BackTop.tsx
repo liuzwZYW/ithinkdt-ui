@@ -30,7 +30,7 @@ import {
   warnOnce
 } from '../../_utils'
 import { backTopLight } from '../styles'
-import renderBackTopIcon from './BackTopIcon'
+import BackTopIcon from './BackTopIcon'
 import style from './styles/index.cssr'
 
 export const backTopProps = {
@@ -98,7 +98,8 @@ export default defineComponent({
         }
       })
     }
-    const { mergedClsPrefixRef, inlineThemeDisabled } = useConfig(props)
+    const { mergedClsPrefixRef, inlineThemeDisabled, namespaceRef }
+      = useConfig(props)
 
     const scrollTopRef = ref<number | null>(null)
     const uncontrolledShowRef = ref(false)
@@ -164,7 +165,7 @@ export default defineComponent({
         if (__DEV__) {
           warn(
             'back-top',
-            'Container of back-top element is not found. This could be a bug of naive-ui.'
+            'Container of back-top element is not found. This could be a bug of ithinkdt-ui.'
           )
         }
         return
@@ -251,6 +252,7 @@ export default defineComponent({
     return {
       placeholderRef,
       style: styleRef,
+      namespace: namespaceRef,
       mergedShow: mergedShowRef,
       isMounted: useIsMounted(),
       scrollElement: ref(null),
@@ -278,37 +280,49 @@ export default defineComponent({
         <VLazyTeleport to={this.to} show={this.mergedShow}>
           {{
             default: () => (
-              <Transition
-                name="fade-in-scale-up-transition"
-                appear={this.isMounted}
-                onAfterEnter={this.handleAfterEnter}
+              <div
+                class={[`${mergedClsPrefix}-back-top-provider`, this.namespace]}
+                style={`
+                  position: absolute;
+                  left: 0;
+                  right: 0;
+                  top: 0;
+                  bottom: 0;
+                  pointer-events: none;`}
+                role="none"
               >
-                {{
-                  default: () => {
-                    this.onRender?.()
-                    return this.mergedShow
-                      ? h(
-                          'div',
-                          mergeProps(this.$attrs, {
-                            class: [
-                              `${mergedClsPrefix}-back-top`,
-                              this.themeClass,
-                              this.transitionDisabled
-                              && `${mergedClsPrefix}-back-top--transition-disabled`
-                            ],
-                            style: [this.style, this.cssVars],
-                            onClick: this.handleClick
-                          }),
-                          resolveSlot(this.$slots.default, () => [
-                            <NBaseIcon clsPrefix={mergedClsPrefix}>
-                              {{ default: renderBackTopIcon }}
-                            </NBaseIcon>
-                          ])
-                        )
-                      : null
-                  }
-                }}
-              </Transition>
+                <Transition
+                  name="fade-in-scale-up-transition"
+                  appear={this.isMounted}
+                  onAfterEnter={this.handleAfterEnter}
+                >
+                  {{
+                    default: () => {
+                      this.onRender?.()
+                      return this.mergedShow
+                        ? h(
+                            'div',
+                            mergeProps(this.$attrs, {
+                              class: [
+                                `${mergedClsPrefix}-back-top`,
+                                this.themeClass,
+                                this.transitionDisabled
+                                && `${mergedClsPrefix}-back-top--transition-disabled`
+                              ],
+                              style: [this.style, this.cssVars],
+                              onClick: this.handleClick
+                            }),
+                            resolveSlot(this.$slots.default, () => [
+                              <NBaseIcon clsPrefix={mergedClsPrefix}>
+                                {{ default: () => BackTopIcon }}
+                              </NBaseIcon>
+                            ])
+                          )
+                        : null
+                    }
+                  }}
+                </Transition>
+              </div>
             )
           }}
         </VLazyTeleport>

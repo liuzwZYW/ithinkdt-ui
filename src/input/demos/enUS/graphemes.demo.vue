@@ -1,7 +1,7 @@
 <markdown>
 # Count graphemes
 
-Browser's default `maxlength` and `minlength` and naive-ui's builtin character count method can't split all string correctly. You can use `count-graphemes` count to count graphemes correctly.
+Browser's default `maxlength` and `minlength` and ithinkdt-ui's builtin character count method can't split all string correctly. You can use `count-graphemes` count to count graphemes correctly.
 </markdown>
 
 <script lang="ts" setup>

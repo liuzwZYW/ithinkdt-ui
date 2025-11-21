@@ -5,7 +5,7 @@ fi
 pnpm run build:package
 
 pnpm pack
-UI_PACKAGE_NAME=$(ls | grep naive-ui)
+UI_PACKAGE_NAME=$(ls | grep ithinkdt-ui)
 tar -xzvf $UI_PACKAGE_NAME
 mv package node_modules/naive-ui
 rm $UI_PACKAGE_NAME

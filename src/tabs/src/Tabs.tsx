@@ -1057,30 +1057,30 @@ export default defineComponent({
           )}
         </div>
         {showPane
-          && (this.animated
-            && (resolvedPlacement === 'top' || resolvedPlacement === 'bottom') ? (
-                <div
-                  ref="tabsPaneWrapperRef"
-                  style={paneWrapperStyle}
-                  class={[`${mergedClsPrefix}-tabs-pane-wrapper`, paneWrapperClass]}
-                >
-                  {filterMapTabPanes(
-                    tabPaneChildren,
-                    this.mergedValue,
-                    this.renderedNames,
-                    this.onAnimationBeforeLeave,
-                    this.onAnimationEnter,
-                    this.onAnimationAfterEnter,
-                    this.animationDirection
-                  )}
-                </div>
-              ) : (
-                filterMapTabPanes(
+        && (this.animated
+          && (resolvedPlacement === 'top' || resolvedPlacement === 'bottom') ? (
+              <div
+                ref="tabsPaneWrapperRef"
+                style={paneWrapperStyle}
+                class={[`${mergedClsPrefix}-tabs-pane-wrapper`, paneWrapperClass]}
+              >
+                {filterMapTabPanes(
                   tabPaneChildren,
                   this.mergedValue,
-                  this.renderedNames
-                )
-              ))}
+                  this.renderedNames,
+                  this.onAnimationBeforeLeave,
+                  this.onAnimationEnter,
+                  this.onAnimationAfterEnter,
+                  this.animationDirection
+                )}
+              </div>
+            ) : (
+              filterMapTabPanes(
+                tabPaneChildren,
+                this.mergedValue,
+                this.renderedNames
+              )
+            ))}
       </div>
     )
   }

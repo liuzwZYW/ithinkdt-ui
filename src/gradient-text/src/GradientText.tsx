@@ -8,13 +8,13 @@ import { createKey, formatLength, useHoudini } from '../../_utils'
 import { gradientTextLight } from '../styles'
 import style from './styles/index.cssr'
 
-type Gradient
-  = | string
-    | {
-      deg?: string | number
-      from: string
-      to: string
-    }
+type Gradient =
+  | string
+  | {
+    deg?: string | number
+    from: string
+    to: string
+  }
 
 export const gradientTextProps = {
   ...(useTheme.props as ThemeProps<GradientTextTheme>),

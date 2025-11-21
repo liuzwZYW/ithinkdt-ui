@@ -39,7 +39,8 @@ export default c([
     border-radius: var(--n-toolbar-border-radius);
     height: 48px;
     bottom: 40px;
-    padding: 0 12px;
+    padding: 0 20px;
+    gap: 16px;
     background: var(--n-toolbar-color);
     box-shadow: var(--n-toolbar-box-shadow);
     color: var(--n-toolbar-icon-color);
@@ -48,7 +49,6 @@ export default c([
     align-items: center;
   `, [
     cB('base-icon', `
-      padding: 0 8px;
       font-size: 28px;
       cursor: pointer;
     `),

@@ -2,7 +2,7 @@ import { iconSwitchTransition } from '../../../../_styles/transitions/icon-switc
 import { c, cB, cE } from '../../../../_utils/cssr'
 
 export default c([
-  c('@keyframes rotator', `
+  c(({ props }) => `@keyframes ${props.nsPrefix}rotator`, `
     0% {
       -webkit-transform: rotate(0deg);
       transform: rotate(0deg);
@@ -36,8 +36,8 @@ export default c([
         originalTransform: 'translateX(-50%) translateY(-50%)'
       })
     ]),
-    cE('container', `
-      animation: rotator 3s linear infinite both;
+    cE('container', ({ props }) => `
+      animation: ${props.nsPrefix}rotator 3s linear infinite both;
     `, [
       cE('icon', `
         height: 1em;

@@ -38,7 +38,7 @@ function onCreate() {
     >
       <div style="display: flex">
         <!--
-          通常，path 的变化会导致 form-item 验证内容或规则的改变，所以 naive-ui 会清理掉
+          通常，path 的变化会导致 form-item 验证内容或规则的改变，所以 ithinkdt-ui 会清理掉
           表项已有的验证信息。但是这个例子是个特殊情况，我们明确的知道，path 的改变不会导致
           form-item 验证内容和规则的变化，所以就 ignore-path-change
         -->

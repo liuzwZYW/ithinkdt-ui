@@ -12,6 +12,7 @@ export default cB('loading-bar-container', `
   left: 0;
   right: 0;
   height: 2px;
+  pointer-events: all;
 `, [
   fadeInTransition({
     enterDuration: '0.3s',

@@ -1,4 +1,4 @@
-import type { CSSProperties, Ref, VNodeChild } from 'vue'
+import type { CSSProperties, ImgHTMLAttributes, Ref, VNodeChild } from 'vue'
 import type { MergedTheme } from '../../_mixins'
 import type { ImageGroupProps } from '../../image'
 import type { UploadTheme } from '../styles'
@@ -14,10 +14,10 @@ import { createInjectionKey } from '../../_utils'
 
 export type ShouldUseThumbnailUrl = (file: UploadSettledFileInfo) => boolean
 
-export type FuncOrRecordOrUndef<T = string>
-  = | Record<string, T>
-    | (({ file }: { file: UploadSettledFileInfo }) => Record<string, T>)
-    | undefined
+export type FuncOrRecordOrUndef<T = string> =
+  | Record<string, T>
+  | (({ file }: { file: UploadSettledFileInfo }) => Record<string, T>)
+  | undefined
 
 export interface UploadInternalInst {
   doChange: DoChange
@@ -64,6 +64,8 @@ export interface UploadInjection {
   maxReachedRef: Ref<boolean>
   abstractRef: Ref<boolean>
   imageGroupPropsRef: Ref<ImageGroupProps | undefined>
+  imgPropsRef: Ref<ImgHTMLAttributes | undefined>
+  previewedImgPropsRef: Ref<ImgHTMLAttributes | undefined>
   cssVarsRef: undefined | Ref<CSSProperties>
   themeClassRef: undefined | Ref<string>
   mergedDirectoryDndRef: Ref<boolean>

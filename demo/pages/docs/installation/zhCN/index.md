@@ -2,14 +2,14 @@
 
 # 安装
 
-> 注意，naive-ui 仅支持 Vue3。如果你在使用 Vue2，可以去看看别的库。
+> 注意，ithinkdt-ui 仅支持 Vue3。如果你在使用 Vue2，可以去看看别的库。
 
 ## npm
 
 使用 npm 安装。
 
 ```bash
-npm i -D naive-ui
+npm i -D ithinkdt-ui
 ```
 
 ## UMD
@@ -24,7 +24,7 @@ npm i -D vfonts
 
 ## 图标
 
-naive-ui 建议使用 [xicons](https://www.xicons.org) 作为图标库。
+ithinkdt-ui 建议使用 [xicons](https://www.xicons.org) 作为图标库。
 
 ## 设计资源
 
@@ -40,7 +40,7 @@ naive-ui 建议使用 [xicons](https://www.xicons.org) 作为图标库。
       target="_blank"
       icon-placement="right"
     >
-      Naive UI (Sketch)
+      iThinkDT UI (Sketch)
       <template #icon>
         <n-icon >
           <ArrowDownload16Regular />

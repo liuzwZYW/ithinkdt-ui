@@ -5,17 +5,17 @@ import { c, cB } from '../../../_utils/cssr'
 // --n-color-end
 // --n-bezier
 export default c([
-  cB('skeleton', `
+  cB('skeleton', ({ props }) => `
     height: 1em;
     width: 100%;
     transition:
       --n-color-start .3s var(--n-bezier),
       --n-color-end .3s var(--n-bezier),
       background-color .3s var(--n-bezier);
-    animation: 2s skeleton-loading infinite cubic-bezier(0.36, 0, 0.64, 1);
+    animation: 2s ${props.nsPrefix}skeleton-loading infinite cubic-bezier(0.36, 0, 0.64, 1);
     background-color: var(--n-color-start);
   `),
-  c('@keyframes skeleton-loading', `
+  c(({ props }) => `@keyframes ${props.nsPrefix}skeleton-loading`, `
     0% {
       background: var(--n-color-start);
     }

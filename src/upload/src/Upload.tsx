@@ -1,4 +1,9 @@
-import type { CSSProperties, InputHTMLAttributes, PropType } from 'vue'
+import type {
+  CSSProperties,
+  ImgHTMLAttributes,
+  InputHTMLAttributes,
+  PropType
+} from 'vue'
 import type { ThemeProps } from '../../_mixins'
 import type { ExtractPublicPropTypes, MaybeArray } from '../../_utils'
 import type { ImageGroupProps } from '../../image'
@@ -385,12 +390,18 @@ export const uploadProps = {
   },
   createThumbnailUrl: Function as PropType<CreateThumbnailUrl>,
   abstract: Boolean,
+  to: {
+    type: [String, Object, Boolean] as PropType<HTMLElement | string>,
+    default: 'body'
+  },
   max: Number,
   showTrigger: {
     type: Boolean,
     default: true
   },
   imageGroupProps: Object as PropType<ImageGroupProps>,
+  imgProps: Object as PropType<ImgHTMLAttributes>,
+  previewedImgProps: Object as PropType<ImgHTMLAttributes>,
   inputProps: Object as PropType<InputHTMLAttributes>,
   triggerClass: String,
   triggerStyle: [String, Object] as PropType<CSSProperties | string>,
@@ -409,8 +420,12 @@ export default defineComponent({
         'when the list-type is image-card, abstract is not supported.'
       )
     }
-    const { mergedClsPrefixRef, inlineThemeDisabled, mergedRtlRef }
-      = useConfig(props)
+    const {
+      mergedClsPrefixRef,
+      namespaceRef,
+      inlineThemeDisabled,
+      mergedRtlRef
+    } = useConfig(props)
     const themeRef = useTheme(
       'Upload',
       '-upload',
@@ -738,6 +753,8 @@ export default defineComponent({
       onRender: themeClassHandle?.onRender,
       showTriggerRef: toRef(props, 'showTrigger'),
       imageGroupPropsRef: toRef(props, 'imageGroupProps'),
+      imgPropsRef: toRef(props, 'imgProps'),
+      previewedImgPropsRef: toRef(props, 'previewedImgProps'),
       mergedDirectoryDndRef: computed(() => {
         return props.directoryDnd ?? props.directory
       }),
@@ -754,6 +771,7 @@ export default defineComponent({
 
     return {
       mergedClsPrefix: mergedClsPrefixRef,
+      namespace: namespaceRef,
       draggerInsideRef,
       rtlEnabled: rtlEnabledRef,
       inputElRef,
@@ -796,7 +814,11 @@ export default defineComponent({
       return (
         <>
           {$slots.default?.()}
-          <Teleport to="body">{inputNode}</Teleport>
+          <Teleport to={this.to}>
+            <div class={this.namespace} hidden>
+              {inputNode}
+            </div>
+          </Teleport>
         </>
       )
     }

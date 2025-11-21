@@ -86,8 +86,9 @@ export default defineComponent({
         <span
           @mouseenter="handleTitleMouseEnter"
           @mouseleave="handleTitleMouseLeave"
-        >Na{{ hover ? 'ï' : 'i' }}ve UI</span>
+        >iTh{{ hover ? 'ï' : 'i' }}nkDT UI</span>
       </n-h1>
+      <n-h3>Focked Naive UI</n-h3>
       <n-p style="font-size: 16px; margin-top: 0; margin-bottom: 0">
         {{ t('intro1') }}
       </n-p>

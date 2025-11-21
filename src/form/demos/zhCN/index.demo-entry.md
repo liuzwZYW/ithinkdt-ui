@@ -26,6 +26,7 @@ partially-apply-rules.vue
 custom-messages.vue
 dynamic.vue
 feedback-style.vue
+form-border.vue
 ```
 
 ## API
@@ -75,7 +76,7 @@ feedback-style.vue
 | feedback-class | `string` | `undefined` | 反馈校验竖向展示定位 | 2.38.2 |
 | feedback-style | `string \| object` | `undefined` | 反馈校验横向展示定位 | 2.38.2 |
 | first | `boolean` | `false` | 是否只展示首个出错信息 |  |
-| ignore-path-change | `boolean` | `false` | 通常 `path` 的改变会导致数据来源的变化，所以 naive-ui 会清空验证信息。如果不期望这个行为，可以将其置为 `true` |  |
+| ignore-path-change | `boolean` | `false` | 通常 `path` 的改变会导致数据来源的变化，所以 ithinkdt-ui 会清空验证信息。如果不期望这个行为，可以将其置为 `true` |  |
 | label | `string` | `undefined` | 标签信息 |  |
 | label-align | `'left' \| 'right'` | `undefined` | 标签的文本对齐方式。如果没有被设定，使用外层表单的 `label-align` |  |
 | label-placement | `'left' \| 'top'` | `undefined` | 如果没有被设定，使用外层表单的 `label-placement` |  |
@@ -128,3 +129,25 @@ feedback-style.vue
 | -------- | ---- | -------------- | ------ |
 | feedback | `()` | 表项的反馈信息 | 2.24.0 |
 | label    | `()` | 标签内容       |        |
+
+### FormBorder Props
+
+| 名称 | 类型 | 默认值 | 说明 | 版本 |
+| --- | --- | --- | --- | --- |
+| disabled | `boolean` | `false` | 是否禁用 |  |
+| status | `'success' \| 'warning' \| 'error'` | `undefined` | 验证状态 |  |
+| on-blur | `() => void` | `undefined` | 框失去焦点时触发 |  |
+| on-focus | `() => void` | `undefined` | 框获得焦点时触发 |  |
+
+### FormBorder Slots
+
+| 属性    | 参数 | 说明 |
+| ------- | ---- | ---- |
+| default | `()` | 内容 |
+
+### FormBorder Methods
+
+| 名称  | 类型         | 说明     | 版本 |
+| ----- | ------------ | -------- | ---- |
+| blur  | `() => void` | Blur 框  |      |
+| focus | `() => void` | Focus 框 |      |

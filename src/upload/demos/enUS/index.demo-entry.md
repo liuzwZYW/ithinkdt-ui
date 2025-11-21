@@ -44,6 +44,8 @@ download.vue
 | headers | `Object \| ({ file: UploadFileInfo }) => Object` | `undefined` | The additional HTTP Headers of request. |  |
 | input-props | `InputHTMLAttributes` | `undefined` | Attributes of file input. | 2.24.2 |
 | image-group-props | `ImageGroupProps` | `undefined` | Props of `n-image` inside upload. See [ImageGroup Props](image#ImageGroup-Props). | 2.24.0 |
+| img-props | `ImgHTMLAttributes` | `undefined` | Tag `img` attributes | ithinkdt 1.1.1 |
+| previewed-img-props | `ImgHTMLAttributes` | `undefined` | Previewed tag `img` attributes | ithinkdt 1.1.1 |
 | is-error-state | `(xhr: XMLHttpRequest) => boolean` | `undefined` | Check if response is error state. | 2.29.1 |
 | list-type | `string` | `'text'` | Built-in styles for file lists, `text`, `image` and `image-card`. |  |
 | max | `number` | `undefined` | Uploaded files limit. |  |
@@ -60,6 +62,7 @@ download.vue
 | show-remove-button | `boolean` | `true` | Show a remove button (after upload completed). Use the `on-remove` callback for this event. |  |
 | show-retry-button | `boolean` | `true` | Show a retry button (for a failed upload). |  |
 | show-trigger | `boolean` | `true` | Show upload trigger. | 2.21.5 |
+| to | `string \| HTMLElement` | `'body'` | When `abstract` is `true`, the target element to mount the input element. | iThinkDT 1.8.2 |
 | trigger-class | `string` | `undefined` | Class of trigger area. | 2.36.0 |
 | trigger-style | `Object \| string` | `undefined` | Style of trigger area. | 2.29.1 |
 | with-credentials | `boolean` | `false` | Any credentials to be sent with the request (e.g. cookie). |  |
@@ -141,4 +144,4 @@ interface UploadCustomRequestOptions {
 
 ### Others
 
-1. `uploadDownload`, with type of `(url: string, name: string | undefined): void`, you can import the method directly from naive-ui.
+1. `uploadDownload`, with type of `(url: string, name: string | undefined): void`, you can import the method directly from ithinkdt-ui.

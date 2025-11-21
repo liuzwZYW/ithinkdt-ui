@@ -173,7 +173,7 @@ export default defineComponent({
             ]}
           >
             {(iconNode = createIconVNode(icon, type, mergedClsPrefix))
-              && showIcon ? (
+            && showIcon ? (
                   <div
                     class={`${mergedClsPrefix}-message__icon ${mergedClsPrefix}-message__icon--${type}-type`}
                   >

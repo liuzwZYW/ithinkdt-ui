@@ -3,7 +3,7 @@ import { getParameters } from 'codesandbox/lib/api/define'
 const indexHtml = `<!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Naive UI Demo</title>
+    <title>iThinkDT UI Demo</title>
     <style>
       body {
         padding: 24px;
@@ -42,7 +42,7 @@ components: {
 </script>`
 
 const mainJs = `import { createApp } from "vue";
-import naive from "naive-ui";
+import naive from "ithinkdt-ui";
 import App from "./App.vue";
 
 const app = createApp(App);
@@ -70,7 +70,7 @@ export function getCodeSandboxParams(code) {
             ...getDeps(code),
             vue: 'latest',
             'vue-router': 'latest',
-            'naive-ui': 'latest'
+            'ithinkdt-ui': 'latest'
           },
           devDependencies: {
             '@vue/cli-plugin-babel': '~4.5.0',

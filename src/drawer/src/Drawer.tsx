@@ -346,59 +346,73 @@ export default defineComponent({
             this.onRender?.()
             return withDirectives(
               <div
-                class={[
-                  `${mergedClsPrefix}-drawer-container`,
-                  this.namespace,
-                  this.themeClass
-                ]}
-                style={this.cssVars as CSSProperties}
+                class={[`${mergedClsPrefix}-drawer-provider`, this.namespace]}
+                style={`
+                  position: absolute;
+                  left: 0;
+                  right: 0;
+                  top: 0;
+                  bottom: 0;
+                  pointer-events: none;`}
                 role="none"
               >
-                {this.showMask ? (
-                  <Transition name="fade-in-transition" appear={this.isMounted}>
-                    {{
-                      default: () =>
-                        this.show ? (
-                          <div
-                            aria-hidden
-                            class={[
-                              `${mergedClsPrefix}-drawer-mask`,
-                              this.showMask === 'transparent'
-                              && `${mergedClsPrefix}-drawer-mask--invisible`
-                            ]}
-                            onClick={this.handleMaskClick}
-                          />
-                        ) : null
-                    }}
-                  </Transition>
-                ) : null}
-                <NDrawerBodyWrapper
-                  {...this.$attrs}
-                  class={[this.drawerClass, this.$attrs.class]}
-                  style={[this.mergedBodyStyle, this.$attrs.style]}
-                  blockScroll={this.blockScroll}
-                  contentStyle={this.contentStyle}
-                  contentClass={this.contentClass}
-                  placement={this.placement}
-                  scrollbarProps={this.scrollbarProps}
-                  show={this.show}
-                  displayDirective={this.displayDirective}
-                  nativeScrollbar={this.nativeScrollbar}
-                  onAfterEnter={this.onAfterEnter}
-                  onAfterLeave={this.onAfterLeave}
-                  trapFocus={this.trapFocus}
-                  autoFocus={this.autoFocus}
-                  resizable={this.resizable}
-                  maxHeight={this.maxHeight}
-                  minHeight={this.minHeight}
-                  maxWidth={this.maxWidth}
-                  minWidth={this.minWidth}
-                  showMask={this.showMask}
-                  onEsc={this.handleEsc}
-                  onClickoutside={this.handleOutsideClick}
+                <div
+                  class={[
+                    `${mergedClsPrefix}-drawer-container`,
+                    this.themeClass
+                  ]}
+                  style={this.cssVars as CSSProperties}
+                  role="none"
                 >
-                  {this.$slots}
-                </NDrawerBodyWrapper>
+                  {this.showMask ? (
+                    <Transition
+                      name="fade-in-transition"
+                      appear={this.isMounted}
+                    >
+                      {{
+                        default: () =>
+                          this.show ? (
+                            <div
+                              aria-hidden
+                              class={[
+                                `${mergedClsPrefix}-drawer-mask`,
+                                this.showMask === 'transparent'
+                                && `${mergedClsPrefix}-drawer-mask--invisible`
+                              ]}
+                              onClick={this.handleMaskClick}
+                            />
+                          ) : null
+                      }}
+                    </Transition>
+                  ) : null}
+                  <NDrawerBodyWrapper
+                    {...this.$attrs}
+                    class={[this.drawerClass, this.$attrs.class]}
+                    style={[this.mergedBodyStyle, this.$attrs.style]}
+                    blockScroll={this.blockScroll}
+                    contentStyle={this.contentStyle}
+                    contentClass={this.contentClass}
+                    placement={this.placement}
+                    scrollbarProps={this.scrollbarProps}
+                    show={this.show}
+                    displayDirective={this.displayDirective}
+                    nativeScrollbar={this.nativeScrollbar}
+                    onAfterEnter={this.onAfterEnter}
+                    onAfterLeave={this.onAfterLeave}
+                    trapFocus={this.trapFocus}
+                    autoFocus={this.autoFocus}
+                    resizable={this.resizable}
+                    maxHeight={this.maxHeight}
+                    minHeight={this.minHeight}
+                    maxWidth={this.maxWidth}
+                    minWidth={this.minWidth}
+                    showMask={this.showMask}
+                    onEsc={this.handleEsc}
+                    onClickoutside={this.handleOutsideClick}
+                  >
+                    {this.$slots}
+                  </NDrawerBodyWrapper>
+                </div>
               </div>,
               [[zindexable, { zIndex: this.zIndex, enabled: this.show }]]
             )

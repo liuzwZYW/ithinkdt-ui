@@ -8,9 +8,9 @@ import { dateEnUS, enUS } from '../locales'
 export default function useLocale<T extends keyof NLocale>(
   ns: T
 ): {
-  localeRef: Ref<NLocale[T]>
-  dateLocaleRef: Ref<NDateLocale>
-} {
+    localeRef: Ref<NLocale[T]>
+    dateLocaleRef: Ref<NDateLocale>
+  } {
   const { mergedLocaleRef, mergedDateLocaleRef }
     = inject(configProviderInjectionKey, null) || {}
   const localeRef = computed(() => {

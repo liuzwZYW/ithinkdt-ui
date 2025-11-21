@@ -236,7 +236,7 @@ export default c([
         padding: 0;
         text-align: center;
         line-height: 0;
-        z-index: 3;
+        z-index: 4;
       `),
       cE('title-wrapper', `
         display: flex;
@@ -508,7 +508,7 @@ export default c([
     cB('data-table-base-table-header', `
       border-top-left-radius: calc(var(--n-border-radius) - 1px);
       border-top-right-radius: calc(var(--n-border-radius) - 1px);
-      z-index: 3;
+      z-index: 4;
       overflow: scroll;
       flex-shrink: 0;
       transition: border-color .3s var(--n-bezier);
@@ -596,7 +596,7 @@ function createFixedColumnStyle(): CNode[] {
     cM('fixed-left', `
       left: 0;
       position: sticky;
-      z-index: 2;
+      z-index: 3;
     `, [
       c('&::after', `
         pointer-events: none;
@@ -613,7 +613,7 @@ function createFixedColumnStyle(): CNode[] {
     cM('fixed-right', `
       right: 0;
       position: sticky;
-      z-index: 1;
+      z-index: 2;
     `, [
       c('&::before', `
         pointer-events: none;

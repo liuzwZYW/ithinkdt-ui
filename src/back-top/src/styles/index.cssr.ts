@@ -33,6 +33,7 @@ export default cB('back-top', `
   min-width: var(--n-width);
   box-shadow: var(--n-box-shadow);
   background-color: var(--n-color);
+  pointer-events: all;
 `, [
   fadeInScaleUpTransition(),
   cM('transition-disabled', {

@@ -369,8 +369,8 @@ export default defineComponent({
       options?: string | null | FormItemValidateOptions,
       callback?: ValidateCallback
     ): Promise<{
-      warnings: ValidateError[] | undefined
-    }> {
+        warnings: ValidateError[] | undefined
+      }> {
       /** the following code is for compatibility */
       let trigger: ValidationTrigger | string | undefined
       let validateCallback: ValidateCallback | undefined

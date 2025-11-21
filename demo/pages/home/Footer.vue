@@ -148,7 +148,7 @@ export default defineComponent({
     <n-divider class="footer-divider" />
     <div style="text-align: center; padding: 20px">
       <n-text depth="3">
-        Naive UI {{ version }} · Made by TuSimple
+        iThinkDT UI {{ version }} · Made by TuSimple
       </n-text>
     </div>
   </n-layout-footer>

@@ -1,10 +1,9 @@
 import type { FormInst } from '../index'
-/* eslint-disable unused-imports/no-unused-vars */
-import type { FormValidateCallback } from '../src/interface'
+import type { FormBorderInst, FormValidateCallback } from '../src/interface'
 import { mount } from '@vue/test-utils'
-import { defineComponent, h, ref } from 'vue'
+import { defineComponent, h, onMounted, ref } from 'vue'
 import { NInput } from '../../input'
-import { NForm, NFormItem } from '../index'
+import { NForm, NFormBorder, NFormItem } from '../index'
 
 describe('n-form', () => {
   it('should work with import on demand', () => {
@@ -562,7 +561,7 @@ describe('n-form', () => {
                     },
                     {
                       level: 'warning',
-                      validator(rule, value) {
+                      validator() {
                         return new Error('warning')
                       }
                     }
@@ -623,6 +622,88 @@ describe('n-form', () => {
           .find('.n-form-item-feedback.n-form-item-feedback--warning')
           .exists()
       ).toBe(true)
+
+      wrapper.unmount()
+    })
+  })
+
+  describe('n-form-border', () => {
+    it('should work with import on demand', () => {
+      mount(NFormBorder)
+    })
+
+    it('should work with `disabled` prop', async () => {
+      const wrapper = mount(NFormBorder)
+      expect(wrapper.find('.n-form-border').classes()).not.toContain(
+        'n-form-border--disabled'
+      )
+      await wrapper.setProps({
+        disabled: true
+      })
+      expect(wrapper.find('.n-form-border').classes()).toContain(
+        'n-form-border--disabled'
+      )
+      wrapper.unmount()
+    })
+
+    it('should work with `status` prop', async () => {
+      ;(['success', 'warning', 'error'] as const).forEach((status) => {
+        const wrapper = mount(NFormBorder, { props: { status } })
+        expect(wrapper.find('.n-form-border').classes()).toContain(
+          `n-form-border--${status}-status`
+        )
+        wrapper.unmount()
+      })
+    })
+
+    it('should work with `on-blur` prop', async () => {
+      const onBlur = jest.fn()
+      const wrapper = mount(NFormBorder, {
+        props: { onBlur }
+      })
+      await wrapper.trigger('focus')
+      await wrapper.trigger('blur')
+      expect(onBlur).toHaveBeenCalled()
+      wrapper.unmount()
+    })
+
+    it('should work with `on-focus` prop', async () => {
+      const onFocus = jest.fn()
+      const wrapper = mount(NFormBorder, {
+        props: { onFocus }
+      })
+      await wrapper.trigger('focus')
+      expect(onFocus).toHaveBeenCalled()
+      wrapper.unmount()
+    })
+
+    it('should work with `blur` `focus` methods', async () => {
+      const onBlur = jest.fn()
+      const onFocus = jest.fn()
+      const Mock = defineComponent({
+        setup() {
+          const formBorderInstRef = ref<FormBorderInst | null>(null)
+          onMounted(() => {
+            formBorderInstRef.value?.focus()
+            formBorderInstRef.value?.blur()
+          })
+          return () => {
+            return (
+              <NFormBorder
+                ref={formBorderInstRef}
+                onBlur={onBlur}
+                onFocus={onFocus}
+              />
+            )
+          }
+        }
+      })
+
+      const wrapper = mount(() => <Mock />)
+      setTimeout(() => {
+        expect(onBlur).toHaveBeenCalled()
+        expect(onFocus).toHaveBeenCalled()
+      }, 0)
 
       wrapper.unmount()
     })

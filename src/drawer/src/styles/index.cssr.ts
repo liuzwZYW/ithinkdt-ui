@@ -185,21 +185,12 @@ export default c([
       `)
     ])
   ]),
-  c('body', [
-    c('>', [
-      cB('drawer-container', `
-        position: fixed;
-      `)
-    ])
-  ]),
   cB('drawer-container', `
-    position: relative;
     position: absolute;
     left: 0;
     right: 0;
     top: 0;
     bottom: 0;
-    pointer-events: none;
   `, [
     c('> *', `
       pointer-events: all;

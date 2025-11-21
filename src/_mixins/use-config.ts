@@ -22,14 +22,14 @@ export default function useConfig(
     defaultBordered: true
   }
 ): {
-  inlineThemeDisabled: boolean | undefined
-  mergedRtlRef: Ref<RtlEnabledState | undefined> | undefined
-  mergedBorderedRef: ComputedRef<boolean>
-  mergedClsPrefixRef: Ref<string>
-  mergedBreakpointsRef: Ref<Breakpoints> | undefined
-  mergedComponentPropsRef: Ref<GlobalComponentConfig | undefined> | undefined
-  namespaceRef: ComputedRef<string | undefined>
-} {
+    inlineThemeDisabled: boolean | undefined
+    mergedRtlRef: Ref<RtlEnabledState | undefined> | undefined
+    mergedBorderedRef: ComputedRef<boolean>
+    mergedClsPrefixRef: Ref<string>
+    mergedBreakpointsRef: Ref<Breakpoints> | undefined
+    mergedComponentPropsRef: Ref<GlobalComponentConfig | undefined> | undefined
+    namespaceRef: ComputedRef<string | undefined>
+  } {
   const NConfigProvider = inject(configProviderInjectionKey, null)
   return {
     // NConfigProvider,

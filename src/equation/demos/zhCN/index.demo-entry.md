@@ -3,7 +3,7 @@
 没有人会想到一个组件库会有这种组件，但是作者的一位朋友需要这个。
 
 <n-alert title="注意" type="warning" style="margin-bottom: 16px;" :bordered="false">
-  由于包体积原因，Naive UI 不内置 katex。如果你需要使用公式组件，请确保你在使用之前已经设定了 katex。
+  由于包体积原因，iThinkDT UI 不内置 katex。如果你需要使用公式组件，请确保你在使用之前已经设定了 katex。
 </n-alert>
 
 下面的代码展示了如何为 Equation 设定 katex。

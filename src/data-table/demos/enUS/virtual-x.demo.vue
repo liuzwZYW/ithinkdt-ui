@@ -1,7 +1,7 @@
 <markdown>
 # Large data (rows & cols)
 
-If you have a large amount of row and column data, such as thousands of rows and hundreds of columns, `naive-ui` provides horizontal + vertical virtual scrolling functionality.
+If you have a large amount of row and column data, such as thousands of rows and hundreds of columns, `ithinkdt-ui` provides horizontal + vertical virtual scrolling functionality.
 
 Due to the inherent complexity of horizontal virtual scrolling, the corresponding configuration can be quite complex, with most of the following content being necessary:
 
@@ -16,7 +16,7 @@ Due to the inherent complexity of horizontal virtual scrolling, the correspondin
 
 The example below corresponds to a table with 1000 rows * 1000 columns.
 
-`naive-ui`'s table can easily support table data in the millions. You won't find this kind of functionality in many free component libraries.
+`ithinkdt-ui`'s table can easily support table data in the millions. You won't find this kind of functionality in many free component libraries.
 </markdown>
 
 <script lang="ts" setup>

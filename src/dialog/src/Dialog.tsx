@@ -223,40 +223,40 @@ export const NDialog = defineComponent({
           style={this.actionStyle}
         >
           {children
-            || (action
-              ? [render(action)]
-              : [
-                  this.negativeText && (
-                    <NButton
-                      theme={mergedTheme.peers.Button}
-                      themeOverrides={mergedTheme.peerOverrides.Button}
-                      ghost
-                      size="small"
-                      onClick={handleNegativeClick}
-                      {...negativeButtonProps}
-                    >
-                      {{
-                        default: () => render(this.negativeText)
-                      }}
-                    </NButton>
-                  ),
-                  this.positiveText && (
-                    <NButton
-                      theme={mergedTheme.peers.Button}
-                      themeOverrides={mergedTheme.peerOverrides.Button}
-                      size="small"
-                      type={type === 'default' ? 'primary' : type}
-                      disabled={loading}
-                      loading={loading}
-                      onClick={handlePositiveClick}
-                      {...positiveButtonProps}
-                    >
-                      {{
-                        default: () => render(this.positiveText)
-                      }}
-                    </NButton>
-                  )
-                ])}
+          || (action
+            ? [render(action)]
+            : [
+                this.negativeText && (
+                  <NButton
+                    theme={mergedTheme.peers.Button}
+                    themeOverrides={mergedTheme.peerOverrides.Button}
+                    ghost
+                    size="small"
+                    onClick={handleNegativeClick}
+                    {...negativeButtonProps}
+                  >
+                    {{
+                      default: () => render(this.negativeText)
+                    }}
+                  </NButton>
+                ),
+                this.positiveText && (
+                  <NButton
+                    theme={mergedTheme.peers.Button}
+                    themeOverrides={mergedTheme.peerOverrides.Button}
+                    size="small"
+                    type={type === 'default' ? 'primary' : type}
+                    disabled={loading}
+                    loading={loading}
+                    onClick={handlePositiveClick}
+                    {...positiveButtonProps}
+                  >
+                    {{
+                      default: () => render(this.positiveText)
+                    }}
+                  </NButton>
+                )
+              ])}
         </div>
       ) : null)
 

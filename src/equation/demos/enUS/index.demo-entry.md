@@ -3,7 +3,7 @@
 No one will think of that a component library should have this component. However a friend of me need this.
 
 <n-alert title="Note" type="warning" style="margin-bottom: 16px;" :bordered="false">
-  Due to package size, Naive UI doesn't include katex. If you want to use Equation, make sure you have setup katex before using it.
+  Due to package size, iThinkDT UI doesn't include katex. If you want to use Equation, make sure you have setup katex before using it.
 </n-alert>
 
 The following code shows how to setup katex for Equation.

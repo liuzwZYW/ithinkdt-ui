@@ -2,15 +2,15 @@
 
 # Internationalization
 
-Naive-ui provides `n-config-provider` to customize the internationalization. By default, all components are in English.
+ithinkdt-ui provides `n-config-provider` to customize the internationalization. By default, all components are in English.
 
 To learn more about `n-config-provider`, see [Config Provider](../components/config-provider).
 
 ## Configure
 
-Set `n-config-provider`'s `locale` prop to `enUS` imported from naive-ui to set Chinese theme inside `n-config-provider`.
+Set `n-config-provider`'s `locale` prop to `enUS` imported from ithinkdt-ui to set Chinese theme inside `n-config-provider`.
 
-Set `n-config-provider`'s `date-locale` prop to `dateEnUS` imported from naive-ui to set Chinese theme's date inside `n-config-provider`.
+Set `n-config-provider`'s `date-locale` prop to `dateEnUS` imported from ithinkdt-ui to set Chinese theme's date inside `n-config-provider`.
 
 ```html
 <template>

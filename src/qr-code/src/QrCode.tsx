@@ -260,9 +260,9 @@ export default defineComponent({
         iconBackgroundColor: string
       } | null
     ): {
-      innerHtml: string
-      numCells: number
-    } {
+        innerHtml: string
+        numCells: number
+      } {
       const cells = qr.getModules()
       const numCells = cells.length
       const cellsToDraw = cells

@@ -322,65 +322,76 @@ export default defineComponent({
             const { showMask } = this
             return withDirectives(
               <div
+                class={[`${mergedClsPrefix}-modal-provider`, this.namespace]}
+                style={`
+                  position: absolute;
+                  left: 0;
+                  right: 0;
+                  top: 0;
+                  bottom: 0;
+                  pointer-events: none;`}
                 role="none"
-                ref="containerRef"
-                class={[
-                  `${mergedClsPrefix}-modal-container`,
-                  this.themeClass,
-                  this.namespace
-                ]}
-                style={this.cssVars as CSSProperties}
               >
-                <NModalBodyWrapper
-                  style={this.overlayStyle}
-                  {...this.$attrs}
-                  ref="bodyWrapper"
-                  displayDirective={this.displayDirective}
-                  show={this.show}
-                  preset={this.preset}
-                  autoFocus={this.autoFocus}
-                  trapFocus={this.trapFocus}
-                  draggable={this.draggable}
-                  blockScroll={this.blockScroll}
-                  maskHidden={!showMask}
-                  {...this.presetProps}
-                  onEsc={this.handleEsc}
-                  onClose={this.handleCloseClick}
-                  onNegativeClick={this.handleNegativeClick}
-                  onPositiveClick={this.handlePositiveClick}
-                  onBeforeLeave={this.handleBeforeLeave}
-                  onAfterEnter={this.onAfterEnter}
-                  onAfterLeave={this.handleAfterLeave}
-                  onClickoutside={
-                    showMask ? undefined : this.handleClickoutside
-                  }
-                  renderMask={
-                    showMask
-                      ? () => (
-                          <Transition
-                            name="fade-in-transition"
-                            key="mask"
-                            appear={this.internalAppear ?? this.isMounted}
-                          >
-                            {{
-                              default: () => {
-                                return this.show ? (
-                                  <div
-                                    aria-hidden
-                                    ref="containerRef"
-                                    class={`${mergedClsPrefix}-modal-mask`}
-                                    onClick={this.handleClickoutside}
-                                  />
-                                ) : null
-                              }
-                            }}
-                          </Transition>
-                        )
-                      : undefined
-                  }
+                <div
+                  role="none"
+                  ref="containerRef"
+                  class={[
+                    `${mergedClsPrefix}-modal-container`,
+                    this.themeClass
+                  ]}
+                  style={this.cssVars as CSSProperties}
                 >
-                  {this.$slots}
-                </NModalBodyWrapper>
+                  <NModalBodyWrapper
+                    style={this.overlayStyle}
+                    {...this.$attrs}
+                    ref="bodyWrapper"
+                    displayDirective={this.displayDirective}
+                    show={this.show}
+                    preset={this.preset}
+                    autoFocus={this.autoFocus}
+                    trapFocus={this.trapFocus}
+                    draggable={this.draggable}
+                    blockScroll={this.blockScroll}
+                    maskHidden={!showMask}
+                    {...this.presetProps}
+                    onEsc={this.handleEsc}
+                    onClose={this.handleCloseClick}
+                    onNegativeClick={this.handleNegativeClick}
+                    onPositiveClick={this.handlePositiveClick}
+                    onBeforeLeave={this.handleBeforeLeave}
+                    onAfterEnter={this.onAfterEnter}
+                    onAfterLeave={this.handleAfterLeave}
+                    onClickoutside={
+                      showMask ? undefined : this.handleClickoutside
+                    }
+                    renderMask={
+                      showMask
+                        ? () => (
+                            <Transition
+                              name="fade-in-transition"
+                              key="mask"
+                              appear={this.internalAppear ?? this.isMounted}
+                            >
+                              {{
+                                default: () => {
+                                  return this.show ? (
+                                    <div
+                                      aria-hidden
+                                      ref="containerRef"
+                                      class={`${mergedClsPrefix}-modal-mask`}
+                                      onClick={this.handleClickoutside}
+                                    />
+                                  ) : null
+                                }
+                              }}
+                            </Transition>
+                          )
+                        : undefined
+                    }
+                  >
+                    {this.$slots}
+                  </NModalBodyWrapper>
+                </div>
               </div>,
               [
                 [

@@ -6,7 +6,7 @@
 
 ## 例子
 
-这是一个使用 `naive-ui`、`vitepress` 的[样例](https://github.com/07akioni/naive-ui-vitepress-demo)，支持 SSR。
+这是一个使用 `ithinkdt-ui`、`vitepress` 的[样例](https://github.com/07akioni/ithinkdt-ui-vitepress-demo)，支持 SSR。
 
 你可以直接使用这个样例。
 
@@ -100,7 +100,7 @@ export default defineConfig({
   // ...
   vite: {
     ssr: {
-      noExternal: ['naive-ui', 'date-fns', 'vueuc']
+      noExternal: ['ithinkdt-ui', 'date-fns', 'vueuc']
     }
   },
   postRender(context) {
@@ -126,7 +126,7 @@ export default defineConfig({
 })
 ```
 
-### 3. 在 markdown 文件中开始使用 naive-ui
+### 3. 在 markdown 文件中开始使用 ithinkdt-ui
 
 ```md
 ...

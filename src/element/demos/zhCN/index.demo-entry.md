@@ -1,6 +1,6 @@
 # 元素 Element
 
-Element 上面有很多 Naive UI 提供的主题变量。
+Element 上面有很多 iThinkDT UI 提供的主题变量。
 
 ## 演示
 

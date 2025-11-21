@@ -29,16 +29,16 @@ export const enDocRoutes = [
     component: () => import('../pages/docs/customize-theme/enUS/index.md')
   },
   {
-    path: 'community',
-    component: () => import('../pages/docs/community/enUS/index.md')
-  },
-  {
     path: 'i18n',
     component: () => import('../pages/docs/i18n/enUS/index.md')
   },
   {
     path: 'changelog',
     component: () => import('../pages/docs/changelog/enUS/index.vue')
+  },
+  {
+    path: 'changelog-ithinkdt',
+    component: () => import('../pages/docs/changelog-ithinkdt/enUS/index.vue')
   },
   {
     path: 'theme',
@@ -118,10 +118,6 @@ export const zhDocRoutes = [
     component: () => import('../pages/docs/customize-theme/zhCN/index.md')
   },
   {
-    path: 'community',
-    component: () => import('../pages/docs/community/zhCN/index.md')
-  },
-  {
     path: 'i18n',
     component: () => import('../pages/docs/i18n/zhCN/index.md')
   },
@@ -132,6 +128,10 @@ export const zhDocRoutes = [
   {
     path: 'changelog',
     component: () => import('../pages/docs/changelog/zhCN/index.vue')
+  },
+  {
+    path: 'changelog-ithinkdt',
+    component: () => import('../pages/docs/changelog-ithinkdt/zhCN/index.vue')
   },
   {
     path: 'theme',

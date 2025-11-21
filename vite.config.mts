@@ -19,10 +19,18 @@ export default defineConfig({
   root: __dirname,
   plugins: createDemoPlugin(),
   resolve: {
-    // In production site build, we want to import naive-ui from node_modules
+    // In production site build, we want to import ithinkdt-ui from node_modules
     alias:
       process.env.NODE_ENV !== 'production'
         ? [
+            {
+              find: 'ithinkdt-ui/generic',
+              replacement: path.resolve(__dirname, './generic')
+            },
+            {
+              find: 'ithinkdt-ui',
+              replacement: path.resolve(__dirname, './src')
+            },
             {
               find: 'naive-ui/generic',
               replacement: path.resolve(__dirname, './generic')

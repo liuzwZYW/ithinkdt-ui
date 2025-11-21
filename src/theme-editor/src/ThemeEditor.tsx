@@ -405,9 +405,9 @@ export default defineComponent({
                               const componentTheme:
                                 | Record<string, string>
                                 | undefined
-                                  = themeKey === 'common'
-                                    ? this.themeCommonDefault
-                                    : (theme as any)[themeKey]
+                                = themeKey === 'common'
+                                  ? this.themeCommonDefault
+                                  : (theme as any)[themeKey]
                               if (componentTheme === undefined) {
                                 return null
                               }

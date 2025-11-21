@@ -3,7 +3,7 @@
 
 Use `custom-download` to customize file downloading.
 
-By default, naive-ui uses native download logic (which initiates downloading by perform a click on an `<a />` element with correspoding URL).
+By default, ithinkdt-ui uses native download logic (which initiates downloading by perform a click on an `<a />` element with correspoding URL).
 
 However, you may want to preform custom download logic for example in a cross origin downloading process.
 </markdown>

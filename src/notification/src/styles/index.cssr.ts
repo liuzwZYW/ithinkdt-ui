@@ -39,6 +39,7 @@ export default c([
     display: flex;
     flex-direction: column;
     align-items: flex-end;
+    pointer-events: all;
   `, [
     c('>', [
       cB('scrollbar', `

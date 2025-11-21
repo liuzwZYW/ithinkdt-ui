@@ -1,17 +1,19 @@
 {
-  "name": "naive-ui",
-  "version": "2.43.2",
+  "name": "ithinkdt-ui",
+  "version": "1.8.1",
+  "naiveVersion": "2.43.2",
   "packageManager": "pnpm@9.5.0",
-  "description": "A Vue 3 Component Library. Fairly Complete, Theme Customizable, Uses TypeScript, Fast",
-  "author": "07akioni",
+  "description": "Forked from Naive UI. A Vue 3 Component Library. Fairly Complete, Theme Customizable, Uses TypeScript, Fast",
+  "author": "liuzw2579",
   "license": "MIT",
   "homepage": "https://www.naiveui.com",
   "repository": {
     "type": "git",
-    "url": "https://github.com/tusen-ai/naive-ui"
+    "url": "https://github.com/liuzw2579/ithinkdt-ui/tree/ithinkdt"
   },
   "keywords": [
     "naive-ui",
+    "ithinkdt-ui",
     "component library",
     "ui framework",
     "ui",
@@ -38,7 +40,7 @@
     "build:package": "pnpm run gen-version && pnpm run clean && pnpm run gen-volar-dts && tsc -b --force tsconfig.esm.json && tsx scripts/pre-build/pre-cjs-build.ts && tsc -b --force tsconfig.cjs.json && rollup -c && pnpm run test:umd && pnpm run test:esm && pnpm run post-build && rimraf {es,lib}/*.tsbuildinfo",
     "build:themes": "tsc -b --force themes/tusimple/tsconfig.esm.json && tsc -b --force themes/tusimple/tsconfig.cjs.json",
     "build:site": "bash ./scripts/pre-build-site/pre-build-site.sh && NODE_ENV=production NODE_OPTIONS=--max-old-space-size=4096 vite build && bash ./scripts/post-build-site/post-build-site.sh",
-    "clean": "rimraf site lib es dist node_modules/naive-ui themes/tusimple/es themes/tusimple/lib",
+    "clean": "rimraf site lib es dist node_modules/ithinkdt-ui themes/tusimple/es themes/tusimple/lib",
     "release:package": "pnpm run test && pnpm run build:package && pnpm publish --no-git-checks",
     "release:changelog": "tsx scripts/release-changelog.ts",
     "lint": "pnpm run lint:code && pnpm run lint:type",

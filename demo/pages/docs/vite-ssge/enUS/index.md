@@ -6,16 +6,16 @@ This document pertains to SSR (Server-Side Rendering). Please familiarize yourse
 
 ## Setup Guide
 
-If you are using `vite-sse` or `vite-ssg`. Follow the following steps to setup `naive-ui`.
+If you are using `vite-sse` or `vite-ssg`. Follow the following steps to setup `ithinkdt-ui`.
 
-### 1. Install `naive-ui`, `@css-render/vue3-ssr`
+### 1. Install `ithinkdt-ui`, `@css-render/vue3-ssr`
 
 ```bash
 # pnpm
-pnpm i naive-ui @css-render/vue3-ssr
+pnpm i ithinkdt-ui @css-render/vue3-ssr
 
 # npm
-npm i naive-ui @css-render/vue3-ssr
+npm i ithinkdt-ui @css-render/vue3-ssr
 ```
 
 ### 2. Modify `vite.config.ts`
@@ -27,7 +27,7 @@ import { setup } from '@css-render/vue3-ssr'
 
 defineConfig({
   ssr: {
-    noExternal: ['naive-ui', 'vueuc', 'date-fns']
+    noExternal: ['ithinkdt-ui', 'vueuc', 'date-fns']
   },
   ssgOptions: {
     async onBeforePageRender(_, __, appCtx) {
@@ -45,4 +45,4 @@ defineConfig({
 })
 ```
 
-Then you can using naive-ui in `vite-ssg` or `vite-sse` project.
+Then you can using ithinkdt-ui in `vite-ssg` or `vite-sse` project.

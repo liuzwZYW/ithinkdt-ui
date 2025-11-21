@@ -53,6 +53,10 @@ export const avatarProps = {
     type: Boolean,
     default: undefined
   },
+  radix: {
+    type: Number,
+    default: 0.9
+  },
   onError: Function as PropType<(e: Event) => void>,
   fallbackSrc: String,
   intersectionObserverOptions: Object as PropType<IntersectionObserverOptions>,
@@ -92,10 +96,9 @@ export default defineComponent({
           if (selfEl) {
             const { offsetWidth: elWidth, offsetHeight: elHeight } = selfEl
             const { offsetWidth: textWidth, offsetHeight: textHeight } = textEl
-            const radix = 0.9
             const ratio = Math.min(
-              (elWidth / textWidth) * radix,
-              (elHeight / textHeight) * radix,
+              (elWidth / textWidth) * props.radix,
+              (elHeight / textHeight) * props.radix,
               1
             )
             textEl.style.transform = `translateX(-50%) translateY(-50%) scale(${ratio})`

@@ -1,7 +1,7 @@
 <markdown>
 # 使用内置滚动条
 
-有时原生滚动条与 naive-ui 的样式不协调。可以（在 `n-layout-sider`、`n-layout` 或 `n-layout-content`）使用 naive-ui 内置的滚动条。
+有时原生滚动条与 ithinkdt-ui 的样式不协调。可以（在 `n-layout-sider`、`n-layout` 或 `n-layout-content`）使用 ithinkdt-ui 内置的滚动条。
 </markdown>
 
 <template>

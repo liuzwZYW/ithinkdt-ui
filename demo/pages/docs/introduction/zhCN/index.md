@@ -1,8 +1,8 @@
 <!--anchor:on-->
 
-# Naive UI
+# iThinkDT UI
 
-Naive UI 是一个 Vue3 的组件库。
+iThinkDT UI 是一个 Vue3 的组件库。
 
 要了解如何安装，参见[安装](installation)。
 
@@ -22,7 +22,7 @@ Naive UI 是一个 Vue3 的组件库。
 
 ## 使用 TypeScript
 
-Naive UI 全量使用 TypeScript 编写，和你的 TypeScript 项目无缝衔接。
+iThinkDT UI 全量使用 TypeScript 编写，和你的 TypeScript 项目无缝衔接。
 
 顺便一提，你不需要导入任何 CSS 就能让组件正常工作。
 
@@ -46,4 +46,4 @@ Naive UI 全量使用 TypeScript 编写，和你的 TypeScript 项目无缝衔�
 
 ## 许可
 
-Naive UI 使用 [MIT license](https://opensource.org/licenses/MIT) 许可证书。
+iThinkDT UI 使用 [MIT license](https://opensource.org/licenses/MIT) 许可证书。

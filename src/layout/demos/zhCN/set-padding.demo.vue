@@ -1,7 +1,7 @@
 <markdown>
 # 关于设定 Padding
 
-naive-ui 不推荐直接在 `n-layout-sider` 和 `n-layout` 上设定 padding。因为他们存在嵌套的 DOM 结构，你可以使用 `content-style` 来设定可滚动内容的样式。
+ithinkdt-ui 不推荐直接在 `n-layout-sider` 和 `n-layout` 上设定 padding。因为他们存在嵌套的 DOM 结构，你可以使用 `content-style` 来设定可滚动内容的样式。
 </markdown>
 
 <template>

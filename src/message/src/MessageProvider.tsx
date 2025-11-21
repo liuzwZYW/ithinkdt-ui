@@ -90,7 +90,7 @@ export default defineComponent({
   name: 'MessageProvider',
   props: messageProviderProps,
   setup(props) {
-    const { mergedClsPrefixRef } = useConfig(props)
+    const { mergedClsPrefixRef, namespaceRef } = useConfig(props)
     const messageListRef = ref<PrivateMessageReactive[]>([])
     const messageRefs = ref<Record<string, PrivateMessageRef>>({})
     const api: MessageApiInjection = {
@@ -154,6 +154,7 @@ export default defineComponent({
     return Object.assign(
       {
         mergedClsPrefix: mergedClsPrefixRef,
+        namespace: namespaceRef,
         messageRefs,
         messageList: messageListRef,
         handleAfterLeave
@@ -169,44 +170,59 @@ export default defineComponent({
           <Teleport to={this.to ?? 'body'}>
             <div
               class={[
-                `${this.mergedClsPrefix}-message-container`,
-                `${this.mergedClsPrefix}-message-container--${this.placement}`,
-                this.containerClass
+                `${this.mergedClsPrefix}-message-provider`,
+                this.namespace
               ]}
-              key="message-container"
-              style={this.containerStyle}
+              style={`
+                position: absolute;
+                left: 0;
+                right: 0;
+                top: 0;
+                bottom: 0;
+                pointer-events: none;`}
+              role="none"
             >
-              {this.messageList.map((message) => {
-                return (
-                  <MessageEnvironment
-                    ref={
-                      ((inst: PrivateMessageRef) => {
-                        if (inst) {
-                          this.messageRefs[message.key] = inst
-                        }
-                      }) as () => void
-                    }
-                    internalKey={message.key}
-                    onInternalAfterLeave={this.handleAfterLeave}
-                    {...omit(message, ['destroy'], undefined)}
-                    duration={
-                      message.duration === undefined
-                        ? this.duration
-                        : message.duration
-                    }
-                    keepAliveOnHover={
-                      message.keepAliveOnHover === undefined
-                        ? this.keepAliveOnHover
-                        : message.keepAliveOnHover
-                    }
-                    closable={
-                      message.closable === undefined
-                        ? this.closable
-                        : message.closable
-                    }
-                  />
-                )
-              })}
+              <div
+                class={[
+                  `${this.mergedClsPrefix}-message-container`,
+                  `${this.mergedClsPrefix}-message-container--${this.placement}`,
+                  this.containerClass
+                ]}
+                key="message-container"
+                style={this.containerStyle}
+              >
+                {this.messageList.map((message) => {
+                  return (
+                    <MessageEnvironment
+                      ref={
+                        ((inst: PrivateMessageRef) => {
+                          if (inst) {
+                            this.messageRefs[message.key] = inst
+                          }
+                        }) as () => void
+                      }
+                      internalKey={message.key}
+                      onInternalAfterLeave={this.handleAfterLeave}
+                      {...omit(message, ['destroy'], undefined)}
+                      duration={
+                        message.duration === undefined
+                          ? this.duration
+                          : message.duration
+                      }
+                      keepAliveOnHover={
+                        message.keepAliveOnHover === undefined
+                          ? this.keepAliveOnHover
+                          : message.keepAliveOnHover
+                      }
+                      closable={
+                        message.closable === undefined
+                          ? this.closable
+                          : message.closable
+                      }
+                    />
+                  )
+                })}
+              </div>
             </div>
           </Teleport>
         ) : null}

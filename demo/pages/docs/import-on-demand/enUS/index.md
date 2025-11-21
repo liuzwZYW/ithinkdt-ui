@@ -1,6 +1,6 @@
 # Import on Demand (Tree Shaking)
 
-Naive UI supports tree shaking for components, locales and themes.
+iThinkDT UI supports tree shaking for components, locales and themes.
 
 By default the component theme is light, locale is enUS, and no extra imports are needed.
 
@@ -72,7 +72,7 @@ export default defineConfig({
       imports: [
         'vue',
         {
-          'naive-ui': [
+          'ithinkdt-ui': [
             'useDialog',
             'useMessage',
             'useNotification',
@@ -111,6 +111,6 @@ After the installation, you can use the components you installed in SFC like thi
 
 ```html
 <template>
-  <n-button>naive-ui</n-button>
+  <n-button>ithinkdt-ui</n-button>
 </template>
 ```

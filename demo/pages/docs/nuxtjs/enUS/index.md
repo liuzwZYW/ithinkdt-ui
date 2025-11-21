@@ -6,20 +6,20 @@ This document pertains to SSR (Server-Side Rendering). Please familiarize yourse
 
 ## Nuxt.js Demo
 
-You can refer to [example](https://github.com/07akioni/naive-ui-nuxt-demo).
+You can refer to [example](https://github.com/07akioni/ithinkdt-ui-nuxt-demo).
 
 ## Using Nuxt Module
 
 This is the same approach which previous demo uses.
 
-Install the [module](https://github.com/07akioni/nuxtjs-naive-ui) to your Nuxt application with one command:
+Install the [module](https://github.com/07akioni/nuxtjs-ithinkdt-ui) to your Nuxt application with one command:
 
 ```bash
 # npm
-npx nuxi module add nuxtjs-naive-ui
+npx nuxi module add nuxtjs-ithinkdt-ui
 
 # pnpm
-pnpm dlx nuxi module add nuxtjs-naive-ui
+pnpm dlx nuxi module add nuxtjs-ithinkdt-ui
 ```
 
 ## Using Auto Import in Nuxt
@@ -33,13 +33,13 @@ import Components from 'unplugin-vue-components/vite'
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  modules: ['nuxtjs-naive-ui'],
+  modules: ['nuxtjs-ithinkdt-ui'],
   vite: {
     plugins: [
       AutoImport({
         imports: [
           {
-            'naive-ui': [
+            'ithinkdt-ui': [
               'useDialog',
               'useMessage',
               'useNotification',

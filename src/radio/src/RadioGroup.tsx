@@ -18,9 +18,9 @@ function mapSlot(
   value: string | number | boolean | null,
   clsPrefix: string
 ): {
-  children: VNodeChild[]
-  isButtonGroup: boolean
-} {
+    children: VNodeChild[]
+    isButtonGroup: boolean
+  } {
   const children: VNode[] = []
   let isButtonGroup = false
   for (let i = 0; i < defaultSlot.length; ++i) {

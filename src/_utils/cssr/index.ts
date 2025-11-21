@@ -1,4 +1,9 @@
-import type { CNode, CProperties } from 'css-render'
+import type {
+  CNode,
+  CNodeChildren,
+  CProperties,
+  CRenderOption
+} from 'css-render'
 import { plugin as BemPlugin } from '@css-render/plugin-bem'
 import { CssRender } from 'css-render'
 
@@ -49,6 +54,66 @@ function createKey<P extends string, S extends string>(
           startChar.toUpperCase()))) as any
 }
 
+function cNS(namespace: string, children: CNodeChildren): CNode {
+  return children
+    ? c(
+        children?.map((child) => {
+          if (!child || typeof child === 'string')
+            return child
+          if (typeof child === 'function') {
+            return (option: CRenderOption) => {
+              return cNS(namespace, [child(option)])
+            }
+          }
+          if (Array.isArray(child))
+            return cNS(namespace, child)
+          if ((child as any)._marked) {
+            return child
+          }
+          ;(child as any)._marked = true
+          if (!child.$) {
+            return cNS(namespace, child.children)
+          }
+          else if (typeof child.$ === 'string') {
+            if (child.$[0] !== '@') {
+              child.$ = `${namespace} ${child.$}`
+            }
+          }
+          else if (typeof child.$ === 'object') {
+            if (!child.$.$) {
+              return cNS(namespace, child.children)
+            }
+            else if (typeof child.$.$ === 'string') {
+              if (child.$.$[0] !== '@')
+                child.$.$ = `${namespace} ${child.$.$}`
+            }
+            else {
+              const $_ = child.$.$
+              child.$.$ = (option: CRenderOption) => {
+                let $ = $_(option)
+                if ($ && $[0] !== '@') {
+                  $ = `${namespace} ${$}`
+                }
+                return $
+              }
+            }
+          }
+          else {
+            const $_ = child.$
+            child.$ = (option: CRenderOption) => {
+              let $ = $_(option)
+              if ($ && $[0] !== '@') {
+                $ = `${namespace} ${$}`
+              }
+              return $
+            }
+          }
+          return child
+        })
+      )
+    : c([])
+}
+
 export {
   asModal,
   c,
@@ -57,6 +122,7 @@ export {
   cE,
   cM,
   cNotM,
+  cNS,
   createKey,
   find,
   insideModal,

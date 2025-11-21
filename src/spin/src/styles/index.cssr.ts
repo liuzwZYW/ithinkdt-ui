@@ -9,7 +9,7 @@ import { c, cB, cM } from '../../../_utils/cssr'
 // --n-text-color
 // --n-font-size
 export default c([
-  c('@keyframes spin-rotate', `
+  c(({ props }) => `@keyframes ${props.nsPrefix}spin-rotate`, `
     from {
       transform: rotate(0);
     }
@@ -42,8 +42,8 @@ export default c([
     font-size: var(--n-size);
     color: var(--n-color);
   `, [
-    cM('rotate', `
-      animation: spin-rotate 2s linear infinite;
+    cM('rotate', ({ props }) => `
+      animation: ${props.nsPrefix}spin-rotate 2s linear infinite;
     `)
   ]),
   cB('spin-description', `

@@ -240,6 +240,8 @@ export default defineComponent({
       shouldUseThumbnailUrl: NUpload.shouldUseThumbnailUrlRef,
       renderIcon: NUpload.renderIconRef,
       imageRef,
+      imgProps: NUpload.imgPropsRef,
+      previewedImgProps: NUpload.previewedImgPropsRef,
       handleRemoveOrCancelClick,
       handleDownloadClick,
       handleRetryClick,
@@ -284,6 +286,7 @@ export default defineComponent({
                 src={this.mergedThumbnailUrl || undefined}
                 previewSrc={file.url || undefined}
                 alt={file.name}
+                imgProps={this.imgProps}
                 ref="imageRef"
               />
             ) : (
@@ -332,18 +335,18 @@ export default defineComponent({
           {icon}
           <div class={`${clsPrefix}-upload-file-info__name`}>
             {showName
-              && (file.url && file.status !== 'error' ? (
-                <a
-                  rel="noopener noreferer"
-                  target="_blank"
-                  href={file.url || undefined}
-                  onClick={this.handlePreviewClick}
-                >
-                  {file.name}
-                </a>
-              ) : (
-                <span onClick={this.handlePreviewClick}>{file.name}</span>
-              ))}
+            && (file.url && file.status !== 'error' ? (
+              <a
+                rel="noopener noreferer"
+                target="_blank"
+                href={file.url || undefined}
+                onClick={this.handlePreviewClick}
+              >
+                {file.name}
+              </a>
+            ) : (
+              <span onClick={this.handlePreviewClick}>{file.name}</span>
+            ))}
             {isImageType && progress}
           </div>
           <div
@@ -372,7 +375,7 @@ export default defineComponent({
               </NButton>
             ) : null}
             {(this.showRemoveButton || this.showCancelButton)
-              && !this.disabled && (
+            && !this.disabled && (
               <NButton
                 key="cancelOrTrash"
                 theme={mergedTheme.peers.Button}

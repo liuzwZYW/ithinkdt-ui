@@ -73,7 +73,7 @@ export function genWebTypes(): void {
     $schema:
       'https://raw.githubusercontent.com/JetBrains/web-types/master/schema/web-types.json',
     framework: 'vue',
-    name: 'naive-ui',
+    name: 'ithinkdt-ui',
     version,
     'js-types-syntax': 'typescript',
     contributions: {

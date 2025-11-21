@@ -2,7 +2,7 @@
 
 # Usage in SFC
 
-If you want to use the Single File Component(SFC) style, you can directly import components from Naive UI or install it globally to a Vue app.
+If you want to use the Single File Component(SFC) style, you can directly import components from iThinkDT UI or install it globally to a Vue app.
 
 ## Import Directly (Recommended)
 
@@ -12,7 +12,7 @@ If you want to know how to import themes and locales, please see [Import on Dema
 
 ```html
 <template>
-  <n-button>naive-ui</n-button>
+  <n-button>ithinkdt-ui</n-button>
 </template>
 
 <script>
@@ -31,7 +31,7 @@ If you can use vue setup script, you can use it like this.
 
 ```html
 <template>
-  <n-button>naive-ui</n-button>
+  <n-button>ithinkdt-ui</n-button>
 </template>
 
 <script setup>
@@ -59,7 +59,7 @@ After the installation, you can use all the components in your SFC like this.
 
 ```html
 <template>
-  <n-button>naive-ui</n-button>
+  <n-button>ithinkdt-ui</n-button>
 </template>
 ```
 
@@ -72,7 +72,7 @@ If you are using Volar, you can specify global component types by configuring `c
 {
   "compilerOptions": {
     // ...
-    "types": ["naive-ui/volar"]
+    "types": ["ithinkdt-ui/volar"]
   }
 }
 ```

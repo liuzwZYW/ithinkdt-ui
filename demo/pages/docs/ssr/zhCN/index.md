@@ -1,6 +1,6 @@
 # 服务端渲染 Server-Sider Rendering
 
-由于 naive-ui 在使用 CSS in JS，在 SSR 的情况下需要一些额外的配置。
+由于 ithinkdt-ui 在使用 CSS in JS，在 SSR 的情况下需要一些额外的配置。
 
 ## 注意
 
@@ -29,7 +29,7 @@
 
 ## Vite 示例
 
-如果你是用的是 Vite，请参考[例子](https://github.com/07akioni/naive-ui-vite-ssr)。
+如果你是用的是 Vite，请参考[例子](https://github.com/07akioni/ithinkdt-ui-vite-ssr)。
 
 ## Webpack 示例
 
@@ -37,7 +37,7 @@
 
 ## 内联样式优化
 
-默认情况下，naive-ui 会在组件上绑定 inline 主题样式，这可能会影响 SSR 的尺寸。你可以使用 `n-config-provider` 的 `inline-theme-disabled` 属性来优化，详细的优劣请参考 `n-config-provider` 的文档。
+默认情况下，ithinkdt-ui 会在组件上绑定 inline 主题样式，这可能会影响 SSR 的尺寸。你可以使用 `n-config-provider` 的 `inline-theme-disabled` 属性来优化，详细的优劣请参考 `n-config-provider` 的文档。
 
 ## 已知问题
 

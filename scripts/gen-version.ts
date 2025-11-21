@@ -5,5 +5,5 @@ import packageJson from '../package.json' with { type: 'json' }
 
 writeFileSync(
   resolve(cwd(), 'src', 'version.ts'),
-  `export default '${packageJson.version}'\n`
+  `export const NAIVE_VERSION = '${packageJson.naiveVersion}'\nexport const ITHINKDT_VERSION = '${packageJson.version}'\nexport default ITHINKDT_VERSION\n`
 )

@@ -1,7 +1,7 @@
 <markdown>
 # Use OS theme
 
-Naive UI provides `useOsTheme` to get the current theme of your OS.
+iThinkDT UI provides `useOsTheme` to get the current theme of your OS.
 </markdown>
 
 <script lang="ts" setup>

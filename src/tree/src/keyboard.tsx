@@ -32,11 +32,11 @@ export function useKeyboard({
   handleSwitcherClick: (node: TmNode) => void
   handleCheck: (node: TmNode, checked: boolean) => void
 }): {
-  pendingNodeKeyRef: Ref<null | Key>
-  handleKeydown: (e: KeyboardEvent) => {
-    enterBehavior: TreeOverrideNodeClickBehaviorReturn | null
-  }
-} {
+    pendingNodeKeyRef: Ref<null | Key>
+    handleKeydown: (e: KeyboardEvent) => {
+      enterBehavior: TreeOverrideNodeClickBehaviorReturn | null
+    }
+  } {
   const { value: mergedSelectedKeys } = mergedSelectedKeysRef
 
   // If it's used in tree-select, make it take over pending state

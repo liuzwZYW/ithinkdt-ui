@@ -70,7 +70,7 @@ export default defineComponent({
   setup(props) {
     const { src } = toRefs(props)
 
-    const { mergedClsPrefixRef } = useConfig(props)
+    const { mergedClsPrefixRef, namespaceRef } = useConfig(props)
     const themeRef = useTheme(
       'Image',
       '-image',
@@ -508,6 +508,7 @@ export default defineComponent({
 
     return {
       clsPrefix: mergedClsPrefixRef,
+      namespace: namespaceRef,
       previewRef,
       previewWrapperRef,
       previewSrc: src,
@@ -546,7 +547,7 @@ export default defineComponent({
     }
   },
   render() {
-    const { clsPrefix, renderToolbar, withTooltip } = this
+    const { clsPrefix, namespace, renderToolbar, withTooltip } = this
 
     const prevNode = withTooltip(
       <NBaseIcon clsPrefix={clsPrefix} onClick={this.handleSwitchPrev}>
@@ -625,113 +626,125 @@ export default defineComponent({
                 return null
               }
               this.onRender?.()
-              return withDirectives(
-                <div
-                  ref="containerRef"
-                  class={[
-                    `${clsPrefix}-image-preview-container`,
-                    this.themeClass
-                  ]}
-                  style={this.cssVars as CSSProperties}
-                  onWheel={this.handleWheel}
-                >
-                  <Transition name="fade-in-transition" appear={this.appear}>
-                    {{
-                      default: () =>
-                        this.mergedShow ? (
-                          <div
-                            class={`${clsPrefix}-image-preview-overlay`}
-                            onClick={() => this.close()}
-                          />
-                        ) : null
-                    }}
-                  </Transition>
-                  {this.showToolbar ? (
-                    <Transition name="fade-in-transition" appear={this.appear}>
-                      {{
-                        default: () => {
-                          if (!this.mergedShow)
-                            return null
-                          return (
-                            <div class={`${clsPrefix}-image-preview-toolbar`}>
-                              {renderToolbar ? (
-                                renderToolbar({
-                                  nodes: {
-                                    prev: prevNode,
-                                    next: nextNode,
-                                    rotateCounterclockwise:
-                                      rotateCounterclockwiseNode,
-                                    rotateClockwise: rotateClockwiseNode,
-                                    resizeToOriginalSize: originalSizeNode,
-                                    zoomOut: zoomOutNode,
-                                    zoomIn: zoomInNode,
-                                    download: downloadNode,
-                                    close: closeNode
-                                  }
-                                })
-                              ) : (
-                                <>
-                                  {this.onPrev ? (
+              return (
+                <div class={[`${clsPrefix}-image-preview-provider`, namespace]}>
+                  {withDirectives(
+                    <div
+                      ref="containerRef"
+                      class={[
+                        `${clsPrefix}-image-preview-container`,
+                        this.themeClass
+                      ]}
+                      style={this.cssVars as CSSProperties}
+                      onWheel={this.handleWheel}
+                    >
+                      <Transition
+                        name="fade-in-transition"
+                        appear={this.appear}
+                      >
+                        {{
+                          default: () =>
+                            this.mergedShow ? (
+                              <div
+                                class={`${clsPrefix}-image-preview-overlay`}
+                                onClick={() => this.close()}
+                              />
+                            ) : null
+                        }}
+                      </Transition>
+                      {this.showToolbar ? (
+                        <Transition
+                          name="fade-in-transition"
+                          appear={this.appear}
+                        >
+                          {{
+                            default: () => {
+                              if (!this.mergedShow)
+                                return null
+                              return (
+                                <div
+                                  class={`${clsPrefix}-image-preview-toolbar`}
+                                >
+                                  {renderToolbar ? (
+                                    renderToolbar({
+                                      nodes: {
+                                        prev: prevNode,
+                                        next: nextNode,
+                                        rotateCounterclockwise:
+                                          rotateCounterclockwiseNode,
+                                        rotateClockwise: rotateClockwiseNode,
+                                        resizeToOriginalSize: originalSizeNode,
+                                        zoomOut: zoomOutNode,
+                                        zoomIn: zoomInNode,
+                                        download: downloadNode,
+                                        close: closeNode
+                                      }
+                                    })
+                                  ) : (
                                     <>
-                                      {prevNode}
-                                      {nextNode}
+                                      {this.onPrev ? (
+                                        <>
+                                          {prevNode}
+                                          {nextNode}
+                                        </>
+                                      ) : null}
+                                      {rotateCounterclockwiseNode}
+                                      {rotateClockwiseNode}
+                                      {originalSizeNode}
+                                      {zoomOutNode}
+                                      {zoomInNode}
+                                      {downloadNode}
+                                      {closeNode}
                                     </>
-                                  ) : null}
-                                  {rotateCounterclockwiseNode}
-                                  {rotateClockwiseNode}
-                                  {originalSizeNode}
-                                  {zoomOutNode}
-                                  {zoomInNode}
-                                  {downloadNode}
-                                  {closeNode}
-                                </>
-                              )}
-                            </div>
-                          )
-                        }
-                      }}
-                    </Transition>
-                  ) : null}
-                  <Transition
-                    name="fade-in-scale-up-transition"
-                    onAfterLeave={this.handleAfterLeave}
-                    appear={this.appear}
-                    // BUG:
-                    // onEnter will be called twice, I don't know why
-                    // Maybe it is a bug of vue
-                    onEnter={this.syncTransformOrigin}
-                    onBeforeLeave={this.syncTransformOrigin}
-                  >
-                    {{
-                      default: () => {
-                        const { previewedImgProps = {} } = this
-                        return withDirectives(
-                          <div
-                            class={`${clsPrefix}-image-preview-wrapper`}
-                            ref="previewWrapperRef"
-                          >
-                            <img
-                              {...previewedImgProps}
-                              draggable={false}
-                              onMousedown={this.handlePreviewMousedown}
-                              onDblclick={this.handlePreviewDblclick}
-                              class={[
-                                `${clsPrefix}-image-preview`,
-                                previewedImgProps.class
-                              ]}
-                              key={this.previewSrc}
-                              src={this.previewSrc}
-                              ref="previewRef"
-                              onDragstart={this.handleDragStart}
-                            />
-                          </div>,
-                          [[vShow, this.mergedShow]]
-                        )
-                      }
-                    }}
-                  </Transition>
-                </div>,
-                [[zindexable, { enabled: this.mergedShow }]]
+                                  )}
+                                </div>
+                              )
+                            }
+                          }}
+                        </Transition>
+                      ) : null}
+                      <Transition
+                        name="fade-in-scale-up-transition"
+                        onAfterLeave={this.handleAfterLeave}
+                        appear={this.appear}
+                        // BUG:
+                        // onEnter will be called twice, I don't know why
+                        // Maybe it is a bug of vue
+                        onEnter={this.syncTransformOrigin}
+                        onBeforeLeave={this.syncTransformOrigin}
+                      >
+                        {{
+                          default: () => {
+                            const { previewedImgProps = {} } = this
+                            return withDirectives(
+                              <div
+                                class={`${clsPrefix}-image-preview-wrapper`}
+                                ref="previewWrapperRef"
+                              >
+                                <img
+                                  {...previewedImgProps}
+                                  draggable={false}
+                                  onMousedown={this.handlePreviewMousedown}
+                                  onDblclick={this.handlePreviewDblclick}
+                                  class={[
+                                    `${clsPrefix}-image-preview`,
+                                    previewedImgProps.class
+                                  ]}
+                                  key={this.previewSrc}
+                                  src={this.previewSrc}
+                                  ref="previewRef"
+                                  onDragstart={this.handleDragStart}
+                                />
+                              </div>,
+                              [[vShow, this.mergedShow]]
+                            )
+                          }
+                        }}
+                      </Transition>
+                    </div>,
+                    [[zindexable, { enabled: this.mergedShow }]]
+                  )}
+                </div>
               )
             }
           }}

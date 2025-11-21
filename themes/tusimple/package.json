@@ -1,5 +1,5 @@
 {
-  "name": "@naive-ui/tusimple-theme",
+  "name": "@ithinkdt-ui/tusimple-theme",
   "version": "0.2.0",
   "author": "07akioni",
   "license": "MIT",
@@ -10,6 +10,6 @@
     "lib"
   ],
   "peerDependencies": {
-    "naive-ui": "^2.24.6"
+    "ithinkdt-ui": "^2.24.6"
   }
 }

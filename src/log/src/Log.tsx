@@ -38,8 +38,8 @@ export interface LogInst {
   scrollTo: ((options: {
     silent?: boolean
     position: 'top' | 'bottom'
-  }) => void)
-  & ((options: { silent?: boolean, top: number }) => void)
+  }) => void) &
+  ((options: { silent?: boolean, top: number }) => void)
 }
 
 export const logProps = {

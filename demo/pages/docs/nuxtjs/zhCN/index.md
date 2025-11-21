@@ -6,20 +6,20 @@
 
 ## Nuxt.js 示例
 
-参考[例子](https://github.com/07akioni/naive-ui-nuxt-demo)。
+参考[例子](https://github.com/07akioni/ithinkdt-ui-nuxt-demo)。
 
 ## 使用 Nuxt Module
 
 这和上一个示例使用的是同样的方式。
 
-在你的 Nuxt 应用中使用下列命令安装此[模块](https://github.com/07akioni/nuxtjs-naive-ui)：
+在你的 Nuxt 应用中使用下列命令安装此[模块](https://github.com/07akioni/nuxtjs-ithinkdt-ui)：
 
 ```bash
 # npm
-npx nuxi module add nuxtjs-naive-ui
+npx nuxi module add nuxtjs-ithinkdt-ui
 
 # pnpm
-pnpm dlx nuxi module add nuxtjs-naive-ui
+pnpm dlx nuxi module add nuxtjs-ithinkdt-ui
 ```
 
 ## 在 Nuxt 中使用自动引入
@@ -33,13 +33,13 @@ import Components from 'unplugin-vue-components/vite'
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  modules: ['nuxtjs-naive-ui'],
+  modules: ['nuxtjs-ithinkdt-ui'],
   vite: {
     plugins: [
       AutoImport({
         imports: [
           {
-            'naive-ui': [
+            'ithinkdt-ui': [
               'useDialog',
               'useMessage',
               'useNotification',

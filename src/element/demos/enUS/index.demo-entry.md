@@ -1,6 +1,6 @@
 # Element
 
-Element has many theme variables provided by Naive UI.
+Element has many theme variables provided by iThinkDT UI.
 
 ## Demos
 

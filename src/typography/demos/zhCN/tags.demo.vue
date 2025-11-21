@@ -1,7 +1,7 @@
 <markdown>
 # 标签
 
-其他的 Naive UI 内置标签。
+其他的 iThinkDT UI 内置标签。
 </markdown>
 
 <template>

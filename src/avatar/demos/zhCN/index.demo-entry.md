@@ -32,6 +32,7 @@ rtl-debug.vue
 | intersection-observer-options | `{ root?: Element \| Document \| string \| null, rootMargin?: string, threshold?: number \| number[]; }` | `undefined` | `lazy=true` 时 intersection observer 观测的配置 | 2.31.0 |
 | lazy | `boolean` | `false` | 是否让图片进入视口再加载，单独使用将设置为[HTMLImageElement.loading](https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/loading) 的属性值；也可配合 `intersection-observer-options` 配置实现懒加载 | 2.31.0 |
 | object-fit | `'fill' \| 'contain' \| 'cover' \| 'none' \| 'scale-down'` | `'fill'` | 头像的图片在容器内的的适应类型 |  |
+| radix | `number` | `0.9` | 文本内容缩放系数 | iThinkDT 1.5.1 |
 | render-fallback | `() => VNodeChild` | `undefined` | 加载失败的渲染函数 | 2.33.4 |
 | render-placeholder | `() => VNodeChild` | `undefined` | 占位的渲染函数 | 2.33.4 |
 | round | `boolean` | `false` | 头像是否圆形 |  |
@@ -43,7 +44,7 @@ rtl-debug.vue
 
 泛型 `<T extends AvatarGroupOption = AvatarGroupOption>`，自 `2.43.0` 可用。
 
-泛型能力仅在 `.vue` 文件中，`Vue >= 3.3`，通过 `import { NGAvatarGroup } from 'naive-ui/generic'` 可用，否则请使用普通的 `n-avatar-group`。
+泛型能力仅在 `.vue` 文件中，`Vue >= 3.3`，通过 `import { NGAvatarGroup } from 'ithinkdt-ui/generic'` 可用，否则请使用普通的 `n-avatar-group`。
 
 ```ts
 interface AvatarGroupOption {

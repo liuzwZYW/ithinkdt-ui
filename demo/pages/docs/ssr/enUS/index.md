@@ -1,6 +1,6 @@
 # Server-Sider Rendering
 
-Since naive-ui is using CSS in JS, in SSR mode it needs some extra configuration.
+Since ithinkdt-ui is using CSS in JS, in SSR mode it needs some extra configuration.
 
 ## Caveat
 
@@ -29,7 +29,7 @@ See [Vite SSG/SSE](vite-ssge).
 
 ## Vite Example
 
-If you are using Vite, please see [example](https://github.com/07akioni/naive-ui-vite-ssr).
+If you are using Vite, please see [example](https://github.com/07akioni/ithinkdt-ui-vite-ssr).
 
 ## Webpack Example
 
@@ -37,7 +37,7 @@ If you are using Webpack, please see [example](https://github.com/tusen-ai/naive
 
 ## Inline Style Optimization
 
-By default, naive-ui bind inline theme style on components, it may increase SSR rendered HTML size. You may use `inline-theme-disabled` prop on `n-config-provider` to disable it. For pros & cons see `n-config-provider`'s doc.
+By default, ithinkdt-ui bind inline theme style on components, it may increase SSR rendered HTML size. You may use `inline-theme-disabled` prop on `n-config-provider` to disable it. For pros & cons see `n-config-provider`'s doc.
 
 ## Known Issues
 

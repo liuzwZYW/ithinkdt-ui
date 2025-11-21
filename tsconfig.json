@@ -9,7 +9,9 @@
     "module": "ESNext",
     "moduleResolution": "bundler",
     "paths": {
+      "ithinkdt-ui": ["./src"],
       "naive-ui": ["./src"],
+      "ithinkdt-ui/generic": ["./generic"],
       "naive-ui/generic": ["./generic"]
     },
     "resolveJsonModule": true,

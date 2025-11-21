@@ -45,6 +45,8 @@ rtl-debug.vue
 | file-list | `Array<UploadFileInfo>` | `undefined` | 文件列表，如果传入组件会处于受控状态 |  |
 | headers | `Object \| ({ file: UploadFileInfo }) => Object` | `undefined` | HTTP 请求需要附加的 Headers |  |
 | image-group-props | `ImageGroupProps` | `undefined` | Upload 中预览图片组件的属性，参考 [ImageGroup Props](image#ImageGroup-Props) | 2.24.0 |
+| img-props | `ImgHTMLAttributes` | `undefined` | Upload 中图片组件的 `img` 标签属性 | ithinkdt 1.1.1 |
+| previewed-img-props | `ImgHTMLAttributes` | `undefined` | Upload 中预览图片组件 `img` 标签属性 | ithinkdt 1.1.1 |
 | input-props | `InputHTMLAttributes` | `undefined` | file input 元素的属性 | 2.24.2 |
 | is-error-state | `(xhr: XMLHttpRequest) => boolean` | `undefined` | 判断请求是否为异常状态 | 2.29.1 |
 | list-type | `string` | `'text'` | 文件列表的内建样式，`text`、`image` 和 `image-card` |  |
@@ -62,6 +64,7 @@ rtl-debug.vue
 | show-file-list | `boolean` | `true` | 是否显示文件列表 |  |
 | show-preview-button | `boolean` | `true` | 是否允许显示预览按钮（在 `list-type` 为 `image-card` 时生效） |  |
 | show-trigger | `boolean` | `true` | 是否显示触发元素 | 2.21.5 |
+| to | `string \| HTMLElement` | `'body'` | 当 `abstract` 为 `true` 时，input 挂载的目标元素 | iThinkDT 1.8.2 |
 | trigger-class | `string` | `undefined` | 触发器区域的类名 | 2.36.0 |
 | trigger-style | `Object \| string` | `undefined` | 触发器区域的样式 | 2.29.1 |
 | with-credentials | `boolean` | `false` | 是否携带 Cookie |  |
@@ -143,4 +146,4 @@ interface UploadCustomRequestOptions {
 
 ### 其他
 
-1. `uploadDownload`，类型为 `(url: string, name: string | undefined): void`，你可以直接从 naive-ui import 此函数
+1. `uploadDownload`，类型为 `(url: string, name: string | undefined): void`，你可以直接从 ithinkdt-ui import 此函数

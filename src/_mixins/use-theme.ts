@@ -6,6 +6,7 @@ import { useSsrAdapter } from '@css-render/vue3-ssr'
 import { merge } from 'lodash-es'
 import { computed, inject, onBeforeMount } from 'vue'
 import globalStyle from '../_styles/global/index.cssr'
+import { cNS } from '../_utils/cssr'
 import { configProviderInjectionKey } from '../config-provider/src/context'
 import { cssrAnchorMetaName } from './common'
 
@@ -28,15 +29,15 @@ export interface ThemePropsReactive<T> {
   builtinThemeOverrides?: ExtractThemeOverrides<T>
 }
 
-export type ExtractThemeVars<T>
-  = T extends Theme<unknown, infer U, unknown>
+export type ExtractThemeVars<T> =
+  T extends Theme<unknown, infer U, unknown>
     ? unknown extends U // self is undefined, ThemeVars is unknown
       ? Record<string, unknown>
       : U
     : Record<string, unknown>
 
-export type ExtractPeerOverrides<T>
-  = T extends Theme<unknown, unknown, infer V>
+export type ExtractPeerOverrides<T> =
+  T extends Theme<unknown, unknown, infer V>
     ? {
         peers?: {
           [k in keyof V]?: ExtractThemeOverrides<V[k]>
@@ -45,15 +46,15 @@ export type ExtractPeerOverrides<T>
     : T
 
 // V is peers theme
-export type ExtractMergedPeerOverrides<T>
-  = T extends Theme<unknown, unknown, infer V>
+export type ExtractMergedPeerOverrides<T> =
+  T extends Theme<unknown, unknown, infer V>
     ? {
         [k in keyof V]?: ExtractPeerOverrides<V[k]>
       }
     : T
 
-export type ExtractThemeOverrides<T> = Partial<ExtractThemeVars<T>>
-  & ExtractPeerOverrides<T> & { common?: Partial<ThemeCommonVars> }
+export type ExtractThemeOverrides<T> = Partial<ExtractThemeVars<T>> &
+  ExtractPeerOverrides<T> & { common?: Partial<ThemeCommonVars> }
 
 export function createTheme<N extends string, T, R>(
   theme: Theme<N, T, R>
@@ -67,8 +68,8 @@ type UseThemeProps<T> = Readonly<{
   builtinThemeOverrides?: ExtractThemeOverrides<T>
 }>
 
-export type MergedTheme<T>
-  = T extends Theme<unknown, infer V, infer W>
+export type MergedTheme<T> =
+  T extends Theme<unknown, infer V, infer W>
     ? {
         common: ThemeCommonVars
         self: V
@@ -88,13 +89,21 @@ function useTheme<N, T, R>(
   const ssrAdapter = useSsrAdapter()
   const NConfigProvider = inject(configProviderInjectionKey, null)
   if (style) {
+    const nsPrefix = NConfigProvider?.styleIsolate
+      ? NConfigProvider.mergedNamespaceRef.value
+      : undefined
+    if (nsPrefix) {
+      style = cNS(`:where(.${nsPrefix})`, [style])
+    }
+
     const mountStyle = (): void => {
       const clsPrefix = clsPrefixRef?.value
-      style.mount({
-        id: clsPrefix === undefined ? mountId : clsPrefix + mountId,
+      style!.mount({
+        id: `${nsPrefix ? `${nsPrefix}-` : ''}${clsPrefix === undefined ? mountId : clsPrefix + mountId}`,
         head: true,
         props: {
-          bPrefix: clsPrefix ? `.${clsPrefix}-` : undefined
+          bPrefix: clsPrefix ? `.${clsPrefix}-` : undefined,
+          nsPrefix: nsPrefix ? `${nsPrefix}-` : ''
         },
         anchorMetaName: cssrAnchorMetaName,
         ssr: ssrAdapter,

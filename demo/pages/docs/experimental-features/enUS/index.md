@@ -10,7 +10,7 @@
 
 ```html
 <script>
-  import { TsConfigProvider, useDialog, useMessage } from '@naive-ui/tusimple-theme'
+  import { TsConfigProvider, useDialog, useMessage } from '@ithinkdt-ui/tusimple-theme'
 
   // danger typed api
   const dialog = useDialog()

@@ -1042,21 +1042,21 @@ export default defineComponent({
           }}
         </VResizeObserver>
         {this.showDots
-          && dotSlotProps.total > 1
-          && resolveSlotWithTypedProps(dotsSlot, dotSlotProps, () => [
-            <NCarouselDots
-              key={dotType + dotPlacement}
-              total={dotSlotProps.total}
-              currentIndex={dotSlotProps.currentIndex}
-              dotType={dotType}
-              trigger={this.trigger}
-              keyboard={this.keyboard}
-            />
-          ])}
+        && dotSlotProps.total > 1
+        && resolveSlotWithTypedProps(dotsSlot, dotSlotProps, () => [
+          <NCarouselDots
+            key={dotType + dotPlacement}
+            total={dotSlotProps.total}
+            currentIndex={dotSlotProps.currentIndex}
+            dotType={dotType}
+            trigger={this.trigger}
+            keyboard={this.keyboard}
+          />
+        ])}
         {showArrow
-          && resolveSlotWithTypedProps(arrowSlot, arrowSlotProps, () => [
-            <NCarouselArrow />
-          ])}
+        && resolveSlotWithTypedProps(arrowSlot, arrowSlotProps, () => [
+          <NCarouselArrow />
+        ])}
       </div>
     )
   }

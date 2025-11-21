@@ -20,13 +20,14 @@ export default defineComponent({
   <component
     :is="configProvider"
     class="demo"
-    namespace="naive-ui-doc"
+    namespace="ithinkdt-ui-doc"
     preflight-style-disabled
     :theme-name="themeName"
     :theme="theme"
     :locale="locale"
     :date-locale="dateLocale"
     :hljs="hljs"
+    style-isolate
   >
     <n-theme-editor :style="themeEditorStyle">
       <n-loading-bar-provider>

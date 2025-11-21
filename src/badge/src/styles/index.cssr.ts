@@ -9,7 +9,7 @@ import { c, cB, cM } from '../../../_utils/cssr'
 // --n-font-size
 // --n-font-family
 export default c([
-  c('@keyframes badge-wave-spread', {
+  c(({ props }) => `@keyframes ${props.nsPrefix}badge-wave-spread`, {
     from: {
       boxShadow: '0 0 0.5px 0px var(--n-ripple-color)',
       opacity: 0.6
@@ -74,14 +74,14 @@ export default c([
         transformOrigin: 'left bottom',
         originalTransform: 'translateX(-50%)'
       }),
-      cB('base-wave', {
+      cB('base-wave', ({ props }) => ({
         zIndex: 1,
         animationDuration: '2s',
         animationIterationCount: 'infinite',
         animationDelay: '1s',
         animationTimingFunction: 'var(--n-ripple-bezier)',
-        animationName: 'badge-wave-spread'
-      }),
+        animationName: `${props.nsPrefix}badge-wave-spread`
+      })),
       c('&::before', `
         opacity: 0;
         transform: scale(1);

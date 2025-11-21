@@ -208,10 +208,10 @@ export default c([
               max-width .2s var(--n-bezier);
           `, [
             cM('processing', [
-              c('&::after', `
+              c('&::after', ({ props }) => `
                 content: "";
                 background-image: var(--n-line-bg-processing);
-                animation: progress-processing-animation 2s var(--n-bezier) infinite;
+                animation: ${props.nsPrefix}progress-processing-animation 2s var(--n-bezier) infinite;
               `)
             ])
           ])
@@ -219,7 +219,7 @@ export default c([
       ])
     ])
   ]),
-  c('@keyframes progress-processing-animation', `
+  c(({ props }) => `@keyframes ${props.nsPrefix}progress-processing-animation`, `
     0% {
       position: absolute;
       left: 0;

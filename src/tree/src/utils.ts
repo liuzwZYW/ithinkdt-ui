@@ -41,9 +41,9 @@ export function keysWithFilter(
   childrenField: string,
   filter: (pattern: string, node: TreeOption) => boolean
 ): {
-  expandedKeys: Key[]
-  highlightKeySet: Set<Key>
-} {
+    expandedKeys: Key[]
+    highlightKeySet: Set<Key>
+  } {
   const keys = new Set<Key>()
   const highlightKeySet = new Set<Key>()
   const path: TreeOption[] = []
@@ -90,10 +90,10 @@ export function filterTree(
   keyField: string,
   childrenField: string
 ): {
-  filteredTree: TreeOption[]
-  expandedKeys: Key[]
-  highlightKeySet: Set<Key>
-} {
+    filteredTree: TreeOption[]
+    expandedKeys: Key[]
+    highlightKeySet: Set<Key>
+  } {
   const visitedTailKeys = new Set<Key>()
   const visitedNonTailKeys = new Set<Key>()
   const highlightKeySet = new Set<Key>()

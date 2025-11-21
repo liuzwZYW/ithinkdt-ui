@@ -45,7 +45,10 @@ export default c([
       leaveToProps: {
         transform: 'scale(0.85)'
       }
-    })
+    }),
+    c('> *', `
+      pointer-events: all;
+    `)
   ]),
   cB('message', `
     box-sizing: border-box;

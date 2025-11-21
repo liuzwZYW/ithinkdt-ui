@@ -1,7 +1,7 @@
 <markdown>
 # Use built-in scrollbar
 
-Sometimes you will find native scrollbar doesn't meet the style of naive-ui. You can use built-in scrollbar of naive-ui (on `n-layout-sider`, `n-layout` or `n-content`).
+Sometimes you will find native scrollbar doesn't meet the style of ithinkdt-ui. You can use built-in scrollbar of ithinkdt-ui (on `n-layout-sider`, `n-layout` or `n-content`).
 </markdown>
 
 <template>

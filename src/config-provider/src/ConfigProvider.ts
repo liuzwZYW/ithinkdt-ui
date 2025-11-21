@@ -16,9 +16,18 @@ import type { Katex } from './katex'
 import { hash } from 'css-render'
 import { merge } from 'lodash-es'
 import { useMemo } from 'vooks'
-import { computed, defineComponent, h, inject, markRaw, provide } from 'vue'
+import {
+  computed,
+  defineComponent,
+  h,
+  inject,
+  markRaw,
+  onMounted,
+  provide,
+  watchEffect
+} from 'vue'
 import { defaultClsPrefix } from '../../_mixins'
-import { warn } from '../../_utils'
+import { warn, warnOnce } from '../../_utils'
 import { configProviderInjectionKey } from './context'
 
 export const configProviderProps = {
@@ -31,6 +40,10 @@ export const configProviderProps = {
   locale: Object as PropType<NLocale | null>,
   dateLocale: Object as PropType<NDateLocale | null>,
   namespace: String,
+  styleIsolate: {
+    type: Boolean as PropType<boolean | undefined>,
+    default: undefined
+  },
   rtl: Array as PropType<RtlProp>,
   tag: {
     type: String,
@@ -109,6 +122,25 @@ export default defineComponent({
         ? NConfigProvider?.mergedNamespaceRef.value
         : namespace
     })
+
+    const styleIsolate = props.styleIsolate || NConfigProvider?.styleIsolate
+    if (styleIsolate && __DEV__) {
+      onMounted(() => {
+        watchEffect(() => {
+          if (!props.abstract || !mergedNamespaceRef.value)
+            return
+          const hasNamespaceContainer
+            = document.querySelector(`.${mergedNamespaceRef.value}`) !== null
+          if (!hasNamespaceContainer) {
+            warnOnce(
+              'config-provider',
+              `When use \`style-isolate\` and \`abstract\`, container element need class \`${mergedNamespaceRef.value}\`.`
+            )
+          }
+        })
+      })
+    }
+
     const mergedBorderedRef = useMemo(() => {
       const { bordered } = props
       return bordered === undefined
@@ -220,14 +252,16 @@ export default defineComponent({
       mergedThemeOverridesRef,
       inlineThemeDisabled: inlineThemeDisabled || false,
       preflightStyleDisabled: preflightStyleDisabled || false,
-      styleMountTarget
+      styleMountTarget,
+      styleIsolate: styleIsolate || false
     })
     return {
       mergedClsPrefix: mergedClsPrefixRef,
       mergedBordered: mergedBorderedRef,
       mergedNamespace: mergedNamespaceRef,
       mergedTheme: mergedThemeRef,
-      mergedThemeOverrides: mergedThemeOverridesRef
+      mergedThemeOverrides: mergedThemeOverridesRef,
+      styleIsolate
     }
   },
   render() {
@@ -235,7 +269,10 @@ export default defineComponent({
       ? h(
           this.as || this.tag,
           {
-            class: `${this.mergedClsPrefix || defaultClsPrefix}-config-provider`
+            class: [
+              this.styleIsolate ? this.mergedNamespace : undefined,
+              `${this.mergedClsPrefix || defaultClsPrefix}-config-provider`
+            ]
           },
           this.$slots.default?.()
         )

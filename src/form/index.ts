@@ -1,9 +1,12 @@
 export { formProps, default as NForm } from './src/Form'
 export type { FormProps } from './src/Form'
+export { formBorderProps, default as NFormBorder } from './src/FormBorder'
+export type { FormBorderProps, FormBorderSlots } from './src/FormBorder'
 export { formItemProps, default as NFormItem } from './src/FormItem'
 export type { FormItemProps } from './src/FormItem'
 // deprecated
 export { default as NFormItemCol } from './src/FormItemCol'
+
 export type { FormItemColProps } from './src/FormItemCol'
 export {
   formItemGiProps,
@@ -11,19 +14,20 @@ export {
   default as NFormItemGi,
   default as NFormItemGridItem
 } from './src/FormItemGridItem'
-
 export type {
   FormItemGiProps,
   FormItemGiProps as FormItemGridItemProps
 } from './src/FormItemGridItem'
 export { default as NFormItemRow } from './src/FormItemRow'
+
 export type { FormItemRowProps } from './src/FormItemRow'
+
 export type {
+  FormBorderInst,
   FormInst,
   FormItemInst,
   FormItemRule,
   FormRules,
   FormValidationError
 } from './src/interface'
-
 export type * from './src/public-types'

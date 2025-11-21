@@ -39,7 +39,7 @@ function onCreate() {
       <div style="display: flex">
         <!--
           Usually, the path change will cause the form-item verification content
-          or rules to be changed, so naive-ui will clear the existing
+          or rules to be changed, so ithinkdt-ui will clear the existing
           verification effect. But this example is a special case, as we know
           the changes in path will not change form-item verification result and
           rules, so set ignore-path-change on form-item

@@ -1,7 +1,7 @@
 <markdown>
 # Tags
 
-Other naive-ui built-in tags.
+Other ithinkdt-ui built-in tags.
 </markdown>
 
 <template>

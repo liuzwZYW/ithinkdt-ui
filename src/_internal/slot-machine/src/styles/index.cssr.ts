@@ -4,7 +4,7 @@ import { c, cB, cE, cM } from '../../../../_utils/cssr'
 
 // ease-out: cubic-bezier(0, 0, .2, 1)
 export default c([
-  c('@keyframes n-base-slot-machine-fade-up-in', `
+  c(({ props }) => `@keyframes ${props.nsPrefix}n-base-slot-machine-fade-up-in`, `
     from {
       transform: translateY(60%);
       opacity: 0;
@@ -14,7 +14,7 @@ export default c([
       opacity: 1;
     }
   `),
-  c('@keyframes n-base-slot-machine-fade-down-in', `
+  c(({ props }) => `@keyframes ${props.nsPrefix}n-base-slot-machine-fade-down-in`, `
     from {
       transform: translateY(-60%);
       opacity: 0;
@@ -24,7 +24,7 @@ export default c([
       opacity: 1;
     }
   `),
-  c('@keyframes n-base-slot-machine-fade-up-out', `
+  c(({ props }) => `@keyframes ${props.nsPrefix}n-base-slot-machine-fade-up-out`, `
     from {
       transform: translateY(0%);
       opacity: 1;
@@ -34,7 +34,7 @@ export default c([
       opacity: 0;
     }
   `),
-  c('@keyframes n-base-slot-machine-fade-down-out', `
+  c(({ props }) => `@keyframes ${props.nsPrefix}n-base-slot-machine-fade-down-out`, `
     from {
       transform: translateY(0%);
       opacity: 1;
@@ -74,14 +74,14 @@ export default c([
         cM('bottom', {
           transform: 'translateY(100%)'
         }),
-        cM('down-scroll', {
-          animation: 'n-base-slot-machine-fade-down-out .2s cubic-bezier(0, 0, .2, 1)',
+        cM('down-scroll', ({ props }) => ({
+          animation: `${props.nsPrefix}n-base-slot-machine-fade-down-out .2s cubic-bezier(0, 0, .2, 1)`,
           animationIterationCount: 1
-        }),
-        cM('up-scroll', {
-          animation: 'n-base-slot-machine-fade-up-out .2s cubic-bezier(0, 0, .2, 1)',
+        })),
+        cM('up-scroll', ({ props }) => ({
+          animation: `${props.nsPrefix}n-base-slot-machine-fade-up-out .2s cubic-bezier(0, 0, .2, 1)`,
           animationIterationCount: 1
-        })
+        }))
       ]),
       cB('base-slot-machine-current-number', `
         display: inline-block;
@@ -94,14 +94,14 @@ export default c([
         transform: translateY(0);
         width: .6em;
       `, [
-        cM('down-scroll', {
-          animation: 'n-base-slot-machine-fade-down-in .2s cubic-bezier(0, 0, .2, 1)',
+        cM('down-scroll', ({ props }) => ({
+          animation: `${props.nsPrefix}n-base-slot-machine-fade-down-in .2s cubic-bezier(0, 0, .2, 1)`,
           animationIterationCount: 1
-        }),
-        cM('up-scroll', {
-          animation: 'n-base-slot-machine-fade-up-in .2s cubic-bezier(0, 0, .2, 1)',
+        })),
+        cM('up-scroll', ({ props }) => ({
+          animation: `${props.nsPrefix}n-base-slot-machine-fade-up-in .2s cubic-bezier(0, 0, .2, 1)`,
           animationIterationCount: 1
-        }),
+        })),
         cE('inner', `
             display: inline-block;
             position: absolute;

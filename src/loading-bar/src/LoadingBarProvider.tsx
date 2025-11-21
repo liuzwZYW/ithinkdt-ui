@@ -90,25 +90,43 @@ export default defineComponent({
         }
       }
     }
-    const { mergedClsPrefixRef } = useConfig(props)
+    const { mergedClsPrefixRef, namespaceRef } = useConfig(props)
     provide(loadingBarApiInjectionKey, methods)
     provide(loadingBarProviderInjectionKey, {
       props,
       mergedClsPrefixRef
     })
     return Object.assign(methods, {
-      loadingBarRef
+      loadingBarRef,
+      mergedClsPrefix: mergedClsPrefixRef,
+      namespace: namespaceRef
     })
   },
   render() {
     return (
       <>
         <Teleport disabled={this.to === false} to={this.to || 'body'}>
-          <NLoadingBar
-            ref="loadingBarRef"
-            containerStyle={this.containerStyle}
-            containerClass={this.containerClass}
-          />
+          <div
+            class={[
+              `${this.mergedClsPrefix}-loading-bar-provider`,
+              this.namespace
+            ]}
+            style={`
+              position: absolute;
+              left: 0;
+              right: 0;
+              top: 0;
+              bottom: 0;
+              pointer-events: none;
+            `}
+            role="none"
+          >
+            <NLoadingBar
+              ref="loadingBarRef"
+              containerStyle={this.containerStyle}
+              containerClass={this.containerClass}
+            />
+          </div>
         </Teleport>
         {this.$slots.default?.()}
       </>

@@ -155,10 +155,10 @@ export default c([
       animation-duration: var(--n-ripple-duration);
       animation-timing-function: var(--n-bezier-ease-out), var(--n-bezier-ease-out);
     `, [
-      cM('active', {
+      cM('active', ({ props }) => ({
         zIndex: 1,
-        animationName: 'button-wave-spread, button-wave-opacity'
-      })
+        animationName: `${props.nsPrefix}button-wave-spread, ${props.nsPrefix}button-wave-opacity`
+      }))
     ]),
     (isBrowser && 'MozBoxSizing' in document.createElement('div').style)
       ? c('&::moz-focus-inner', {
@@ -238,7 +238,7 @@ export default c([
       opacity: 'var(--n-opacity-disabled)'
     })
   ]),
-  c('@keyframes button-wave-spread', {
+  c(({ props }) => `@keyframes ${props.nsPrefix}button-wave-spread`, {
     from: {
       boxShadow: '0 0 0.5px 0 var(--n-ripple-color)'
     },
@@ -247,7 +247,7 @@ export default c([
       boxShadow: '0 0 0.5px 4.5px var(--n-ripple-color)'
     }
   }),
-  c('@keyframes button-wave-opacity', {
+  c(({ props }) => `@keyframes ${props.nsPrefix}button-wave-opacity`, {
     from: {
       opacity: 'var(--n-wave-opacity)'
     },

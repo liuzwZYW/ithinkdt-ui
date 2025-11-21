@@ -42,12 +42,12 @@ export type RenderPrefix = RenderTreePart
 
 export type RenderSuffix = RenderTreePart
 
-export type TreeOverrideNodeClickBehaviorReturn
-  = | 'toggleSelect'
-    | 'toggleExpand'
-    | 'toggleCheck'
-    | 'default'
-    | 'none'
+export type TreeOverrideNodeClickBehaviorReturn =
+  | 'toggleSelect'
+  | 'toggleExpand'
+  | 'toggleCheck'
+  | 'default'
+  | 'none'
 
 export type TreeOverrideNodeClickBehavior = (info: {
   option: TreeOption
@@ -170,6 +170,7 @@ export interface TreeInst {
   scrollTo: VirtualListScrollTo
   getCheckedData: () => { keys: Key[], options: Array<TreeOption | null> }
   getIndeterminateData: () => { keys: Key[], options: Array<TreeOption | null> }
+  setDragStart: (node: TreeOption | null) => boolean
 }
 
 export type GetChildren = (option: any) => unknown

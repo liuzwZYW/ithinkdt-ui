@@ -12,7 +12,7 @@
 
 ```html
 <template>
-  <n-button>naive-ui</n-button>
+  <n-button>ithinkdt-ui</n-button>
 </template>
 
 <script>
@@ -31,7 +31,7 @@
 
 ```html
 <template>
-  <n-button>naive-ui</n-button>
+  <n-button>ithinkdt-ui</n-button>
 </template>
 
 <script setup>
@@ -59,7 +59,7 @@ app.use(naive)
 
 ```html
 <template>
-  <n-button>naive-ui</n-button>
+  <n-button>ithinkdt-ui</n-button>
 </template>
 ```
 
@@ -72,7 +72,7 @@ app.use(naive)
 {
   "compilerOptions": {
     // ...
-    "types": ["naive-ui/volar"]
+    "types": ["ithinkdt-ui/volar"]
   }
 }
 ```

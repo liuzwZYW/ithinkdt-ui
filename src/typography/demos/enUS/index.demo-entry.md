@@ -1,6 +1,6 @@
 # Typography
 
-Naive UI provides some HTML text styling.
+iThinkDT UI provides some HTML text styling.
 
 Typography is an art.
 
