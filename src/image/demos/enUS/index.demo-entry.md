@@ -25,7 +25,7 @@ component-preview-group.vue
 ### Image Props
 
 | Name | Type | Default | Description | Version |
-| --- | --- | --- | --- | --- |
+| --- | --- | --- | --- | --- | --- |
 | alt | `string` | `undefined` | Image alt information. |  |
 | fallback-src | `string` | `undefined` | URL to show when the image fails to load. |  |
 | height | `string \| number` | `undefined` | Image height. |  |
@@ -43,11 +43,12 @@ component-preview-group.vue
 | width | `string \| number` | `undefined` | Image width. |  |
 | on-error | `(e: Event) => void` | `undefined` | Callback executed when the image fails to load. |  |
 | on-load | `(e: Event) => void` | `undefined` | Callback executed after the image is loaded. |  |
+| on-preview-download | `(imgSrc: string | undefined) => void` | `undefined` | Callback executed when clicking the download button in the preview mode. | iThinkDT 1.8.2 |
 
 ### ImageGroup Props
 
 | Name | Type | Default | Description | Version |
-| --- | --- | --- | --- | --- |
+| --- | --- | --- | --- | --- | --- |
 | current | `number` | `undefined` | The subscript of the currently displayed image. | 2.43.0 |
 | default-current | `number` | `0` | The subscript of the default displayed image. | 2.43.0 |
 | default-show | `boolean` | `false` | Whether to show the preview big image by default. | 2.43.0 |
@@ -58,13 +59,14 @@ component-preview-group.vue
 | src-list | `string[]` | `undefined` | Picture src list. | 2.43.0 |
 | on-preview-next | `() => void` | `undefined` | Click the callback on the next slide. |
 | on-preview-prev | `() => void` | `undefined` | Click the callback from the previous slide. |  |
+| on-preview-download | `(imgSrc: string | undefined) => void` | `undefined` | Callback executed when clicking the download button in the preview mode. | iThinkDT 1.8.2 |
 | on-update:current | `(value: number) => void` | `undefined` | Callback on currently displayed image changes. | 2.43.0 |
 | on-update:show | `(value: boolean) => void` | `undefined` | Callback on show status changes. | 2.43.0 |
 
 ### ImagePreview Props
 
 | Name | Type | Default | Description | Version |
-| --- | --- | --- | --- | --- |
+| --- | --- | --- | --- | --- | --- |
 | default-show | `boolean` | `false` | Whether to show the preview big image by default. | 2.43.0 |
 | render-toolbar | `(props: { nodes: { prev: VNode, next: VNode, rotateCounterclockwise: VNode, rotateClockwise: VNode, resizeToOriginalSize: VNode, zoomOut: VNode, zoomIn: VNode, download: VNode, close: VNode } }) => VNodeChild` | `undefined` | Toolbar rendering function. | 2.43.0 |
 | show | `boolean` | `undefined` | Whether to the show preview big image. | 2.43.0 |
@@ -72,6 +74,7 @@ component-preview-group.vue
 | show-toolbar-tooltip | `boolean` | `false` | Whether to show toolbar buttons' tooltip. | 2.43.0 |
 | src | `string` | `undefined` | Image source. | 2.43.0 |
 | on-close | `() => void` | `undefined` | Callback when close the preview of the image. | 2.43.0 |
+| on-download | `(imgSrc: string | undefined) => void` | `undefined` | Callback executed when clicking the download button. | iThinkDT 1.8.2 |
 | on-update:show | `(value: boolean) => void` | `undefined` | Callback on show status changes. | 2.43.0 |
 
 ### Image Slots

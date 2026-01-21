@@ -16,6 +16,7 @@ export const imagePreviewSharedProps = {
   ...(useTheme.props as ThemeProps<ImageTheme>),
   onPreviewPrev: Function as PropType<() => void>,
   onPreviewNext: Function as PropType<() => void>,
+  onPreviewDownload: Function as PropType<(imgSrc: string | undefined) => void>,
   showToolbar: { type: Boolean, default: true },
   showToolbarTooltip: Boolean,
   renderToolbar: Function as PropType<ImageRenderToolbar>

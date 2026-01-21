@@ -59,6 +59,7 @@ export const imagePreviewProps = {
   >,
   onNext: Function as PropType<() => void>,
   onPrev: Function as PropType<() => void>,
+  onDownload: Function as PropType<(imgSrc: string | undefined) => void>,
   onClose: [Function, Array] as PropType<MaybeArray<() => void>>
 }
 
@@ -389,7 +390,10 @@ export default defineComponent({
 
     function handleDownloadClick(): void {
       const imgSrc = src.value
-      if (imgSrc) {
+      if (props.onDownload) {
+        props.onDownload(imgSrc)
+      }
+      else if (imgSrc) {
         download(imgSrc, undefined)
       }
     }

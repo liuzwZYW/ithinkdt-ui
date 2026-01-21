@@ -248,6 +248,7 @@ export default defineComponent({
             src={this.mergedPreviewSrc}
             show={!this.previewDisabled && this.previewShow}
             onClose={this.onPreviewClose}
+            onDownload={this.onPreviewDownload}
           >
             {{
               default: () => imgNode
