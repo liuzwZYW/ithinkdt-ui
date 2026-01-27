@@ -2,13 +2,23 @@
 
 ## Next Version
 
+## 1.8.3 [naive: 2.43.2] (2026-01-27)
+
+### Features
+
+- `n-grid` expose `collapsedOverflow`
+
 ## 1.8.2 [naive: 2.43.2] (2026-01-21)
+
+### Features
 
 - `n-image` 新增参数 `onPreviewDownload`，点击下载执行的回调，若不传则执行默认下载
 
 ## 1.8.1 [naive: 2.43.2] (2025-11-18)
 
 - 同步 naive-ui `2.43.2`
+
+### Features
 
 - `n-upload` 新增参数 `to`，当 `abstract` 为 `true` 时，指定上传组件挂载的目标元素
 
@@ -17,6 +27,8 @@
 - 同步 naive-ui `2.43.1`
 
 ## 1.7.3 [naive: 2.42.0] (2025-08-12)
+
+### Features
 
 - `n-tree` 暴露 `setDragStart`，以支持跨窗口拖拽
 
@@ -30,13 +42,19 @@
 
 ## 1.6.5 [naive: 2.41.1] (2025-07-15)
 
+### Fixes
+
 - 修复 `n-image` 预览工具条的样式
 
 ## 1.6.4 [naive: 2.41.1] (2025-07-15)
 
+### Fixes
+
 - 修复 `n-image` 预览支持 namespace
 
 ## 1.6.3 [naive: 2.41.1] (2025-06-17)
+
+### Features
 
 - `n-form-border` 新增组件
 
@@ -46,25 +64,37 @@
 
 ## 1.5.6 [naive: 2.40.1] (2024-10-12)
 
+### Features
+
 - `styleIsolate` 样式隔离时，内部组件被挂载于其他位置的 DOM 的类名
 
 ## 1.5.5 [naive: 2.40.1] (2024-10-12)
+
+### Features
 
 - `styleIsolate` 样式隔离时，特殊处理 `@` 定义。如 `@keyframes`
 
 ## 1.5.4 [naive: 2.40.1] (2024-10-08)
 
+### Features
+
 - `n-scrollbar` 添加参数 `abstract`，是否包裹 DOM 元素
 
 ## 1.5.3 [naive: 2.40.1] (2024-10-08)
+
+### Fixes
 
 - `n-scrollbar` 修复默认插槽参数错误
 
 ## 1.5.2 [naive: 2.40.1] (2024-10-08)
 
+### Features
+
 - `n-scrollbar` 默认插槽传递 `container` 和 `content` 的属性
 
 ## 1.5.1 [naive: 2.40.1] (2024-10-08)
+
+### Features
 
 - `n-avator` 添加参数 `radix`，文本内容的缩放系数
 
@@ -72,35 +102,51 @@
 
 - 同步 naive-ui `2.40.1`
 
+### Features
+
 - `date-fns` 的 locale 资源直接从对应文件导入
 
 ## 1.4.6 [naive: 2.39.0] (2024-09-10)
+
+### Features
 
 - `n-config-provider` 的 `style-isolate` 生效时使用 `:where(.${namespace})`
 
 ## 1.4.5 [naive: 2.39.0] (2024-08-23)
 
+### Features
+
 - `use-style` 添加参数 `styleIsolate`，可单独控制是否隔离
 
 ## 1.4.4 [naive: 2.39.0] (2024-08-08)
+
+### Features
 
 - `n-config-provider` 添加 `style-isolate` 属性控制 `namespace` 是否应用到内部组件
 
 ## 1.4.3 [naive: 2.39.0] (2024-08-08)
 
+### Features
+
 - `n-config-provider` 的 `namespace` 应用到内部组件 style 标签的 `cssr-id`
 
 ## 1.4.2 [naive: 2.39.0] (2024-08-08)
 
+### Features
+
 - `n-config-provider` 的 `namespace` 应用到组件 style 标签的 `cssr-id`
 
 ## 1.4.1 [naive: 2.39.0] (2024-08-07)
+
+### Fixes
 
 - 修复 `date-fns` 打包
 
 ## 1.4.0 [naive: 2.39.0] (2024-08-07)
 
 - 同步 naive-ui `2.39.0`
+
+### Features
 
 - `n-config-provider` 的 `namespace` 渲染到 NConfigProvider 的 class 中
 
