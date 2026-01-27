@@ -113,6 +113,7 @@ export default defineComponent({
       beforeNextFrameOnce(handleResize, entry)
     }
     const overflowRef = ref(false)
+    const collapsedOverflowRef = ref(false)
     const handleResizeRef = computed<VResizeObserverOnResize | undefined>(
       () => {
         if (props.responsive === 'self') {
@@ -169,7 +170,8 @@ export default defineComponent({
       responsiveQuery: responsiveQueryRef,
       responsiveCols: responsiveColsRef,
       handleResize: handleResizeRef,
-      overflow: overflowRef
+      overflow: overflowRef,
+      collapsedOverflow: collapsedOverflowRef
     }
   },
   render() {
@@ -190,6 +192,7 @@ export default defineComponent({
 
     const renderContent = (): VNode => {
       this.overflow = false
+      this.collapsedOverflow = false
 
       // render will be called twice when mounted, I can't figure out why
       // 2 jobs will be pushed into job queues with same id, and then be flushed
@@ -267,9 +270,13 @@ export default defineComponent({
 
       let spanCounter = 0
       let done = false
+      let collapsedDone = false
       for (const { child, rawChildSpan } of childrenAndRawSpan) {
         if (done) {
           this.overflow = true
+        }
+        if (collapsedDone) {
+          this.collapsedOverflow = true
         }
 
         if (!done) {
@@ -291,7 +298,7 @@ export default defineComponent({
             child.props.privateSpan = childSpan
             child.props.privateOffset = childOffset
           }
-          if (collapsed) {
+          if (!done) {
             const remainder = spanCounter % responsiveCols
             if (childSpan + remainder > responsiveCols) {
               spanCounter += responsiveCols - remainder
@@ -300,7 +307,10 @@ export default defineComponent({
               childSpan + spanCounter + suffixSpan
               > collapsedRows * responsiveCols
             ) {
-              done = true
+              collapsedDone = true
+              if (collapsed) {
+                done = true
+              }
             }
             else {
               spanCounter += childSpan
