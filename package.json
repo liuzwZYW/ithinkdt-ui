@@ -1,6 +1,6 @@
 {
   "name": "ithinkdt-ui",
-  "version": "1.8.4",
+  "version": "1.8.5",
   "naiveVersion": "2.43.2",
   "packageManager": "pnpm@10.29.2",
   "description": "Forked from Naive UI. A Vue 3 Component Library. Fairly Complete, Theme Customizable, Uses TypeScript, Fast",
