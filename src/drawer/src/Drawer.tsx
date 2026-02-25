@@ -14,6 +14,7 @@ import {
   ref,
   toRef,
   Transition,
+  watch,
   watchEffect,
   withDirectives
 } from 'vue'
@@ -171,8 +172,19 @@ export default defineComponent({
     )
 
     const uncontrolledWidthRef = ref<string | number>(props.defaultWidth)
+    watch(
+      () => props.defaultWidth,
+      (value) => {
+        uncontrolledWidthRef.value = value
+      }
+    )
     const uncontrolledHeightRef = ref<string | number>(props.defaultHeight)
-
+    watch(
+      () => props.defaultHeight,
+      (value) => {
+        uncontrolledHeightRef.value = value
+      }
+    )
     const mergedWidthRef = useMergedState(
       toRef(props, 'width'),
       uncontrolledWidthRef
