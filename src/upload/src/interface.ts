@@ -14,10 +14,10 @@ import { createInjectionKey } from '../../_utils'
 
 export type ShouldUseThumbnailUrl = (file: UploadSettledFileInfo) => boolean
 
-export type FuncOrRecordOrUndef<T = string> =
-  | Record<string, T>
-  | (({ file }: { file: UploadSettledFileInfo }) => Record<string, T>)
-  | undefined
+export type FuncOrRecordOrUndef<T = string>
+  = | Record<string, T>
+    | (({ file }: { file: UploadSettledFileInfo }) => Record<string, T>)
+    | undefined
 
 export interface UploadInternalInst {
   doChange: DoChange
@@ -74,7 +74,7 @@ export interface UploadInjection {
   triggerStyleRef: Ref<CSSProperties | string | undefined>
   doChange: DoChange
   onRender: undefined | (() => void)
-  submit: (fileId?: string) => void
+  submit: (options?: { fileId?: string, retry?: boolean }) => void
   onRetryRef: Ref<undefined | OnRetry>
   shouldUseThumbnailUrlRef: Ref<ShouldUseThumbnailUrl>
   getFileThumbnailUrlResolver: (

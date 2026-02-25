@@ -12,6 +12,7 @@ import type { ThemeProps } from '../../_mixins'
 import type { ExtractPublicPropTypes, MaybeArray } from '../../_utils'
 import type { ButtonTheme } from '../styles'
 import type { Size, Type } from './interface'
+import type { ButtonSpinProps } from './public-types'
 import { changeColor } from 'seemly'
 import { useMemo } from 'vooks'
 import { computed, defineComponent, h, inject, ref, watchEffect } from 'vue'
@@ -87,7 +88,8 @@ export const buttonProps = {
   nativeFocusBehavior: {
     type: Boolean,
     default: !isSafari
-  }
+  },
+  spinProps: Object as PropType<ButtonSpinProps>
 } as const
 
 export type ButtonProps = ExtractPublicPropTypes<typeof buttonProps>
@@ -130,6 +132,12 @@ const Button = defineComponent({
       )
     })
     const NButtonGroup = inject(buttonGroupInjectionKey, {})
+    const {
+      inlineThemeDisabled,
+      mergedClsPrefixRef,
+      mergedRtlRef,
+      mergedComponentPropsRef
+    } = useConfig(props)
     const { mergedSizeRef } = useFormItem(
       {},
       {
@@ -141,10 +149,15 @@ const Button = defineComponent({
           const { size: buttonGroupSize } = NButtonGroup
           if (buttonGroupSize)
             return buttonGroupSize
+
           const { mergedSize: formItemSize } = NFormItem || {}
-          if (formItemSize) {
+          if (formItemSize)
             return formItemSize.value
-          }
+
+          const configSize = mergedComponentPropsRef?.value?.Button?.size
+          if (configSize)
+            return configSize
+
           return 'medium'
         }
       }
@@ -201,8 +214,6 @@ const Button = defineComponent({
     const handleBlur = (): void => {
       enterPressedRef.value = false
     }
-    const { inlineThemeDisabled, mergedClsPrefixRef, mergedRtlRef }
-      = useConfig(props)
     const themeRef = useTheme(
       'Button',
       '-button',
@@ -631,6 +642,7 @@ const Button = defineComponent({
                                 key="loading"
                                 class={`${mergedClsPrefix}-icon-slot`}
                                 strokeWidth={20}
+                                {...this.spinProps}
                               />
                             ) : (
                               <div

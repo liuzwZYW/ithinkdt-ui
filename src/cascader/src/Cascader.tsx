@@ -8,7 +8,7 @@ import type {
   VNodeChild
 } from 'vue'
 import type { FollowerInst, FollowerPlacement } from 'vueuc'
-import type { InternalSelectionInst } from '../../_internal'
+import type { InternalSelectionInst, ScrollbarProps } from '../../_internal'
 import type { ThemeProps } from '../../_mixins'
 import type { ExtractPublicPropTypes, MaybeArray } from '../../_utils'
 import type { FormValidationStatus } from '../../form/src/public-types'
@@ -28,6 +28,7 @@ import type {
   SelectMenuInstance,
   Value
 } from './interface'
+import type { CascaderSpinProps } from './public-types'
 import { changeColor, depx, getPreciseEventTarget, happensIn } from 'seemly'
 import { createTreeMate, SubtreeNotLoadedError } from 'treemate'
 import { useIsMounted, useMergedState } from 'vooks'
@@ -168,6 +169,7 @@ export const cascaderProps = {
   getColumnStyle: Function as PropType<
     (detail: { level: number }) => string | CSSProperties
   >,
+  spinProps: Object as PropType<CascaderSpinProps>,
   renderPrefix: Function as PropType<
     (props: {
       option: CascaderOption
@@ -182,6 +184,7 @@ export const cascaderProps = {
       node: VNode | null
     }) => VNodeChild
   >,
+  scrollbarProps: Object as PropType<ScrollbarProps>,
   // deprecated
   onChange: [Function, Array] as PropType<MaybeArray<OnUpdateValue> | undefined>
 } as const
@@ -942,6 +945,7 @@ export default defineComponent({
       getColumnStyleRef: toRef(props, 'getColumnStyle'),
       renderPrefixRef: toRef(props, 'renderPrefix'),
       renderSuffixRef: toRef(props, 'renderSuffix'),
+      spinPropsRef: toRef(props, 'spinProps'),
       syncCascaderMenuPosition,
       syncSelectMenuPosition,
       updateKeyboardKey,
@@ -953,6 +957,7 @@ export default defineComponent({
       closeMenu,
       handleSelectMenuClickOutside,
       handleCascaderMenuClickOutside,
+      scrollbarPropsRef: toRef(props, 'scrollbarProps'),
       clearPattern
     })
     const exposedMethods: CascaderInst = {

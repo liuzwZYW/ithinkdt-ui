@@ -103,6 +103,13 @@ export default defineComponent({
             && `${mergedClsPrefix}-date-panel-month-calendar__picker-col-item--disabled`
           ]}
           onClick={() => {
+            if (item.type === 'year') {
+              props.onSelectYear?.()
+            }
+            else if (item.type === 'month') {
+              props.onSelectMonth?.()
+            }
+
             if (useAsQuickJump) {
               handleQuickMonthClick(item, (value) => {
                 ;(props.onUpdateValue as OnPanelUpdateValueImpl)(value, false)
@@ -216,25 +223,25 @@ export default defineComponent({
           <div class={`${mergedClsPrefix}-date-panel-actions`}>
             <div class={`${mergedClsPrefix}-date-panel-actions__prefix`}>
               {shortcuts
-              && Object.keys(shortcuts).map((key) => {
-                const shortcut = shortcuts[key]
-                return Array.isArray(shortcut) ? null : (
-                  <NxButton
-                    size="tiny"
-                    onMouseenter={() => {
-                      this.handleSingleShortcutMouseenter(shortcut)
-                    }}
-                    onClick={() => {
-                      this.handleSingleShortcutClick(shortcut)
-                    }}
-                    onMouseleave={() => {
-                      this.handleShortcutMouseleave()
-                    }}
-                  >
-                    {{ default: () => key }}
-                  </NxButton>
-                )
-              })}
+                && Object.keys(shortcuts).map((key) => {
+                  const shortcut = shortcuts[key]
+                  return Array.isArray(shortcut) ? null : (
+                    <NxButton
+                      size="tiny"
+                      onMouseenter={() => {
+                        this.handleSingleShortcutMouseenter(shortcut)
+                      }}
+                      onClick={() => {
+                        this.handleSingleShortcutClick(shortcut)
+                      }}
+                      onMouseleave={() => {
+                        this.handleShortcutMouseleave()
+                      }}
+                    >
+                      {{ default: () => key }}
+                    </NxButton>
+                  )
+                })}
             </div>
             <div class={`${mergedClsPrefix}-date-panel-actions__suffix`}>
               {actions?.includes('clear')

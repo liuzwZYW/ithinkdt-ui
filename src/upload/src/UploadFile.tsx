@@ -121,7 +121,7 @@ export default defineComponent({
           return
         }
       }
-      NUpload.submit(props.file.id)
+      NUpload.submit({ fileId: props.file.id })
     }
     function handleRemoveOrCancelClick(e: MouseEvent): void {
       e.preventDefault()
@@ -335,18 +335,18 @@ export default defineComponent({
           {icon}
           <div class={`${clsPrefix}-upload-file-info__name`}>
             {showName
-            && (file.url && file.status !== 'error' ? (
-              <a
-                rel="noopener noreferer"
-                target="_blank"
-                href={file.url || undefined}
-                onClick={this.handlePreviewClick}
-              >
-                {file.name}
-              </a>
-            ) : (
-              <span onClick={this.handlePreviewClick}>{file.name}</span>
-            ))}
+              && (file.url && file.status !== 'error' ? (
+                <a
+                  rel="noopener noreferer"
+                  target="_blank"
+                  href={file.url || undefined}
+                  onClick={this.handlePreviewClick}
+                >
+                  {file.name}
+                </a>
+              ) : (
+                <span onClick={this.handlePreviewClick}>{file.name}</span>
+              ))}
             {isImageType && progress}
           </div>
           <div
@@ -375,7 +375,7 @@ export default defineComponent({
               </NButton>
             ) : null}
             {(this.showRemoveButton || this.showCancelButton)
-            && !this.disabled && (
+              && !this.disabled && (
               <NButton
                 key="cancelOrTrash"
                 theme={mergedTheme.peers.Button}
