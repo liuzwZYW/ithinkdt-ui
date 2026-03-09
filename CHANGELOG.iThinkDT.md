@@ -2,6 +2,14 @@
 
 ## Next Version
 
+## 1.9.0 [naive: 2.44.1] (2026-03-09)
+
+- 同步 naive-ui `main` 分支
+
+### Features
+
+- `n-tabs` 新增方法 `updateScrollPosition`，更新滚动位置
+
 ## 1.8.5 [naive: 2.43.2] (2026-02-25)
 
 - 同步 naive-ui `main` 分支
