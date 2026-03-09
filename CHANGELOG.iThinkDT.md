@@ -2,6 +2,12 @@
 
 ## Next Version
 
+## 1.9.1 [naive: 2.44.1] (2026-03-09)
+
+### Features
+
+- `n-tabs` updateScrollPosition 支持不同方向
+
 ## 1.9.0 [naive: 2.44.1] (2026-03-09)
 
 - 同步 naive-ui `main` 分支
