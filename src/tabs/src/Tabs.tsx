@@ -347,6 +347,44 @@ export default defineComponent({
       }
     }
 
+    function updateCurrentScrollYPosition(): void {
+      const scrollWrapperEl = yScrollElRef.value
+      if (!scrollWrapperEl)
+        return
+      const tabEl = getCurrentEl()
+      if (!tabEl) {
+        scrollWrapperEl.scrollTo({
+          top: 0,
+          left: 0,
+          behavior: 'smooth'
+        })
+        return
+      }
+
+      const {
+        scrollTop: scrollWrapperElScrollTop,
+        offsetHeight: scrollWrapperElOffsetHeight
+      } = scrollWrapperEl
+      const { offsetTop: tabElOffsetTop, offsetHeight: tabElOffsetHeight }
+        = tabEl
+      if (scrollWrapperElScrollTop > tabElOffsetTop) {
+        scrollWrapperEl.scrollTo({
+          top: tabElOffsetTop,
+          left: 0,
+          behavior: 'smooth'
+        })
+      }
+      else if (
+        tabElOffsetTop + tabElOffsetHeight
+        > scrollWrapperElScrollTop + scrollWrapperElOffsetHeight
+      ) {
+        scrollWrapperEl.scrollTo({
+          top: tabElOffsetTop + tabElOffsetHeight - scrollWrapperElOffsetHeight,
+          left: 0,
+          behavior: 'smooth'
+        })
+      }
+    }
     const tabsPaneWrapperRef = ref<HTMLElement | null>(null)
     let fromHeight = 0
     let hangingTransition: (() => void) | null = null
@@ -689,7 +727,12 @@ export default defineComponent({
         updateCurrentBarStyle()
       },
       updateScrollPosition: () => {
-        updateCurrentScrollPosition()
+        if (['top', 'bottom'].includes(props.placement)) {
+          updateCurrentScrollPosition()
+        }
+        else {
+          updateCurrentScrollYPosition()
+        }
       }
     }
 
