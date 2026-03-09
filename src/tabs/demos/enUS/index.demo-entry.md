@@ -98,6 +98,7 @@ placement.vue
 
 ### Tabs Methods
 
-| Name            | Type         | Description              | Version |
-| --------------- | ------------ | ------------------------ | ------- |
-| syncBarPosition | `() => void` | Sync tab bar's position. | 2.24.0  |
+| Name | Type | Description | Version |
+| --- | --- | --- | --- |
+| syncBarPosition | `() => void` | Sync tab bar's position. | 2.24.0 |
+| updateScrollPosition | `() => void` | Update scrollbar's position. | iThinkDT 1.9.0 |

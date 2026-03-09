@@ -687,6 +687,9 @@ export default defineComponent({
     const exposedMethods: TabsInst = {
       syncBarPosition: () => {
         updateCurrentBarStyle()
+      },
+      updateScrollPosition: () => {
+        updateCurrentScrollPosition()
       }
     }
 

@@ -37,14 +37,15 @@ export interface TabsInjection {
   handleAdd: () => void
 }
 
-export type Addable =
-  | boolean
-  | {
-    disabled?: boolean
-  }
+export type Addable
+  = | boolean
+    | {
+      disabled?: boolean
+    }
 
 export const tabsInjectionKey = createInjectionKey<TabsInjection>('n-tabs')
 
 export interface TabsInst {
   syncBarPosition: () => void
+  updateScrollPosition: () => void
 }
