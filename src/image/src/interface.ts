@@ -19,6 +19,7 @@ export const imagePreviewSharedProps = {
   onPreviewDownload: Function as PropType<(imgSrc: string | undefined) => void>,
   showToolbar: { type: Boolean, default: true },
   showToolbarTooltip: Boolean,
+  keepDragOffset: Boolean,
   renderToolbar: Function as PropType<ImageRenderToolbar>
 }
 

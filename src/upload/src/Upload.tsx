@@ -375,6 +375,7 @@ export const uploadProps = {
     type: Boolean,
     default: true
   },
+  alwaysShowActions: Boolean,
   listType: {
     type: String as PropType<ListType>,
     default: 'text'
@@ -738,6 +739,7 @@ export default defineComponent({
       submit,
       doChange,
       showPreviewButtonRef: toRef(props, 'showPreviewButton'),
+      alwaysShowActionsRef: toRef(props, 'alwaysShowActions'),
       onPreviewRef: toRef(props, 'onPreview'),
       getFileThumbnailUrlResolver,
       listTypeRef: toRef(props, 'listType'),
