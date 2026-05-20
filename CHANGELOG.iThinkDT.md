@@ -2,6 +2,12 @@
 
 ## Next Version
 
+## 1.9.4 [naive: 2.44.1] (2026-05-20)
+
+### Features
+
+- `n-popselect` 支持 `closeOnSelect` prop，用于控制是否在选择后关闭弹窗，默认值为 `true`
+
 ## 1.9.3 [naive: 2.44.1] (2026-05-20)
 
 ### Features
