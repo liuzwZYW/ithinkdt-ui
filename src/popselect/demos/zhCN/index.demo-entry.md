@@ -27,6 +27,7 @@ slot.vue
 | size | `'small' \| 'medium' \| 'large'` | `'medium'` | 组件尺寸 |  |
 | value | `string \| number \| Array<string \| number> \| null` | `null` | 受控模式下的值 |  |
 | virtual-scroll | `boolean` | `false` | 是否启用虚拟滚动 | 2.30.4 |
+| close-on-select | `boolean` | `true` | 选择后是否关闭弹窗 | ithinkdt 1.9.4 |
 | on-update:value | `(value: string \| number \| Array<string \| number> \| null, option: SelectBaseOption \| null \| Array<SelectBaseOption>) => void` | `undefined` | 值更新的回调 |  |
 
 对于 SelectOption & SelectGroupOption，参考 [Select](select#SelectOption-Properties)

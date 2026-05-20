@@ -27,6 +27,7 @@ slot.vue
 | size | `'small' \| 'medium' \| 'large'` | `'medium'` | Size of the Popselect. |  |
 | value | `string \| number \| Array<string \| number> \| null` | `null` | Value in controlled mode. |  |
 | virtual-scroll | `boolean` | `false` | Whether to enable virtual scrolling. | 2.30.4 |
+| close-on-select | `boolean` | `true` | Whether to close the popselect after selection. | ithinkdt 1.9.4 |
 | on-update:value | `(value: string \| number \| Array<string \| number> \| null, option: SelectBaseOption \| null \| Array<SelectBaseOption>) => void` | `undefined` | Callback of value updating. |  |
 
 For SelectOption & SelectGroupOption, see [Select](select#SelectOption-Properties)

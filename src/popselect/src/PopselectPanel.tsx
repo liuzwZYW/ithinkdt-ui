@@ -43,6 +43,10 @@ export const panelProps = {
     default: null
   },
   cancelable: Boolean,
+  closeOnSelect: {
+    type: Boolean,
+    default: true
+  },
   options: {
     type: Array as PropType<SelectMixedOption[]>,
     default: () => []
@@ -199,7 +203,8 @@ export default defineComponent({
             call(_onUpdateShow, false)
           if (onUpdateShow)
             call(onUpdateShow, false)
-          NPopselect.setShow(false)
+          if (props.closeOnSelect)
+            NPopselect.setShow(false)
         }
       }
       void nextTick(() => {
