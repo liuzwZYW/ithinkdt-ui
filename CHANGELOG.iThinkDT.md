@@ -2,6 +2,12 @@
 
 ## Next Version
 
+## 1.9.2 [naive: 2.44.1] (2026-05-20)
+
+### Features
+
+- `n-popselect` 支持 select 的 valueField、labelField
+
 ## 1.9.1 [naive: 2.44.1] (2026-03-09)
 
 ### Features
