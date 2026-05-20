@@ -47,6 +47,8 @@ export const panelProps = {
     type: Array as PropType<SelectMixedOption[]>,
     default: () => []
   },
+  labelField: String,
+  valueField: String,
   size: String as PropType<PopselectSize>,
   scrollable: Boolean,
   'onUpdate:value': [Function, Array] as PropType<MaybeArray<OnUpdateValue>>,
@@ -237,6 +239,8 @@ export default defineComponent({
         themeOverrides={this.mergedTheme.peerOverrides.InternalSelectMenu}
         multiple={this.multiple}
         treeMate={this.treeMate}
+        labelField={this.labelField}
+        valueField={this.valueField}
         size={this.mergedSize}
         value={this.value}
         virtualScroll={this.virtualScroll}
