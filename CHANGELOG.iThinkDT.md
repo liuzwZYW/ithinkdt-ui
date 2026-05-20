@@ -2,6 +2,12 @@
 
 ## Next Version
 
+## 1.9.3 [naive: 2.44.1] (2026-05-20)
+
+### Features
+
+- `n-popselect` 支持 select 的 childrenField
+
 ## 1.9.2 [naive: 2.44.1] (2026-05-20)
 
 ### Features

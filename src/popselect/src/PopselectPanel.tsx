@@ -47,8 +47,18 @@ export const panelProps = {
     type: Array as PropType<SelectMixedOption[]>,
     default: () => []
   },
-  labelField: String,
-  valueField: String,
+  labelField: {
+    type: String,
+    default: 'label'
+  },
+  valueField: {
+    type: String,
+    default: 'value'
+  },
+  childrenField: {
+    type: String,
+    default: 'children'
+  },
   size: String as PropType<PopselectSize>,
   scrollable: Boolean,
   'onUpdate:value': [Function, Array] as PropType<MaybeArray<OnUpdateValue>>,
@@ -109,7 +119,7 @@ export default defineComponent({
         SelectBaseOption,
         SelectGroupOption,
         SelectIgnoredOption
-      >(props.options, createTmOptions('value', 'children'))
+      >(props.options, createTmOptions(props.valueField, props.childrenField))
     })
 
     function doUpdateValue(
