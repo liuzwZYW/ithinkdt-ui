@@ -46,7 +46,7 @@ component-preview-group-debug.vue
 | width | `string \| number` | `undefined` | 图片宽度 |  |
 | on-error | `(e: Event) => void` | `undefined` | 图片加载失败执行的回调 |  |
 | on-load | `(e: Event) => void` | `undefined` | 图片加载完成执行的回调 |  |
-| on-preview-download | `(imgSrc: string \| undefined) => void` | `undefined` | 点击下载执行的回调 | iThinkDT 1.8.2 |
+| on-preview-download | `(imgSrc: string \| undefined) => void` | `undefined` | 点击下载执行的回调 | ithinkdt 1.8.2 |
 
 ### ImageGroup Props
 
@@ -63,7 +63,7 @@ component-preview-group-debug.vue
 | src-list | `string[]` | `undefined` | 图片列表 | 2.43.0 |
 | on-preview-next | `() => void` | `undefined` | 点击下一张的回调 |  |
 | on-preview-prev | `() => void` | `undefined` | 点击上一张的回调 |  |
-| on-preview-download | `(imgSrc: string \| undefined) => void` | `undefined` | 点击下载执行的回调 | iThinkDT 1.8.2 |
+| on-preview-download | `(imgSrc: string \| undefined) => void` | `undefined` | 点击下载执行的回调 | ithinkdt 1.8.2 |
 | on-update:current | `(value: number) => void` | `undefined` | 显示状态改变的回调函数 | 2.43.0 |
 | on-update:show | `(value: boolean) => void` | `undefined` | 显示状态改变的回调函数 | 2.43.0 |
 
@@ -79,7 +79,7 @@ component-preview-group-debug.vue
 | show-toolbar-tooltip | `boolean` | `false` | 是否展示工具栏的提示 | 2.43.0 |
 | src | `string` | `undefined` | 图片地址 | 2.43.0 |
 | on-close | `() => void` | `undefined` | 关闭预览时的回调 | 2.43.0 |
-| on-download | `(imgSrc: string \| undefined) => void` | `undefined` | 点击下载执行的回调 | iThinkDT 1.8.2 |
+| on-download | `(imgSrc: string \| undefined) => void` | `undefined` | 点击下载执行的回调 | ithinkdt 1.8.2 |
 | on-update:show | `(value: boolean) => void` | `undefined` | 显示状态改变的回调函数 | 2.43.0 |
 
 ### Image Slots

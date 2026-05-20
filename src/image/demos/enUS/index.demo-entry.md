@@ -44,7 +44,7 @@ component-preview-group.vue
 | width | `string \| number` | `undefined` | Image width. |  |
 | on-error | `(e: Event) => void` | `undefined` | Callback executed when the image fails to load. |  |
 | on-load | `(e: Event) => void` | `undefined` | Callback executed after the image is loaded. |  |
-| on-preview-download | `(imgSrc: string \| undefined) => void` | `undefined` | Callback executed when clicking the download button in the preview mode. | iThinkDT 1.8.2 |
+| on-preview-download | `(imgSrc: string \| undefined) => void` | `undefined` | Callback executed when clicking the download button in the preview mode. | ithinkdt 1.8.2 |
 
 ### ImageGroup Props
 
@@ -61,7 +61,7 @@ component-preview-group.vue
 | src-list | `string[]` | `undefined` | Picture src list. | 2.43.0 |
 | on-preview-next | `() => void` | `undefined` | Click the callback on the next slide. |
 | on-preview-prev | `() => void` | `undefined` | Click the callback from the previous slide. |  |
-| on-preview-download | `(imgSrc: string \| undefined) => void` | `undefined` | Callback executed when clicking the download button in the preview mode. | iThinkDT 1.8.2 |
+| on-preview-download | `(imgSrc: string \| undefined) => void` | `undefined` | Callback executed when clicking the download button in the preview mode. | ithinkdt 1.8.2 |
 | on-update:current | `(value: number) => void` | `undefined` | Callback on currently displayed image changes. | 2.43.0 |
 | on-update:show | `(value: boolean) => void` | `undefined` | Callback on show status changes. | 2.43.0 |
 
@@ -77,7 +77,7 @@ component-preview-group.vue
 | show-toolbar-tooltip | `boolean` | `false` | Whether to show toolbar buttons' tooltip. | 2.43.0 |
 | src | `string` | `undefined` | Image source. | 2.43.0 |
 | on-close | `() => void` | `undefined` | Callback when close the preview of the image. | 2.43.0 |
-| on-download | `(imgSrc: string \| undefined) => void` | `undefined` | Callback executed when clicking the download button. | iThinkDT 1.8.2 |
+| on-download | `(imgSrc: string \| undefined) => void` | `undefined` | Callback executed when clicking the download button. | ithinkdt 1.8.2 |
 | on-update:show | `(value: boolean) => void` | `undefined` | Callback on show status changes. | 2.43.0 |
 
 ### Image Slots
