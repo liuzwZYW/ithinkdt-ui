@@ -2,6 +2,8 @@
 
 ## Next Version
 
+## 1.9.7 [naive: 2.44.1] (2026-07-20)
+
 ### Fixes
 
 - `n-grid` 的属性 `collapsedOverflow` 计算错误
