@@ -947,7 +947,7 @@ const Scrollbar = defineComponent({
                 $slots.default?.({ content: contentBinding })
               ) : (
                 <div ref="contentRef" role="none" {...contentBinding}>
-                  {$slots}
+                  {$slots.default?.()}
                 </div>
               )}
             </div>

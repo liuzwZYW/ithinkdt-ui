@@ -422,7 +422,7 @@ export default defineComponent({
                     onEsc={this.handleEsc}
                     onClickoutside={this.handleOutsideClick}
                   >
-                    {this.$slots}
+                    {{ ...this.$slots }}
                   </NDrawerBodyWrapper>
                 </div>
               </div>,

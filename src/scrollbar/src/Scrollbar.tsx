@@ -2,6 +2,10 @@ import type {
   AllowedComponentProps,
   ComponentCustomProps,
   ExtractPropTypes,
+  PublicProps,
+  ShallowUnwrapRef,
+  VNode,
+  VNodeChild,
   VNodeProps
 } from 'vue'
 import type { ScrollbarTheme } from '../../_internal/scrollbar/styles'
@@ -25,7 +29,7 @@ export type ScrollbarProps = Pick<
 > & {
   trigger?: 'none' | 'hover'
   xScrollable?: boolean
-  onScroll?: (e: Event) => void
+  onScroll?: (evt: Event) => void
   contentClass?: string
   contentStyle?: string | Record<string, any>
   size?: number
@@ -38,10 +42,18 @@ export type ScrollbarProps = Pick<
 export const scrollbarProps = NScrollbar.props as ScrollbarProps
 
 const Scrollbar = NScrollbar as unknown as (
-  props: ScrollbarProps &
-    VNodeProps &
-    AllowedComponentProps &
-    ComponentCustomProps
-) => any
+  props: ScrollbarProps
+    & VNodeProps
+    & AllowedComponentProps
+    & ComponentCustomProps
+) => VNode & {
+  __ctx?: {
+    props: ScrollbarProps & VNodeProps & AllowedComponentProps & ComponentCustomProps & PublicProps
+    emit: { (e: 'scroll', evt: Event): void }
+    attrs: any
+    slots: { default?: () => VNodeChild }
+    expose: (exposed: ShallowUnwrapRef<ScrollbarInst>) => void
+  }
+}
 
 export default Scrollbar

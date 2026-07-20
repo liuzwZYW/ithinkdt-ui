@@ -40,6 +40,17 @@ export default cB('tabs', `
     background-color .3s var(--n-bezier),
     border-color .3s var(--n-bezier);
 `, [
+  c('&.transition-disabled', [
+    cB('tabs-tab', `
+      transition: none !important;
+    `),
+    cB('tabs-nav-scroll-content', `
+      transition: none !important;
+    `),
+    cB('tabs-tab-pad', `
+      transition: none !important;
+    `)
+  ]),
   cM('segment-type', [
     cB('tabs-rail', [
       c('&.transition-disabled', [
@@ -595,5 +606,21 @@ export default cB('tabs', `
         `)
       ])
     ])
+  ]),
+  cB('tabs-scroll-button', [
+    cM('start', `
+      padding-left: 10px;
+      padding-right: 6px;
+    `),
+    cM('end', `
+      padding-right: 10px;
+      padding-left: 6px;
+    `),
+    cM('up', `
+      padding-bottom: 10px;
+    `),
+    cM('down', `
+      padding-top: 10px;
+    `)
   ])
 ])

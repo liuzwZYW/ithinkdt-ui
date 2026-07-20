@@ -236,7 +236,7 @@ export default defineComponent({
         onClose={this.onClose}
         onDownload={this.onPreviewDownload}
       >
-        {this.$slots}
+        {{ ...this.$slots }}
       </NImagePreview>
     )
   }

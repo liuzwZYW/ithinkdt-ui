@@ -48,4 +48,5 @@ export const tabsInjectionKey = createInjectionKey<TabsInjection>('n-tabs')
 export interface TabsInst {
   syncBarPosition: () => void
   updateScrollPosition: () => void
+  scrollToCurrentTab: () => void
 }
