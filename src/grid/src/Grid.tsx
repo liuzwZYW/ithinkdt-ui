@@ -281,23 +281,19 @@ export default defineComponent({
           )
           // it could be 0 sometimes (v-show = false)
           const childSpan = Math.min(rawChildSpan + childOffset, responsiveCols)
-          if (!child.props) {
-            child.props = {
-              privateSpan: childSpan,
-              privateOffset: childOffset
-            }
-          }
-          else {
-            child.props.privateSpan = childSpan
-            child.props.privateOffset = childOffset
-          }
-          if (!done) {
+          child.props ??= {}
+          child.props.privateSpan = childSpan
+          child.props.privateOffset = childOffset
+
+          if (!collapsedDone) {
             const remainder = spanCounter % responsiveCols
-            if (childSpan + remainder > responsiveCols) {
+            if (childSpan > responsiveCols - remainder) {
               spanCounter += responsiveCols - remainder
             }
+            spanCounter += childSpan
             if (
-              childSpan + spanCounter + suffixSpan
+              spanCounter
+              + (suffixSpan && maybeSuffixNode !== child ? suffixSpan : 0)
               > collapsedRows * responsiveCols
             ) {
               collapsedDone = true
@@ -305,32 +301,23 @@ export default defineComponent({
                 done = true
               }
             }
-            else {
-              spanCounter += childSpan
-            }
           }
         }
         if (done) {
-          if (child.props) {
-            // suffix node's privateShow may be true
-            if (child.props.privateShow !== true) {
-              child.props.privateShow = false
-            }
-          }
-          else {
-            child.props = {
-              privateShow: false
-            }
+          child.props ??= {}
+          // suffix node's privateShow may be true
+          if (child.props.privateShow !== true) {
+            child.props.privateShow = false
           }
         }
       }
       if (done) {
         this.overflow = true
       }
-
       if (collapsedDone) {
         this.collapsedOverflow = true
       }
+
       return h(
         'div',
         mergeProps(
