@@ -272,13 +272,6 @@ export default defineComponent({
       let done = false
       let collapsedDone = false
       for (const { child, rawChildSpan } of childrenAndRawSpan) {
-        if (done) {
-          this.overflow = true
-        }
-        if (collapsedDone) {
-          this.collapsedOverflow = true
-        }
-
         if (!done) {
           const childOffset = Number(
             parseResponsivePropValue(
@@ -330,6 +323,13 @@ export default defineComponent({
             }
           }
         }
+      }
+      if (done) {
+        this.overflow = true
+      }
+
+      if (collapsedDone) {
+        this.collapsedOverflow = true
       }
       return h(
         'div',

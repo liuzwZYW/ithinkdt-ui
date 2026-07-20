@@ -2,6 +2,10 @@
 
 ## Next Version
 
+### Fixes
+
+- `n-grid` 的属性 `collapsedOverflow` 边缘情况
+
 ## 1.9.4 [naive: 2.44.1] (2026-05-20)
 
 ### Features
