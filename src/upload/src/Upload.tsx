@@ -2,12 +2,13 @@ import type {
   CSSProperties,
   ImgHTMLAttributes,
   InputHTMLAttributes,
-  PropType
+  PropType,
+  Ref
 } from 'vue'
 import type { ThemeProps } from '../../_mixins'
 import type { ExtractPublicPropTypes, MaybeArray } from '../../_utils'
 import type { ImageGroupProps } from '../../image'
-import type { UploadTheme } from '../styles'
+import type { UploadTheme, UploadThemeOverrides } from '../styles'
 import type {
   CreateThumbnailUrl,
   CustomRequest,
@@ -303,7 +304,7 @@ function submitImpl(
 }
 
 export const uploadProps = {
-  ...(useTheme.props as ThemeProps<UploadTheme>),
+  ...(useTheme.props as ThemeProps<UploadTheme, UploadThemeOverrides>),
   name: {
     type: String,
     default: 'file'
@@ -790,7 +791,9 @@ export default defineComponent({
       mergedTheme: themeRef,
       dragOver: dragOverRef,
       mergedMultiple: mergedMultipleRef,
-      cssVars: inlineThemeDisabled ? undefined : cssVarsRef,
+      cssVars: inlineThemeDisabled
+        ? undefined
+        : (cssVarsRef as Ref<CSSProperties>),
       themeClass: themeClassHandle?.themeClass,
       onRender: themeClassHandle?.onRender,
       handleFileInputChange,
@@ -849,11 +852,9 @@ export default defineComponent({
       >
         {inputNode}
         {this.showTrigger && this.listType !== 'image-card' && (
-          <NUploadTrigger>{{ ...$slots }}</NUploadTrigger>
+          <NUploadTrigger>{$slots}</NUploadTrigger>
         )}
-        {this.showFileList && (
-          <NUploadFileList>{{ ...$slots }}</NUploadFileList>
-        )}
+        {this.showFileList && <NUploadFileList>{$slots}</NUploadFileList>}
       </div>
     )
   }

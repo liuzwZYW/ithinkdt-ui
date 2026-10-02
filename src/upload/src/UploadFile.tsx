@@ -240,7 +240,8 @@ export default defineComponent({
       mergedThumbnailUrl: mergedThumbnailUrlRef,
       shouldUseThumbnailUrl: NUpload.shouldUseThumbnailUrlRef,
       renderIcon: NUpload.renderIconRef,
-      imageRef,
+      // reduce dts: string ref only, type unused in render
+      imageRef: imageRef as unknown,
       imgProps: NUpload.imgPropsRef,
       previewedImgProps: NUpload.previewedImgPropsRef,
       handleRemoveOrCancelClick,
@@ -329,7 +330,9 @@ export default defineComponent({
           && file.status !== 'error'
           && listType !== 'image-card'
           && `${clsPrefix}-upload-file--with-url`,
-          `${clsPrefix}-upload-file--${listType}-type`
+          `${clsPrefix}-upload-file--${listType}-type`,
+          this.alwaysShowActions
+          && `${clsPrefix}-upload-file--always-show-actions`
         ]}
       >
         <div class={`${clsPrefix}-upload-file-info`}>

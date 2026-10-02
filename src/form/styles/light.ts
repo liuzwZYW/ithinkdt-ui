@@ -1,4 +1,4 @@
-import type { Theme } from '../../_mixins'
+import type { ExtractThemeOverrides, Theme } from '../../_mixins'
 import type { ThemeCommonVars } from '../../_styles/common'
 import { changeColor } from 'seemly'
 import { commonLight } from '../../_styles/common'
@@ -63,13 +63,16 @@ export function self(vars: ThemeCommonVars) {
   }
 }
 
-export type FormThemeVars = ReturnType<typeof self>
+export interface FormThemeVars extends ReturnType<typeof self> {}
 
-const formLight: Theme<'Form', FormThemeVars> = {
+const formLight: FormTheme = {
   name: 'Form',
   common: commonLight,
   self
 }
 
+export interface FormTheme extends Theme<'Form', FormThemeVars> {}
+
+export interface FormThemeOverrides extends ExtractThemeOverrides<FormTheme> {}
+
 export default formLight
-export type FormTheme = typeof formLight

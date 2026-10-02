@@ -9,7 +9,7 @@
 Use npm to install.
 
 ```bash
-npm i -D ithinkdt-ui
+npm i ithinkdt-ui
 ```
 
 ## UMD
@@ -19,7 +19,7 @@ Please refer to [Using UMD](umd).
 ## Fonts
 
 ```bash
-npm i -D vfonts
+npm i vfonts
 ```
 
 ## Icons

@@ -1,23 +1,26 @@
-import type { PropType } from 'vue'
+import type { CSSProperties, PropType, Ref } from 'vue'
 import type { ThemeProps } from '../../_mixins'
 import type { ExtractPublicPropTypes } from '../../_utils'
-import type { GradientTextTheme } from '../styles'
+import type { GradientTextTheme, GradientTextThemeOverrides } from '../styles'
 import { computed, defineComponent, h } from 'vue'
 import { useConfig, useTheme, useThemeClass } from '../../_mixins'
 import { createKey, formatLength, useHoudini } from '../../_utils'
 import { gradientTextLight } from '../styles'
 import style from './styles/index.cssr'
 
-type Gradient =
-  | string
-  | {
-    deg?: string | number
-    from: string
-    to: string
-  }
+type Gradient
+  = | string
+    | {
+      deg?: string | number
+      from: string
+      to: string
+    }
 
 export const gradientTextProps = {
-  ...(useTheme.props as ThemeProps<GradientTextTheme>),
+  ...(useTheme.props as ThemeProps<
+    GradientTextTheme,
+    GradientTextThemeOverrides
+  >),
   size: [String, Number] as PropType<string | number>,
   fontSize: [String, Number] as PropType<string | number>,
   type: {
@@ -105,7 +108,9 @@ export default defineComponent({
       compatibleType: compatibleTypeRef,
       styleFontSize: styleFontSizeRef,
       styleBgImage: styleBgImageRef,
-      cssVars: inlineThemeDisabled ? undefined : cssVarsRef,
+      cssVars: inlineThemeDisabled
+        ? undefined
+        : (cssVarsRef as Ref<CSSProperties>),
       themeClass: themeClassHandle?.themeClass,
       onRender: themeClassHandle?.onRender
     }

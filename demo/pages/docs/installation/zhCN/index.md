@@ -9,7 +9,7 @@
 使用 npm 安装。
 
 ```bash
-npm i -D ithinkdt-ui
+npm i ithinkdt-ui
 ```
 
 ## UMD
@@ -19,7 +19,7 @@ npm i -D ithinkdt-ui
 ## 字体
 
 ```bash
-npm i -D vfonts
+npm i vfonts
 ```
 
 ## 图标

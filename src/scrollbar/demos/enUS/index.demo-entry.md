@@ -10,6 +10,7 @@ x.vue
 trigger.vue
 no-sync.vue
 custom.vue
+theme.vue
 placement.vue
 ```
 
@@ -22,7 +23,6 @@ placement.vue
 | abstract | `boolean` | `false` | If `n-config-provider` has no wrapper DOM |  |
 | content-class | `string` | `undefined` | Class name of content div. | 2.38.2 |
 | content-style | `string \| object` | `undefined` | Style of content div. | 2.38.2 |
-| size | `number` | `5` | Size of scrollbar. | 2.34.4 |
 | trigger | `'hover' \| 'none'` | `'hover'` | Trigger of show scrollbar. `'none'` means always show it. | 2.29.1 |
 | x-scrollable | `boolean` | `false` | Whether it can scroll horizontally. |  |
 | x-placement | `'top' \| 'bottom'` | `bottom` | Scrollbar placement when scrolling horizontally. | 2.40.0 |

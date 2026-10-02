@@ -28,6 +28,8 @@ export type {
   FormItemInst,
   FormItemRule,
   FormRules,
+  FormValidateFilter,
+  FormValidateOptions,
   FormValidationError
 } from './src/interface'
 export type * from './src/public-types'

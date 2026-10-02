@@ -50,13 +50,13 @@ iThinkDT UI 全量使用 TypeScript 编写，和你的 TypeScript 项目无缝�
 使用 npm 安装。
 
 ```bash
-npm i -D ithinkdt-ui
+npm i ithinkdt-ui
 ```
 
 ### 字体
 
 ```bash
-npm i -D vfonts
+npm i vfonts
 ```
 
 ### 图标

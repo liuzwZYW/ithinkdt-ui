@@ -17,27 +17,21 @@ export interface Theme<N, T = Record<string, unknown>, R = any> {
   self?: (vars: ThemeCommonVars) => T
 }
 
-export interface ThemeProps<T> {
+export interface ThemeProps<T, O = ExtractThemeOverrides<T>> {
   theme: PropType<T>
-  themeOverrides: PropType<ExtractThemeOverrides<T>>
-  builtinThemeOverrides: PropType<ExtractThemeOverrides<T>>
+  themeOverrides: PropType<O>
+  builtinThemeOverrides: PropType<O>
 }
 
-export interface ThemePropsReactive<T> {
-  theme?: T
-  themeOverrides?: ExtractThemeOverrides<T>
-  builtinThemeOverrides?: ExtractThemeOverrides<T>
-}
-
-export type ExtractThemeVars<T> =
-  T extends Theme<unknown, infer U, unknown>
+export type ExtractThemeVars<T>
+  = T extends Theme<unknown, infer U, unknown>
     ? unknown extends U // self is undefined, ThemeVars is unknown
       ? Record<string, unknown>
       : U
     : Record<string, unknown>
 
-export type ExtractPeerOverrides<T> =
-  T extends Theme<unknown, unknown, infer V>
+export type ExtractPeerOverrides<T>
+  = T extends Theme<unknown, unknown, infer V>
     ? {
         peers?: {
           [k in keyof V]?: ExtractThemeOverrides<V[k]>
@@ -46,15 +40,15 @@ export type ExtractPeerOverrides<T> =
     : T
 
 // V is peers theme
-export type ExtractMergedPeerOverrides<T> =
-  T extends Theme<unknown, unknown, infer V>
+export type ExtractMergedPeerOverrides<T>
+  = T extends Theme<unknown, unknown, infer V>
     ? {
         [k in keyof V]?: ExtractPeerOverrides<V[k]>
       }
     : T
 
-export type ExtractThemeOverrides<T> = Partial<ExtractThemeVars<T>> &
-  ExtractPeerOverrides<T> & { common?: Partial<ThemeCommonVars> }
+export type ExtractThemeOverrides<T> = Partial<ExtractThemeVars<T>>
+  & ExtractPeerOverrides<T> & { common?: Partial<ThemeCommonVars> }
 
 export function createTheme<N extends string, T, R>(
   theme: Theme<N, T, R>
@@ -68,8 +62,8 @@ type UseThemeProps<T> = Readonly<{
   builtinThemeOverrides?: ExtractThemeOverrides<T>
 }>
 
-export type MergedTheme<T> =
-  T extends Theme<unknown, infer V, infer W>
+export type MergedTheme<T>
+  = T extends Theme<unknown, infer V, infer W>
     ? {
         common: ThemeCommonVars
         self: V
@@ -78,14 +72,14 @@ export type MergedTheme<T> =
       }
     : T
 
-function useTheme<N, T, R>(
+function useTheme<T extends Theme<string, any, any>>(
   resolveId: Exclude<keyof GlobalTheme, 'common' | 'name'>,
   mountId: string,
   style: CNode | undefined,
-  defaultTheme: Theme<N, T, R>,
-  props: UseThemeProps<Theme<N, T, R>>,
+  defaultTheme: T,
+  props: UseThemeProps<T>,
   clsPrefixRef: Ref<string | undefined> | undefined
-): ComputedRef<MergedTheme<Theme<N, T, R>>> {
+): ComputedRef<MergedTheme<T>> {
   const ssrAdapter = useSsrAdapter()
   const NConfigProvider = inject(configProviderInjectionKey, null)
   if (style) {
@@ -130,12 +124,8 @@ function useTheme<N, T, R>(
     // keep props to make theme overrideable
     const {
       theme: { common: selfCommon, self, peers = {} } = {},
-      themeOverrides: selfOverrides = {} as ExtractThemeOverrides<
-        Theme<N, T, R>
-      >,
-      builtinThemeOverrides: builtinOverrides = {} as ExtractThemeOverrides<
-        Theme<N, T, R>
-      >
+      themeOverrides: selfOverrides = {} as ExtractThemeOverrides<T>,
+      builtinThemeOverrides: builtinOverrides = {} as ExtractThemeOverrides<T>
     } = props
     const { common: selfCommonOverrides, peers: peersOverrides } = selfOverrides
     const {
@@ -163,7 +153,9 @@ function useTheme<N, T, R>(
     )
     const mergedSelf = merge(
       // {}, executed every time, no need for empty obj
-      (self || globalSelf || defaultTheme.self)?.(mergedCommon) as T,
+      (self || globalSelf || defaultTheme.self)?.(
+        mergedCommon
+      ) as ExtractThemeVars<T>,
       builtinOverrides,
       globalSelfOverrides,
       selfOverrides
@@ -178,7 +170,7 @@ function useTheme<N, T, R>(
         globalPeersOverrides,
         peersOverrides
       )
-    }
+    } as MergedTheme<T>
   })
   return mergedThemeRef
 }
