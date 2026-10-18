@@ -4,6 +4,10 @@
 
 ### Features
 
+## 1.10.1 [naive: 2.45.3] (2026-10-18)
+
+- 同步 naive-ui `main` 分支
+
 ### Fixes
 
 - `n-data-table` 修复列宽调整结束前点击表头排序的问题
