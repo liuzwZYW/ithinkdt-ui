@@ -8,7 +8,7 @@ import type {
 } from '../interface'
 import type { ColItem, RowItem } from '../use-group-header'
 import { happensIn, pxfy } from 'seemly'
-import { defineComponent, Fragment, h, inject, ref } from 'vue'
+import { defineComponent, Fragment, h, inject, nextTick, ref } from 'vue'
 import { VVirtualList } from 'vueuc'
 import { formatLength } from '../../../_utils'
 import { NCheckbox } from '../../../checkbox'
@@ -120,25 +120,6 @@ export default defineComponent({
         doCheckAll()
       }
     }
-    function handleColHeaderClick(
-      e: MouseEvent,
-      column: TableBaseColumn
-    ): void {
-      if (
-        happensIn(e, 'dataTableFilter')
-        || happensIn(e, 'dataTableResizable')
-      ) {
-        return
-      }
-      if (!isColumnSortable(column))
-        return
-      const activeSorter
-        = mergedSortStateRef.value.find(
-          state => state.columnKey === column.key
-        ) || null
-      const nextSorter = createNextSorter(column, activeSorter)
-      deriveNextSorter(nextSorter)
-    }
     const resizeStartWidthMap = new Map<ColumnKey, number | undefined>()
     function handleColumnResizeStart(column: TableBaseColumn): void {
       resizeStartWidthMap.set(column.key, getCellActualWidth(column.key))
@@ -165,6 +146,31 @@ export default defineComponent({
       )
       doUpdateResizableWidth(column, limitWidth)
     }
+    function handleColumnResizeEnd(column: TableBaseColumn): void {
+      nextTick(() => {
+        resizeStartWidthMap.delete(column.key)
+      })
+    }
+    function handleColHeaderClick(
+      e: MouseEvent,
+      column: TableBaseColumn
+    ): void {
+      if (
+        happensIn(e, 'dataTableFilter')
+        || happensIn(e, 'dataTableResizable')
+        || resizeStartWidthMap.has(column.key)
+      ) {
+        return
+      }
+      if (!isColumnSortable(column))
+        return
+      const activeSorter
+        = mergedSortStateRef.value.find(
+          state => state.columnKey === column.key
+        ) || null
+      const nextSorter = createNextSorter(column, activeSorter)
+      deriveNextSorter(nextSorter)
+    }
     return {
       cellElsRef,
       componentId,
@@ -190,7 +196,8 @@ export default defineComponent({
       handleColHeaderClick,
       handleTableHeaderScroll,
       handleColumnResizeStart,
-      handleColumnResize
+      handleColumnResize,
+      handleColumnResizeEnd
     }
   },
   render() {
@@ -215,7 +222,8 @@ export default defineComponent({
       handleColHeaderClick,
       handleCheckboxUpdateChecked,
       handleColumnResizeStart,
-      handleColumnResize
+      handleColumnResize,
+      handleColumnResizeEnd
     } = this
     let hasEllipsis = false
 
@@ -286,6 +294,9 @@ export default defineComponent({
                   }}
                   onResize={(displacementX) => {
                     handleColumnResize(column as TableBaseColumn, displacementX)
+                  }}
+                  onResizeEnd={() => {
+                    handleColumnResizeEnd(column as TableBaseColumn)
                   }}
                 />
               ) : null}

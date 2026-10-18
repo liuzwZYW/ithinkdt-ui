@@ -4,11 +4,17 @@
 
 ### Features
 
+### Fixes
+
+- `n-data-table` 修复列宽调整结束前点击表头排序的问题
+
 ## 1.10.0 [naive: 2.45.3] (2026-10-02)
 
 - 同步 naive-ui `main` 分支
 
 ## 1.9.9 [naive: 2.44.2] (2026-08-06)
+
+### Features
 
 - `n-data-table` 新增 `titleRowSpan` 和 `titleCellProps` 属性
 
