@@ -38,6 +38,16 @@ export const dataTableProps = {
       getColumnWidth: (key: ColumnKey) => number | undefined
     ) => void
   >,
+  onColumnResizeEnd: [Function, Array] as PropType<
+    MaybeArray<
+      (
+        resizedWidth: number,
+        limitedWidth: number,
+        column: TableBaseColumn,
+        getColumnWidth: (key: ColumnKey) => number | undefined
+      ) => void
+    >
+  >,
   pagination: {
     type: [Object, Boolean] as PropType<false | PaginationProps>,
     default: false
@@ -437,6 +447,12 @@ export interface DataTableInjection {
   doUpdateExpandedRowKeys: (keys: RowKey[]) => void
   doUpdateFilters: (filters: FilterState, sourceColumn: TableBaseColumn) => void
   onUnstableColumnResize: (
+    resizedWidth: number,
+    limitedWidth: number,
+    column: TableBaseColumn,
+    getColumnWidth: (key: ColumnKey) => number | undefined
+  ) => void
+  doColumnResizeEnd: (
     resizedWidth: number,
     limitedWidth: number,
     column: TableBaseColumn,

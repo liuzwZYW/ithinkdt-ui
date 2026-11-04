@@ -4,6 +4,8 @@
 
 ### Features
 
+- `n-data-table` 新增 `onColumnResizeEnd` 回调以支持列宽调整结束事件
+
 ## 1.10.3 [naive: 2.45.3] (2026-11-04)
 
 ### Fixes

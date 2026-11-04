@@ -390,6 +390,23 @@ export function useTableData(
     uncontrolledFilterStateRef.value = filters
   }
 
+  function doColumnResizeEnd(
+    resizedWidth: number,
+    limitedWidth: number,
+    column: TableBaseColumn,
+    getColumnWidth: (key: ColumnKey) => number | undefined
+  ): void {
+    if (props.onColumnResizeEnd) {
+      call(
+        props.onColumnResizeEnd,
+        resizedWidth,
+        limitedWidth,
+        column,
+        getColumnWidth
+      )
+    }
+  }
+
   function onUnstableColumnResize(
     resizedWidth: number,
     limitedWidth: number,
@@ -443,6 +460,7 @@ export function useTableData(
     deriveNextSorter,
     doUpdatePageSize,
     doUpdatePage,
+    doColumnResizeEnd,
     onUnstableColumnResize,
     // exported methods
     filter,

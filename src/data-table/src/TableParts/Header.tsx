@@ -101,7 +101,9 @@ export default defineComponent({
       virtualScrollHeaderRef,
       headerHeightRef,
       onUnstableColumnResize,
+      doColumnResizeEnd,
       doUpdateResizableWidth,
+      getResizableWidth,
       handleTableHeaderScroll,
       deriveNextSorter,
       doUncheckAll,
@@ -161,6 +163,18 @@ export default defineComponent({
       doUpdateResizableWidth(column, limitWidth)
     }
     function handleColumnResizeEnd(column: TableBaseColumn): void {
+      const widthAfterResize = getResizableWidth(column.key)!
+      const limitWidth = clampValueFollowCSSRules(
+        widthAfterResize,
+        column.minWidth,
+        column.maxWidth
+      )
+      doColumnResizeEnd(
+        widthAfterResize,
+        limitWidth,
+        column,
+        getCellActualWidth
+      )
       nextTick(() => {
         resizeStartWidthMap.delete(column)
         columnResizingRef.value = false
