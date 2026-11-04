@@ -131,9 +131,9 @@ export default defineComponent({
     function isColumnResizing(column: TableColumn) {
       return (
         columnResizingRef.value
-        && !('type' in column)
-        && !('children' in column)
-        && resizeStartWidthMap.has(column)
+        && !column.type
+        && (!('children' in column) || !column.children)
+        && resizeStartWidthMap.has(column as TableBaseColumn)
       )
     }
     function handleColumnResizeStart(column: TableBaseColumn): void {
