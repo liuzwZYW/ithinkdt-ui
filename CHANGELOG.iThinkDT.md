@@ -4,6 +4,8 @@
 
 ### Features
 
+## 1.10.5 [naive: 2.45.3] (2026-11-04)
+
 ### Fixes
 
 - `n-data-table` 修复列宽调整判断逻辑以兼容无 type 及空 children 的列
