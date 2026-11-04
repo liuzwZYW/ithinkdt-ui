@@ -539,15 +539,6 @@ export default c([
       transition: border-color .3s var(--n-bezier);
       scrollbar-width: none;
     `, [
-      cM('resizing', [
-        cB('data-table-th', {
-          pointerEvents: 'none'
-        }, [
-          cM('resizing', {
-            pointerEvents: 'auto'
-          })
-        ])
-      ]),
       c('&::-webkit-scrollbar, &::-webkit-scrollbar-track-piece, &::-webkit-scrollbar-thumb', `
         display: none;
         width: 0;

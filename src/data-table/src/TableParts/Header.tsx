@@ -499,13 +499,7 @@ export default defineComponent({
     const { handleTableHeaderScroll, scrollX } = this
     return (
       <div
-        class={[
-          {
-            [`${mergedClsPrefix}-data-table-base-table-header--resizing`]:
-              columnResizing
-          },
-          `${mergedClsPrefix}-data-table-base-table-header`
-        ]}
+        class={`${mergedClsPrefix}-data-table-base-table-header`}
         onScroll={handleTableHeaderScroll}
       >
         <table
