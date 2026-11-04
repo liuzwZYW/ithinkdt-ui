@@ -3,6 +3,7 @@ import type { VirtualListInst } from 'vueuc'
 import type {
   ColumnKey,
   TableBaseColumn,
+  TableColumn,
   TableColumnGroup,
   TableExpandColumn
 } from '../interface'
@@ -120,15 +121,28 @@ export default defineComponent({
         doCheckAll()
       }
     }
-    const resizeStartWidthMap = new Map<ColumnKey, number | undefined>()
+    const columnResizingRef = ref(false)
+    const resizeStartWidthMap = new WeakMap<
+      TableBaseColumn,
+      number | undefined
+    >()
+    function isColumnResizing(column: TableColumn) {
+      return (
+        columnResizingRef.value
+        && !('type' in column)
+        && !('children' in column)
+        && resizeStartWidthMap.has(column)
+      )
+    }
     function handleColumnResizeStart(column: TableBaseColumn): void {
-      resizeStartWidthMap.set(column.key, getCellActualWidth(column.key))
+      resizeStartWidthMap.set(column, getCellActualWidth(column.key))
+      columnResizingRef.value = true
     }
     function handleColumnResize(
       column: TableBaseColumn,
       displacementX: number
     ): void {
-      const startWidth = resizeStartWidthMap.get(column.key)
+      const startWidth = resizeStartWidthMap.get(column)
       if (startWidth === undefined) {
         return
       }
@@ -148,7 +162,8 @@ export default defineComponent({
     }
     function handleColumnResizeEnd(column: TableBaseColumn): void {
       nextTick(() => {
-        resizeStartWidthMap.delete(column.key)
+        resizeStartWidthMap.delete(column)
+        columnResizingRef.value = false
       })
     }
     function handleColHeaderClick(
@@ -158,7 +173,7 @@ export default defineComponent({
       if (
         happensIn(e, 'dataTableFilter')
         || happensIn(e, 'dataTableResizable')
-        || resizeStartWidthMap.has(column.key)
+        || resizeStartWidthMap.has(column)
       ) {
         return
       }
@@ -192,6 +207,8 @@ export default defineComponent({
       virtualScrollHeader: virtualScrollHeaderRef,
       // reduce dts: string ref only, type unused in render
       virtualListRef: virtualListRef as unknown,
+      columnResizing: columnResizingRef,
+      isColumnResizing,
       handleCheckboxUpdateChecked,
       handleColHeaderClick,
       handleTableHeaderScroll,
@@ -219,6 +236,8 @@ export default defineComponent({
       headerCheckboxDisabled,
       mergedSortState,
       virtualScrollHeader,
+      columnResizing,
+      isColumnResizing,
       handleColHeaderClick,
       handleCheckboxUpdateChecked,
       handleColumnResizeStart,
@@ -352,7 +371,9 @@ export default defineComponent({
                   isColumnSortable(column),
                 [`${mergedClsPrefix}-data-table-th--selection`]:
                   column.type === 'selection',
-                [`${mergedClsPrefix}-data-table-th--last`]: isLast
+                [`${mergedClsPrefix}-data-table-th--last`]: isLast,
+                [`${mergedClsPrefix}-data-table-th--resizing`]:
+                  isColumnResizing(column)
               },
               column.className
             ]}
@@ -455,7 +476,12 @@ export default defineComponent({
 
     const theadVNode = (
       <thead
-        class={`${mergedClsPrefix}-data-table-thead`}
+        class={[
+          {
+            [`${mergedClsPrefix}-data-table-thead--resizing`]: columnResizing
+          },
+          `${mergedClsPrefix}-data-table-thead`
+        ]}
         data-n-id={componentId}
       >
         {rows.map((row) => {
@@ -473,7 +499,13 @@ export default defineComponent({
     const { handleTableHeaderScroll, scrollX } = this
     return (
       <div
-        class={`${mergedClsPrefix}-data-table-base-table-header`}
+        class={[
+          {
+            [`${mergedClsPrefix}-data-table-base-table-header--resizing`]:
+              columnResizing
+          },
+          `${mergedClsPrefix}-data-table-base-table-header`
+        ]}
         onScroll={handleTableHeaderScroll}
       >
         <table
