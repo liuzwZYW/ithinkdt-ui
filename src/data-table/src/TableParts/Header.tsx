@@ -102,6 +102,7 @@ export default defineComponent({
       headerHeightRef,
       columnResizingRef,
       onUnstableColumnResize,
+      doColumnResizeStart,
       doColumnResizeEnd,
       doUpdateResizableWidth,
       getResizableWidth,
@@ -138,8 +139,12 @@ export default defineComponent({
       )
     }
     function handleColumnResizeStart(column: TableBaseColumn): void {
-      resizeStartWidthMap.set(column, getCellActualWidth(column.key))
+      const startWidth = getCellActualWidth(column.key)
+      if (startWidth === undefined)
+        return
+      resizeStartWidthMap.set(column, startWidth)
       columnResizingRef.value = true
+      doColumnResizeStart(column, startWidth)
     }
     function handleColumnResize(
       column: TableBaseColumn,
@@ -164,18 +169,12 @@ export default defineComponent({
       doUpdateResizableWidth(column, limitWidth)
     }
     function handleColumnResizeEnd(column: TableBaseColumn): void {
-      const widthAfterResize = getResizableWidth(column.key)!
-      const limitWidth = clampValueFollowCSSRules(
-        widthAfterResize,
-        column.minWidth,
-        column.maxWidth
-      )
-      doColumnResizeEnd(
-        widthAfterResize,
-        limitWidth,
-        column,
-        getCellActualWidth
-      )
+      const startWidth = resizeStartWidthMap.get(column)
+      const widthAfterResize = getResizableWidth(column.key)
+      if (startWidth === undefined || widthAfterResize === undefined)
+        return
+
+      doColumnResizeEnd(column, widthAfterResize, startWidth)
       nextTick(() => {
         resizeStartWidthMap.delete(column)
         columnResizingRef.value = false

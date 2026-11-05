@@ -390,20 +390,21 @@ export function useTableData(
     uncontrolledFilterStateRef.value = filters
   }
 
-  function doColumnResizeEnd(
-    resizedWidth: number,
-    limitedWidth: number,
+  function doColumnResizeStart(
     column: TableBaseColumn,
-    getColumnWidth: (key: ColumnKey) => number | undefined
+    startWidth: number
+  ): void {
+    if (props.onColumnResizeStart) {
+      call(props.onColumnResizeStart, column, startWidth)
+    }
+  }
+  function doColumnResizeEnd(
+    column: TableBaseColumn,
+    resizedWidth: number,
+    startWidth: number
   ): void {
     if (props.onColumnResizeEnd) {
-      call(
-        props.onColumnResizeEnd,
-        resizedWidth,
-        limitedWidth,
-        column,
-        getColumnWidth
-      )
+      call(props.onColumnResizeEnd, column, resizedWidth, startWidth)
     }
   }
 
@@ -460,6 +461,7 @@ export function useTableData(
     deriveNextSorter,
     doUpdatePageSize,
     doUpdatePage,
+    doColumnResizeStart,
     doColumnResizeEnd,
     onUnstableColumnResize,
     // exported methods

@@ -4,6 +4,8 @@
 
 ### Features
 
+`n-data-table` 新增 `onColumnResizeStart` 回调并简化 `onColumnResizeEnd` 参数
+
 ## 1.10.7 [naive: 2.45.3] (2026-11-05)
 
 ### Fixes
