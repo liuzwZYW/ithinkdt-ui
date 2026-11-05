@@ -3,6 +3,7 @@ import { ref } from 'vue'
 import { isColumnResizable } from './utils'
 
 export function useResizable() {
+  const columnResizingRef = ref(false)
   const resizableWidthsRef = ref<Record<ColumnKey, number>>({})
   function getResizableWidth(key: ColumnKey): number | undefined {
     return resizableWidthsRef.value[key]
@@ -16,6 +17,7 @@ export function useResizable() {
     resizableWidthsRef.value = {}
   }
   return {
+    columnResizingRef,
     getResizableWidth,
     doUpdateResizableWidth,
     clearResizableWidth

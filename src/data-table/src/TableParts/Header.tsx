@@ -100,6 +100,7 @@ export default defineComponent({
       headerCheckboxDisabledRef,
       virtualScrollHeaderRef,
       headerHeightRef,
+      columnResizingRef,
       onUnstableColumnResize,
       doColumnResizeEnd,
       doUpdateResizableWidth,
@@ -123,7 +124,7 @@ export default defineComponent({
         doCheckAll()
       }
     }
-    const columnResizingRef = ref(false)
+
     const resizeStartWidthMap = new WeakMap<
       TableBaseColumn,
       number | undefined
@@ -221,7 +222,6 @@ export default defineComponent({
       virtualScrollHeader: virtualScrollHeaderRef,
       // reduce dts: string ref only, type unused in render
       virtualListRef: virtualListRef as unknown,
-      columnResizing: columnResizingRef,
       isColumnResizing,
       handleCheckboxUpdateChecked,
       handleColHeaderClick,
@@ -250,7 +250,6 @@ export default defineComponent({
       headerCheckboxDisabled,
       mergedSortState,
       virtualScrollHeader,
-      columnResizing,
       isColumnResizing,
       handleColHeaderClick,
       handleCheckboxUpdateChecked,
@@ -490,12 +489,7 @@ export default defineComponent({
 
     const theadVNode = (
       <thead
-        class={[
-          {
-            [`${mergedClsPrefix}-data-table-thead--resizing`]: columnResizing
-          },
-          `${mergedClsPrefix}-data-table-thead`
-        ]}
+        class={`${mergedClsPrefix}-data-table-thead`}
         data-n-id={componentId}
       >
         {rows.map((row) => {

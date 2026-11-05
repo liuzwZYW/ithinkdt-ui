@@ -4,6 +4,10 @@
 
 ### Features
 
+### Refactors
+
+- `n-data-table` 将列宽调整状态提升至 DataTable 层级以禁用整个表格交互
+
 ## 1.10.5 [naive: 2.45.3] (2026-11-04)
 
 ### Fixes

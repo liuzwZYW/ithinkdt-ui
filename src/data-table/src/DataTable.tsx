@@ -115,8 +115,12 @@ export default defineComponent({
     )
     const bodyWidthRef = ref<number | null>(null)
     const mainTableInstRef = ref<MainTableRef | null>(null)
-    const { getResizableWidth, clearResizableWidth, doUpdateResizableWidth }
-      = useResizable()
+    const {
+      columnResizingRef,
+      getResizableWidth,
+      clearResizableWidth,
+      doUpdateResizableWidth
+    } = useResizable()
     const { rowsRef, colsRef, dataRelatedColsRef, hasEllipsisRef }
       = useGroupHeader(props, getResizableWidth)
 
@@ -307,6 +311,7 @@ export default defineComponent({
       syncScrollState,
       doUpdatePage,
       doUpdateFilters,
+      columnResizingRef,
       getResizableWidth,
       doColumnResizeEnd,
       onUnstableColumnResize,
@@ -479,6 +484,7 @@ export default defineComponent({
       mergedBottomBordered: mergedBottomBorderedRef,
       mergedPagination: mergedPaginationRef,
       mergedShowPagination: mergedShowPaginationRef,
+      columnResizing: columnResizingRef,
       cssVars: inlineThemeDisabled
         ? undefined
         : (cssVarsRef as Ref<CSSProperties>),
@@ -505,7 +511,8 @@ export default defineComponent({
             [`${mergedClsPrefix}-data-table--single-column`]: this.singleColumn,
             [`${mergedClsPrefix}-data-table--loading`]: this.loading,
             [`${mergedClsPrefix}-data-table--flex-height`]: this.flexHeight,
-            [`${mergedClsPrefix}-data-table--empty`]: this.mergedEmpty
+            [`${mergedClsPrefix}-data-table--empty`]: this.mergedEmpty,
+            [`${mergedClsPrefix}-data-table--resizing`]: this.columnResizing
           }
         ]}
         style={this.cssVars as CSSProperties}

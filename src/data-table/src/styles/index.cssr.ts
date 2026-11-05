@@ -198,17 +198,7 @@ export default c([
     cB('data-table-thead', `
       transition: background-color .3s var(--n-bezier);
       background-color: var(--n-merged-th-color);
-    `, [
-      cM('resizing', [
-        cB('data-table-th', {
-          pointerEvents: 'none'
-        }, [
-          cM('resizing', {
-            pointerEvents: 'auto'
-          })
-        ])
-      ]),
-    ]),
+    `),
     cB('data-table-tr', `
       position: relative;
       box-sizing: border-box;
@@ -554,7 +544,12 @@ export default c([
       top: 50%;
       transform: translateY(-50%);
       z-index: 1;
-    `)
+    `),
+    cM('resizing', [
+      cB('n-data-table-table', {
+        pointerEvents: 'none'
+      })
+    ]),
   ]),
   cB('data-table-filter-menu', [
     cB('scrollbar', `

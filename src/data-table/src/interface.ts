@@ -443,6 +443,7 @@ export interface DataTableInjection {
   filterIconPopoverPropsRef: Ref<PopoverProps | undefined>
   treeMateRef: Ref<TreeMate<InternalRowData, InternalRowData, InternalRowData>>
   scrollbarPropsRef: Ref<ScrollbarProps | undefined>
+  columnResizingRef: Ref<boolean>
   doUpdatePage: (page: number) => void
   doUpdateExpandedRowKeys: (keys: RowKey[]) => void
   doUpdateFilters: (filters: FilterState, sourceColumn: TableBaseColumn) => void
