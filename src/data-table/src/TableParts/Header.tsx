@@ -103,6 +103,7 @@ export default defineComponent({
       columnResizingRef,
       onUnstableColumnResize,
       doColumnResizeStart,
+      doColumnResizing,
       doColumnResizeEnd,
       doUpdateResizableWidth,
       getResizableWidth,
@@ -166,15 +167,16 @@ export default defineComponent({
         column,
         getCellActualWidth
       )
+      doColumnResizing(column, limitWidth - startWidth, limitWidth, startWidth)
       doUpdateResizableWidth(column, limitWidth)
     }
     function handleColumnResizeEnd(column: TableBaseColumn): void {
       const startWidth = resizeStartWidthMap.get(column)
-      const widthAfterResize = getResizableWidth(column.key)
-      if (startWidth === undefined || widthAfterResize === undefined)
+      const resizedWidth = getResizableWidth(column.key)
+      if (startWidth === undefined || resizedWidth === undefined)
         return
 
-      doColumnResizeEnd(column, widthAfterResize, startWidth)
+      doColumnResizeEnd(column, resizedWidth, startWidth)
       nextTick(() => {
         resizeStartWidthMap.delete(column)
         columnResizingRef.value = false

@@ -41,6 +41,16 @@ export const dataTableProps = {
   onColumnResizeStart: [Function, Array] as PropType<
     MaybeArray<(column: TableBaseColumn, startWidth: number) => void>
   >,
+  onColumnResizing: [Function, Array] as PropType<
+    MaybeArray<
+      (
+        column: TableBaseColumn,
+        movementX: number,
+        resizedWidth: number,
+        startWidth: number
+      ) => void
+    >
+  >,
   onColumnResizeEnd: [Function, Array] as PropType<
     MaybeArray<
       (
@@ -456,6 +466,12 @@ export interface DataTableInjection {
     getColumnWidth: (key: ColumnKey) => number | undefined
   ) => void
   doColumnResizeStart: (column: TableBaseColumn, startWidth: number) => void
+  doColumnResizing: (
+    column: TableBaseColumn,
+    movementX: number,
+    resizedWidth: number,
+    startWidth: number
+  ) => void
   doColumnResizeEnd: (
     column: TableBaseColumn,
     resizedWidth: number,

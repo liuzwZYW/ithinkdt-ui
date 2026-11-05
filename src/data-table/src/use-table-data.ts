@@ -398,6 +398,16 @@ export function useTableData(
       call(props.onColumnResizeStart, column, startWidth)
     }
   }
+  function doColumnResizing(
+    column: TableBaseColumn,
+    movementX: number,
+    resizedWidth: number,
+    startWidth: number
+  ): void {
+    if (props.onColumnResizing) {
+      call(props.onColumnResizing, column, movementX, resizedWidth, startWidth)
+    }
+  }
   function doColumnResizeEnd(
     column: TableBaseColumn,
     resizedWidth: number,
@@ -462,6 +472,7 @@ export function useTableData(
     doUpdatePageSize,
     doUpdatePage,
     doColumnResizeStart,
+    doColumnResizing,
     doColumnResizeEnd,
     onUnstableColumnResize,
     // exported methods

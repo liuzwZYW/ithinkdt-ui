@@ -4,6 +4,8 @@
 
 ### Features
 
+`n-data-table` 新增 onColumnResizing 回调支持列宽调整过程事件
+
 ## 1.11.0 [naive: 2.45.3] (2026-11-05)
 
 ### Features
