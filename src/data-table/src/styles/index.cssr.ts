@@ -546,7 +546,7 @@ export default c([
       z-index: 1;
     `),
     cM('resizing', [
-      cB('n-data-table-table', {
+      cB('data-table-table', {
         pointerEvents: 'none'
       })
     ]),

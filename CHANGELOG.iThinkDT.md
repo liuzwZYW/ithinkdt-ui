@@ -4,9 +4,13 @@
 
 ### Features
 
-### Refactors
+### Fixes
+
+`n-data-table` 修正调整列宽时禁用交互的类名以匹配实际表头类名
 
 ## 1.10.6 [naive: 2.45.3] (2026-11-05)
+
+### Refactors
 
 - `n-data-table` 将列宽调整状态提升至 DataTable 层级以禁用整个表格交互
 
